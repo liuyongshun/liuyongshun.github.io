@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>七月</title>
+  <meta name="baidu-site-verification" content="vdMfpFtVYF">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Smiple, 简, jian, 简博客">
+  <meta name="description" content="得与失之间，是我所有的美好和思念">
+<meta name="keywords" content="Smiple, 简, jian, 简博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="七月">
+<meta property="og:url" content="http://liuyongshun.github.io/page/15/index.html">
+<meta property="og:site_name" content="七月">
+<meta property="og:description" content="得与失之间，是我所有的美好和思念">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="七月">
+<meta name="twitter:description" content="得与失之间，是我所有的美好和思念">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  <script></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">七月</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">是七月呀</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/link">链接</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://liuyongshun.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-webpack-base" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/19/webpack-base/" class="article-date">
+  <time datetime="2018-01-18T20:29:17.000Z" itemprop="datePublished">2018-01-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/WEBPACK/">WEBPACK</a>►<a class="article-category-link" href="/categories/WEBPACK/webpackDescription/">webpackDescription</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/19/webpack-base/">webpack description</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  entry: &quot;./app/entry&quot;,</span><br><span class="line">  // array : 两个入口文件，最后合并输出为一个文件。</span><br><span class="line">  entry: [&quot;./app/entry1&quot;, &quot;./app/entry2&quot;], </span><br><span class="line">  // object: 两个入口文件，最后输出两个文件。两个文件输出hash时（filename: &quot;[hash].js&quot;,），会提示错误，因为会重名。所以多个输出应该（filename: &quot;[name]-[hash].js&quot;,）</span><br><span class="line">  entry: &#123;</span><br><span class="line">    a: &quot;./app/entry-a&quot;,</span><br><span class="line">    b: [&quot;./app/entry-b1&quot;, &quot;./app/entry-b2&quot;]</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">// 一般来说入口文件都是一个。</span><br><span class="line"></span><br><span class="line">  output: &#123;</span><br><span class="line"></span><br><span class="line">    // 输出路径</span><br><span class="line">    path: path.resolve(__dirname, &quot;dist&quot;), </span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 文件名三种输出方式</span><br><span class="line">     * 1. 指定名称</span><br><span class="line">     * 2. 和入口文件名相同</span><br><span class="line">     * 3. 哈希值输出</span><br><span class="line">     */</span><br><span class="line">    filename: &quot;bundle.js&quot;,</span><br><span class="line">    // 本次webpack打包的hash值。</span><br><span class="line">    filename: &quot;[hash].js&quot;,</span><br><span class="line">    filename: &quot;[name].js&quot;,</span><br><span class="line">    // 每一个chunk的hash,产生多个输出文件时的文件都带有hash，并且只有文件改变后打包hash才改变。不能与--hot热更新一起使用。可以用hash。</span><br><span class="line">    filename: &quot;[chunkhash].js&quot;,</span><br><span class="line"></span><br><span class="line">    // 该路径会指定webpackDevServer的监听路径，引用时可能是：&lt;link href=&quot;/assets/spinner.gif&quot; /&gt;</span><br><span class="line">    // 指定一个路径，一般是上线环境的路径。例如：http://cheatlys.info/</span><br><span class="line">    publicPath: &quot;/assets/&quot;,</span><br><span class="line"></span><br><span class="line">    // the filename template for additional chunks</span><br><span class="line">    chunkFilename: &quot;[id].js&quot;,</span><br><span class="line">    chunkFilename: &quot;[chunkhash].js&quot;,</span><br><span class="line"></span><br><span class="line">    // 编写输出文件的SourceMap选项时使用。</span><br><span class="line">    sourceMapFilename: &quot;[file].map&quot;,</span><br><span class="line">    sourceMapFilename: &quot;sourcemaps/[file].map&quot;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  module: &#123;</span><br><span class="line"></span><br><span class="line">    rules: [</span><br><span class="line">       // 配置各类加载器。</span><br><span class="line">      &#123;</span><br><span class="line">        test: /\.jsx?$/,</span><br><span class="line">        // 各类解析加载器作用的文件。</span><br><span class="line">        include: [</span><br><span class="line">          path.resolve(__dirname, &quot;app&quot;)</span><br><span class="line">        ],</span><br><span class="line">        // 不许要作用的文件。</span><br><span class="line">        exclude: [</span><br><span class="line">          path.resolve(__dirname, &quot;app/demo-files&quot;)</span><br><span class="line">        ],</span><br><span class="line">        // 各类加载器</span><br><span class="line">        loader: &quot;babel-loader&quot;,</span><br><span class="line"></span><br><span class="line">        // 选项配置</span><br><span class="line">        options: &#123;</span><br><span class="line">          presets: [&quot;es2015&quot;]</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      &#123;</span><br><span class="line">        test: /\.html$/,</span><br><span class="line"></span><br><span class="line">        use: [</span><br><span class="line">          // 进行多个配置</span><br><span class="line">          &quot;htmllint-loader&quot;,</span><br><span class="line">          &#123;</span><br><span class="line">            loader: &quot;html-loader&quot;,</span><br><span class="line">            options: &#123;</span><br><span class="line">              /* ... */</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    // 无需解析的内容</span><br><span class="line">    noParse: [</span><br><span class="line">      /special-library\.js$/</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  resolve: &#123;</span><br><span class="line">    // 用来解析模块请求，例如设置请求的别名，但不会解析加载器</span><br><span class="line"></span><br><span class="line">    modules: [</span><br><span class="line">      &quot;node_modules&quot;,</span><br><span class="line">      path.resolve(__dirname, &quot;app&quot;)</span><br><span class="line">    ],</span><br><span class="line">    // directories where to look for modules</span><br><span class="line"></span><br><span class="line">    extensions: [&quot;.js&quot;, &quot;.json&quot;, &quot;.jsx&quot;, &quot;.css&quot;],</span><br><span class="line">    // 设置别名，可以用别名代替长路径</span><br><span class="line">    alias: &#123;</span><br><span class="line"></span><br><span class="line">      // 别名即可代表&quot;module&quot; -&gt; &quot;new-module&quot; 也可代表 &quot;module/path/file&quot; -&gt; &quot;new-module/path/file&quot;</span><br><span class="line">      &quot;module&quot;: &quot;new-module&quot;,</span><br><span class="line"></span><br><span class="line">      // // $限定了别名，只能代表 &quot;only-module&quot; -&gt; &quot;new-module&quot;, 而不能代表 &quot;module/path/file&quot; -&gt; &quot;new-module/path/file&quot;</span><br><span class="line">      &quot;only-module$&quot;: &quot;new-module&quot;,</span><br><span class="line">      </span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    alias: [</span><br><span class="line">      &#123;</span><br><span class="line">        name: &quot;module&quot;,</span><br><span class="line"></span><br><span class="line">        alias: &quot;new-module&quot;,</span><br><span class="line"></span><br><span class="line">        onlyModule: true</span><br><span class="line">        // if true only &quot;module&quot; is aliased</span><br><span class="line">        // if false &quot;module/inner/path&quot; is also aliased</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  // 源文件遍历，方便调试。</span><br><span class="line">  devtool: &quot;source-map&quot;, // enum</span><br><span class="line"></span><br><span class="line">  // 指定webpack根目录（绝对路径）</span><br><span class="line">  context: __dirname, </span><br><span class="line"></span><br><span class="line">  // 打包时的一些信息展示，样式。</span><br><span class="line">  stats: &quot;errors-only&quot;,</span><br><span class="line">  stats: &#123;</span><br><span class="line">    assets: true,</span><br><span class="line">    colors: true,</span><br><span class="line">    errors: true,</span><br><span class="line">    errorDetails: true,</span><br><span class="line">    hash: true,</span><br><span class="line">    // ...</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  // 开发环境的web服务器，基于express搭建</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    proxy: &#123;</span><br><span class="line">      &apos;/api&apos;: &apos;http://localhost:3000&apos;</span><br><span class="line">    &#125;,</span><br><span class="line">    // 服务器启动，监听的路径设置</span><br><span class="line">    contentBase: path.join(__dirname, &apos;public&apos;), </span><br><span class="line">    // 压缩代码</span><br><span class="line">    compress: true,</span><br><span class="line">    historyApiFallback: true,</span><br><span class="line">    // 模块热替换，依赖于HotModuleReplacementPlugin</span><br><span class="line">    hot: true,</span><br><span class="line">    https: false,</span><br><span class="line">    noInfo: true</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  // 各类插件的使用</span><br><span class="line">  plugins: [</span><br><span class="line">    // ...</span><br><span class="line">  ],</span><br><span class="line"></span><br><span class="line">  resolveLoader: &#123; /* same as resolve */ &#125;</span><br><span class="line">  // separate resolve options for loaders</span><br><span class="line"></span><br><span class="line">  parallelism: 1, // number</span><br><span class="line">  // limit the number of parallel processed modules</span><br><span class="line"></span><br><span class="line">  profile: true, // boolean</span><br><span class="line">  // capture timing information</span><br><span class="line"></span><br><span class="line">  bail: true, //boolean</span><br><span class="line">  // fail out on the first error instead of tolerating it.</span><br><span class="line"></span><br><span class="line">  cache: false, // boolean</span><br><span class="line">  // disable/enable caching</span><br><span class="line"></span><br><span class="line">  watch: true, // boolean</span><br><span class="line">  // enables watching</span><br><span class="line"></span><br><span class="line">  watchOptions: &#123;</span><br><span class="line">    aggregateTimeout: 1000, // in ms</span><br><span class="line">    // aggregates multiple changes to a single rebuild</span><br><span class="line"></span><br><span class="line">    poll: true,</span><br><span class="line">    poll: 500, // intervall in ms</span><br><span class="line">    // enables polling mode for watching</span><br><span class="line">    // must be used on filesystems that doesn&apos;t notify on change</span><br><span class="line">    // i. e. nfs shares</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  node: &#123;</span><br><span class="line">    // Polyfills and mocks to run Node.js-</span><br><span class="line">    // environment code in non-Node environments.</span><br><span class="line"></span><br><span class="line">    console: false, // boolean | &quot;mock&quot;</span><br><span class="line">    global: true, // boolean | &quot;mock&quot;</span><br><span class="line">    process: true, // boolean</span><br><span class="line">    __filename: &quot;mock&quot;, // boolean | &quot;mock&quot;</span><br><span class="line">    __dirname: &quot;mock&quot;, // boolean | &quot;mock&quot;</span><br><span class="line">    Buffer: true, // boolean | &quot;mock&quot;</span><br><span class="line">    setImmediate: true // boolean | &quot;mock&quot; | &quot;empty&quot;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuyongshun.github.io/2018/01/19/webpack-base/" data-id="cjuesa59p001s1mcuz37n2mlr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/14/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="extend next" rel="next" href="/page/16/">下一页</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/array/">array</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/class/">class</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/export-import/">export&import</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/fuction/">fuction</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/generator/">generator</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/object/">object</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/promise/">promise</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/set-map/">set&map</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/string/">string</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/variable-deconstruction/">variable&deconstruction</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/">H5</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-history/">h5 history</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVASCRIPT/">JAVASCRIPT</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVASCRIPT/变量/">变量</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/">NODE</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/express/">express</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/module/">module</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongo/">mongo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoCommand/">mongoCommand</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoodb/">mongoodb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/variable/">variable</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/">PLAY</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/eat/">eat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/photo/">photo</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/frequently/">frequently</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/">VUE</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/vueRouter/">vueRouter</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/">WEBPACK</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/plugin/">plugin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackDescription/">webpackDescription</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackMerge/">webpackMerge</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/H5/">H5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/play/">play</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/variable/">variable</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/H5/" style="font-size: 12.5px;">H5</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/es6/" style="font-size: 20px;">es6</a> <a href="/tags/node/" style="font-size: 17.5px;">node</a> <a href="/tags/play/" style="font-size: 12.5px;">play</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/variable/" style="font-size: 10px;">variable</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/13/gitbranch/">h5-history</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/13/h5-history/">h5-history</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/02/ES6-promise/">promise</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/02/ES6-generator/">generator</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/04/一个人的旅途/">一个人的旅途</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <ul class="hobby-outer">
+      <li class="hobby-item"><a href="http://blog.csdn.net/liuyongshun2/article">CSDN</a></li>
+      <li class="hobby-item"><a href="https://github.com/liuyongshun">GITHUB</a></li>
+    </ul>
+    <div id="footer-info" class="inner">
+      &copy; 2019 cheat&nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1274642270'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1274642270%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/link" class="mobile-nav-link">链接</a>
+  
+</nav>
+    
+
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<div id="totop">
+  <a title="javascript:;">返回<br>顶部</a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>
