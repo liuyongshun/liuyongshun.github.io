@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://liuyongshun.github.io/2019/04/13/h5-history/</loc>
+    
+    <lastmod>2019-04-26T23:54:15.341Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://liuyongshun.github.io/2018/01/19/ES6-object/</loc>
     
     <lastmod>2019-04-13T07:27:36.096Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>http://liuyongshun.github.io/2019/04/13/gitbranch/</loc>
     
     <lastmod>2019-04-13T02:29:06.809Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://liuyongshun.github.io/2019/04/13/h5-history/</loc>
-    
-    <lastmod>2019-04-13T01:00:18.402Z</lastmod>
     
   </url>
   

@@ -72,14 +72,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-mongodb-command" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-ES6-function" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/01/19/mongodb-command/" class="article-date">
+    <a href="/2018/01/19/ES6-function/" class="article-date">
   <time datetime="2018-01-18T20:29:17.000Z" itemprop="datePublished">2018-01-18</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/NODE/">NODE</a>►<a class="article-category-link" href="/categories/NODE/mongoCommand/">mongoCommand</a>
+    <a class="article-category-link" href="/categories/ES6/">ES6</a>►<a class="article-category-link" href="/categories/ES6/fuction/">fuction</a>
   </div>
 
   </div>
@@ -90,7 +90,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/19/mongodb-command/">mongo command</a>
+      <a class="article-title" href="/2018/01/19/ES6-function/">fuction</a>
     </h1>
   
 
@@ -98,30 +98,55 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="mongodb命令"><a href="#mongodb命令" class="headerlink" title="mongodb命令"></a>mongodb命令</h3><ul>
-<li>use : 转换集合，若没有则创建</li>
-<li>show dbs : 显示所有的集合</li>
-<li><p>创建用户，权限管理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">db.createUser(</span><br><span class="line">...   &#123;</span><br><span class="line">...     user: &quot;dba&quot;,</span><br><span class="line">...     pwd: &quot;dba&quot;,</span><br><span class="line">...     roles: [ &#123; role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; &#125; ]</span><br><span class="line">...   &#125;</span><br><span class="line">... )</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>用户登录</p>
-</li>
+        <h3 id="一、参数默认值、rest、拓展运算"><a href="#一、参数默认值、rest、拓展运算" class="headerlink" title="一、参数默认值、rest、拓展运算"></a>一、参数默认值、rest、拓展运算</h3><p>1、 默认值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function setValue (x, y = &apos;World&apos;) &#123;</span><br><span class="line">  console.log(x, y); // undefined &quot;World&quot;</span><br><span class="line">  y = &apos;modify value&apos;;</span><br><span class="line">  console.log(y); // modify value</span><br><span class="line">&#125;</span><br><span class="line">setValue();</span><br><span class="line"></span><br><span class="line">// 参数变量是默认声明的，let或const再次声明报错（let和const不允许多次声明，var可以）</span><br><span class="line">function f (y = 1) &#123;</span><br><span class="line">  let y = 3;</span><br><span class="line">&#125;</span><br><span class="line">f();</span><br></pre></td></tr></table></figure></p>
+<p>1.2<br>非尾部的参数设置默认值，实际上这个参数是没法省略的。如果传入undefined，将触发默认值，null没有该效果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function f (x = 1, y) &#123;</span><br><span class="line">  return [x, y];</span><br><span class="line">&#125;</span><br><span class="line">f(); // [1, undefined]</span><br><span class="line">f(2); // [2, undefined])</span><br><span class="line">f( , 1); //  报错</span><br><span class="line">f(undefined, 1); // [1, 1]</span><br><span class="line"></span><br><span class="line">// 指定默认值后，函数的length属性，将返回没有指定默认值的参数个数。指定了默认值后，length属性将失真。</span><br><span class="line">function f (x, y = 1) &#123;</span><br><span class="line">  console.log(arguments.length); // 0</span><br><span class="line">  return [x, y];</span><br><span class="line">&#125;</span><br><span class="line">f()</span><br><span class="line"></span><br><span class="line">// rest 参数也不会计入length属性。</span><br><span class="line">function f (x, y = 1, ...arg) &#123;</span><br><span class="line">  console.log(arguments.length); // 1</span><br><span class="line">  return [x, y];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f(2);</span><br></pre></td></tr></table></figure>
+<p>3、rest。 “…变量名” 用于获取函数的多余参数，rest后不能有其他参数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// rest参数之后不能再有其他参数</span><br><span class="line"></span><br><span class="line">function add (...values) &#123;</span><br><span class="line">  let sum = 0;</span><br><span class="line">  for (var val of values) &#123;</span><br><span class="line">    sum += val;</span><br><span class="line">  &#125;</span><br><span class="line">  return sum;</span><br><span class="line">&#125;</span><br><span class="line">console.log(add(2, 5, 3)); // 10</span><br></pre></td></tr></table></figure></p>
+<p>4、拓展运算  “…” ，将数组转化为用都好分开的参数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function add (x, y) &#123;</span><br><span class="line">  return x + y;</span><br><span class="line">&#125;</span><br><span class="line">var numbers = [4, 38];</span><br><span class="line">console.log(add(...numbers)); // 42</span><br><span class="line"></span><br><span class="line">// 将字符串转化为数组</span><br><span class="line">[...&apos;hello&apos;]</span><br><span class="line">// [ &quot;h&quot;, &quot;e&quot;, &quot;l&quot;, &quot;l&quot;, &quot;o&quot; ]</span><br></pre></td></tr></table></figure></p>
+<h3 id="二、解构赋值"><a href="#二、解构赋值" class="headerlink" title="二、解构赋值"></a>二、解构赋值</h3><p>1、函数参数解构顺序，优先实参，其次参数默认值，再次是变量解构默认值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function foo (&#123;x, y = 5&#125;) &#123;</span><br><span class="line">  console.log(x, y);</span><br><span class="line">&#125;</span><br><span class="line">foo(&#123;&#125;); // undefined 5</span><br><span class="line">foo(&#123;x: 1&#125;); // 1 5</span><br><span class="line">foo(&#123;x: 1, y: 2&#125;); // 1 2</span><br><span class="line">foo(); // error</span><br></pre></td></tr></table></figure></p>
+<p>2、<br>下面两种写法都对函数的参数设定了默认值，区别是写法一函数参数的默认值是空对象，但是设置了对象解构赋值的默认值；<br>写法二函数参数的默认值是一个有具体属性的对象，但是没有设置对象解构赋值的默认值。；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 写法一</span><br><span class="line">function m1 (&#123;x = 0, y = 0&#125; = &#123;&#125;) &#123;</span><br><span class="line">  return [x, y];</span><br><span class="line">&#125;</span><br><span class="line">// 写法二</span><br><span class="line">function m2 (&#123;x, y&#125; = &#123; x: 0, y: 0 &#125;) &#123;</span><br><span class="line">  return [x, y];</span><br><span class="line">&#125;</span><br><span class="line">console.log(m1()); // [0, 0]</span><br><span class="line">console.log(m2()); // [0, 0]</span><br><span class="line"></span><br><span class="line">// x 和 y 都无值的情况</span><br><span class="line">m1(&#123;&#125;); // [0, 0];</span><br><span class="line">m2(&#123;&#125;); // [undefined, undefined]</span><br><span class="line"></span><br><span class="line">// x 有值， y 无值的情况</span><br><span class="line">m1(&#123;x: 3&#125;); // [3, 0]</span><br><span class="line">m2(&#123;x: 3&#125;); // [3, undefined]</span><br></pre></td></tr></table></figure>
+<h3 id="三、作用域"><a href="#三、作用域" class="headerlink" title="三、作用域"></a>三、作用域</h3><ul>
+<li>执行环境：执行环境定义了变量或函数有权访问的其他数据。函数都有自己的执行环境，全局执行环境是 window 对象</li>
+<li>变量对象：环境中定义的所有变量和函数都保存在这个对象中。</li>
+<li>作用域链：保证对执行环境有权访问的所有变量和函数的有序访问。</li>
+<li>活动对象：在最开始时只包含一个变量，即 arguments 对象（这个对象在全局环境中是不存在的）。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.auth(&apos;liu&apos;,&apos;123&apos;)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>db.abc.insert({&quot;a&quot;:1,&quot;b&quot;:2})</code> abc是集合名，插入数据</li>
-<li><code>db.abc.find()</code>  展示查看abc集合内的数据</li>
-<li><code>show users</code>  查看当前库下的用户</li>
-<li><code>db.system.users.find().pretty()</code>  查看所有的用户</li>
+<p>1、<br><strong>参数默认值是一个变量，则该变量所处的作用域，与其他变量的作用域规则是一样的，即先是当前函数的作用域，然后才是全局作用域。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">var x = 1;</span><br><span class="line">function f (x, y = x) &#123;</span><br><span class="line">  console.log(y);</span><br><span class="line">&#125;</span><br><span class="line">f(2); // 2</span><br><span class="line"></span><br><span class="line">// 首先x和y都在f函数的作用域内，所以y=x，不会去找全局的x。因为先声明了x,后执行了y=x,等同于:</span><br><span class="line">let x; </span><br><span class="line">y = x;</span><br><span class="line">所以二者皆为undefined。不抛出错误。</span><br><span class="line">var x = 1;</span><br><span class="line">function f (x, y = x) &#123;</span><br><span class="line">  console.log(y); // undefined</span><br><span class="line">  console.log(x); // undefined</span><br><span class="line">&#125;</span><br><span class="line">f();</span><br><span class="line"></span><br><span class="line">// 首先x和y都在f函数的作用域内，所以y=x，不会去找全局的x。但是由于先执行y=x,后声明x，等同于:</span><br><span class="line">y = x;</span><br><span class="line">let x; </span><br><span class="line">在声明x前执行了y = x的操作，所以抛出错误。</span><br><span class="line">var x = 1;</span><br><span class="line">function f (y = x, x) &#123; // error: x is not defined</span><br><span class="line">  console.log(y);</span><br><span class="line">  console.log(x);</span><br><span class="line">&#125;</span><br><span class="line">f();</span><br><span class="line"></span><br><span class="line">// ps:只有var具有声明提升的效果，但是参数声明，let，const是没有提升效果的，所以：</span><br><span class="line">y = x;</span><br><span class="line">var x;</span><br><span class="line">这是不会报错的。但是其他是不行的。</span><br></pre></td></tr></table></figure>
+<p>2、<br><strong>分析：y的默认值是匿名函数，声明时，foo函数的作用域还没有形成。该匿名的作用域前端是foo的活动对象即argments部分。下一部分就是全局作用域。该匿名无法访问foo环境内的变量。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var x = 1;</span><br><span class="line">function foo (x, y = function () &#123; console.log(x); &#125;) &#123;</span><br><span class="line">  console.log(x); // 该x是参数x，作用域链先查到argments的x，不是全局x。</span><br><span class="line">  x = 3;          // 重写了参数x。</span><br><span class="line">  y();            // 因为参数x被重新赋值，所以此时输出3</span><br><span class="line">  console.log(x); // 同理为3</span><br><span class="line">&#125;</span><br><span class="line">foo(7); // 3</span><br></pre></td></tr></table></figure>
+<h3 id="四、ES6函数写法"><a href="#四、ES6函数写法" class="headerlink" title="四、ES6函数写法"></a>四、ES6函数写法</h3><p>箭头函数</p>
+<p>1.函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。<br>2.不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。<br>3.不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 Rest 参数代替。<br>4.不可以使用yield命令，因此箭头函数不能用作 Generator 函数。<br>5.由于大括号被解释为代码块，所以如果箭头函数直接返回一个对象，必须在对象外面加上括号。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 如果箭头函数不需要参数或需要多个参数，则用圆括号代替参数部分。</span><br><span class="line">var f = () =&gt; 1;</span><br><span class="line">var sum = (arg, arg1) =&gt; arg + arg1;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">5.</span><br><span class="line">var getTempItem = id =&gt; (&#123; id: id, name: &apos;Temp&apos; &#125;);</span><br><span class="line">同：</span><br><span class="line">var getTempItem = function (id) &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        id: id,</span><br><span class="line">        name: &apos;Temp&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">console.log(getTempItem());</span><br></pre></td></tr></table></figure>
+<p>this指向的固定化，并不是因为箭头函数内部有绑定this的机制，实际原因是箭头函数根本没有自己的this，导致内部的this就是外层代码块的this。正是因为它没有this，所以也就不能用作构造函数。<br>除了this，以下三个变量在箭头函数之中也是不存在的，指向外层函数的对应变量：arguments、super、new.target</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// 箭头函数导致this总是指向函数定义生效时所在的对象（本例是&#123;id: 42&#125;），所以输出的是42。</span><br><span class="line"></span><br><span class="line">// 判断this指向技巧：函数调用this指向全局，对象方法调用this指向对象。</span><br><span class="line">function foo () &#123;</span><br><span class="line">  setTimeout(() =&gt; &#123;</span><br><span class="line">    console.log(&apos;id:&apos;, this.id); // 42</span><br><span class="line">  &#125;, 100);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function foo () &#123;</span><br><span class="line">  var that = this;</span><br><span class="line">  setTimeout(function () &#123;</span><br><span class="line">    console.log(&apos;id:&apos;, that.id); // 42</span><br><span class="line">  &#125;, 100);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function foo () &#123;</span><br><span class="line">  setTimeout(function () &#123;</span><br><span class="line">    console.log(&apos;id:&apos;, this.id); // 21</span><br><span class="line">  &#125;, 100);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var id = 21;</span><br><span class="line">foo.call(&#123;id: 42&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="五、函数严格模式"><a href="#五、函数严格模式" class="headerlink" title="五、函数严格模式"></a>五、函数严格模式</h3><ul>
+<li>变量必须声明后再使用</li>
+<li>函数的参数不能有同名属性，否则报错</li>
+<li>不能使用with语句</li>
+<li>不能对只读属性赋值，否则报错</li>
+<li>不能使用前缀 0 表示八进制数，否则报错</li>
+<li>不能删除不可删除的属性，否则报错</li>
+<li>不能删除变量delete prop，会报错，只能删除属性delete global[prop]</li>
+<li>eval不会在它的外层作用域引入变量</li>
+<li>eval和arguments不能被重新赋值</li>
+<li>arguments不会自动反映函数参数的变化</li>
+<li>不能使用arguments.callee</li>
+<li>不能使用arguments.caller</li>
+<li>禁止this指向全局对象</li>
+<li>不能使用fn.caller和fn.arguments获取函数调用的堆栈</li>
+<li>增加了保留字（比如protected、static和interface）</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuyongshun.github.io/2018/01/19/mongodb-command/" data-id="cjuesa590000w1mcuwy70o8m5" class="article-share-link">Share</a>
+      <a data-url="http://liuyongshun.github.io/2018/01/19/ES6-function/" data-id="cjufb277s0007g6cuzrtzrry6" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li></ul>
 
     </footer>
   </div>
@@ -187,19 +212,19 @@
       <ul>
         
           <li>
-            <a href="/2019/04/13/gitbranch/">h5-history</a>
-          </li>
-        
-          <li>
             <a href="/2019/04/13/h5-history/">h5-history</a>
           </li>
         
           <li>
-            <a href="/2018/09/02/ES6-promise/">promise</a>
+            <a href="/2019/04/13/gitbranch/">h5-history</a>
           </li>
         
           <li>
             <a href="/2018/09/02/ES6-generator/">generator</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/02/ES6-promise/">promise</a>
           </li>
         
           <li>
