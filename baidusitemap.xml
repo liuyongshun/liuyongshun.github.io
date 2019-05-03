@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://liuyongshun.github.io/2019/05/03/ES6-async/</loc>
+    <lastmod>2019-05-03</lastmod>
+  </url>  <url>
+    <loc>http://liuyongshun.github.io/2018/09/02/ES6-generator/</loc>
+    <lastmod>2019-05-03</lastmod>
+  </url>  <url>
+    <loc>http://liuyongshun.github.io/2017/08/18/ES6-class/</loc>
+    <lastmod>2019-04-27</lastmod>
+  </url>  <url>
+    <loc>http://liuyongshun.github.io/2019/04/27/npm/</loc>
+    <lastmod>2019-04-27</lastmod>
+  </url>  <url>
     <loc>http://liuyongshun.github.io/2019/04/13/h5-history/</loc>
     <lastmod>2019-04-26</lastmod>
   </url>  <url>
@@ -12,15 +24,6 @@
   </url>  <url>
     <loc>http://liuyongshun.github.io/2018/09/02/ES6-promise/</loc>
     <lastmod>2019-04-13</lastmod>
-  </url>  <url>
-    <loc>http://liuyongshun.github.io/2017/08/18/ES6-class/</loc>
-    <lastmod>2019-04-13</lastmod>
-  </url>  <url>
-    <loc>http://liuyongshun.github.io/2019/04/13/gitbranch/</loc>
-    <lastmod>2019-04-13</lastmod>
-  </url>  <url>
-    <loc>http://liuyongshun.github.io/2018/09/02/ES6-generator/</loc>
-    <lastmod>2018-09-02</lastmod>
   </url>  <url>
     <loc>http://liuyongshun.github.io/2018/01/19/ES6-set-map/</loc>
     <lastmod>2018-08-19</lastmod>

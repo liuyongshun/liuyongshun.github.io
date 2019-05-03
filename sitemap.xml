@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://liuyongshun.github.io/2019/05/03/ES6-async/</loc>
+    
+    <lastmod>2019-05-03T09:56:29.251Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://liuyongshun.github.io/2018/09/02/ES6-generator/</loc>
+    
+    <lastmod>2019-05-03T08:35:11.773Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://liuyongshun.github.io/2017/08/18/ES6-class/</loc>
+    
+    <lastmod>2019-04-27T13:03:36.060Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://liuyongshun.github.io/2019/04/27/npm/</loc>
+    
+    <lastmod>2019-04-27T00:23:53.867Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://liuyongshun.github.io/2019/04/13/h5-history/</loc>
     
     <lastmod>2019-04-26T23:54:15.341Z</lastmod>
@@ -26,27 +54,6 @@
     <loc>http://liuyongshun.github.io/2018/09/02/ES6-promise/</loc>
     
     <lastmod>2019-04-13T06:43:24.740Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://liuyongshun.github.io/2017/08/18/ES6-class/</loc>
-    
-    <lastmod>2019-04-13T06:06:00.654Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://liuyongshun.github.io/2019/04/13/gitbranch/</loc>
-    
-    <lastmod>2019-04-13T02:29:06.809Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://liuyongshun.github.io/2018/09/02/ES6-generator/</loc>
-    
-    <lastmod>2018-09-02T09:09:19.000Z</lastmod>
     
   </url>
   
