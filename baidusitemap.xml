@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://liuyongshun.github.io/2017/08/18/ES6-import-export/</loc>
+    <lastmod>2019-05-04</lastmod>
+  </url>  <url>
     <loc>http://liuyongshun.github.io/2019/05/03/ES6-async/</loc>
     <lastmod>2019-05-03</lastmod>
   </url>  <url>
@@ -62,9 +65,6 @@
     <lastmod>2018-01-18</lastmod>
   </url>  <url>
     <loc>http://liuyongshun.github.io/2018/01/19/ES6-variable-deconstruction/</loc>
-    <lastmod>2018-01-18</lastmod>
-  </url>  <url>
-    <loc>http://liuyongshun.github.io/2017/08/18/ES6-import-export/</loc>
     <lastmod>2018-01-18</lastmod>
   </url>  <url>
     <loc>http://liuyongshun.github.io/2018/01/19/mongodb-command/</loc>

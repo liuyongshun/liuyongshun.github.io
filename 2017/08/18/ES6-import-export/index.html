@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="七月">
 <meta property="og:description" content="前言 &amp;#x3000;&amp;#x3000;JavaScript一直没有模块系统，ES6改变这一问题，在ES6之前用CommonJS规范形成服务器端的模块体系，用AMD规范形成浏览器端模块体系。如今ES6的模块已实现，且实现简单，成为浏览器和服务器的通用模块解决方案。 &amp;#x3000;&amp;#x3000;ES6的module（编译时加载），在编译时就能确定确定模块的依赖关系，以及输入和输出的变量，而Comm">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-18T14:36:08.000Z">
+<meta property="og:updated_time" content="2019-05-04T04:27:15.953Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6">
 <meta name="twitter:description" content="前言 &amp;#x3000;&amp;#x3000;JavaScript一直没有模块系统，ES6改变这一问题，在ES6之前用CommonJS规范形成服务器端的模块体系，用AMD规范形成浏览器端模块体系。如今ES6的模块已实现，且实现简单，成为浏览器和服务器的通用模块解决方案。 &amp;#x3000;&amp;#x3000;ES6的module（编译时加载），在编译时就能确定确定模块的依赖关系，以及输入和输出的变量，而Comm">
@@ -108,15 +108,17 @@
 <p>方式三<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export function multiply (x, y) &#123;</span><br><span class="line">  return x * y;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <p>方式四<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">使用as关键字，重命名了函数foo和fooo的对外接口。重命名后，fooo可以用不同的名字输出两次。</span><br><span class="line">function foo () &#123;</span><br><span class="line">&#125;</span><br><span class="line">function fooo () &#123;</span><br><span class="line">&#125;</span><br><span class="line">export &#123;</span><br><span class="line">  foo as func,</span><br><span class="line">  fooo as funct,</span><br><span class="line">  fooo as functi</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <p>方法五<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 使用import命令的时候，用户需要知道所要加载的变量名或函数名，否则无法加载。为了方便，就用export default命令，为模块指定默认输出。default命令指定模块的默认输出。一个模块只能有一个默认输出，因此只能使用一次。</span><br><span class="line"></span><br><span class="line">// 本质上，export default就是输出一个叫做default的变量或方法,所以它后面不能跟变量声明语句。系统允许你为它取任意名字。</span><br><span class="line"></span><br><span class="line">// default命令用在非匿名函数前，也是可以的。foo函数的函数名foo，在模块外部是无效的</span><br><span class="line">export default function foo () &#123;</span><br><span class="line">  console.log(&apos;foo&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function foo () &#123;</span><br><span class="line">  console.log(&apos;foo&apos;);</span><br><span class="line">&#125;</span><br><span class="line">export default foo;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">export default function () &#123;</span><br><span class="line">  console.log(&apos;foo&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="二、import导入"><a href="#二、import导入" class="headerlink" title="二、import导入"></a>二、import导入</h3><p>import命令具有提升效果，会提升到整个模块的头部，首先执行。<br>大括号内的变量名必须与被导入的模块接口名相同。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">foo();</span><br><span class="line">import &#123; foo &#125; from &apos;my_module&apos;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="二、import导入"><a href="#二、import导入" class="headerlink" title="二、import导入"></a>二、import导入</h3><p>import命令具有提升效果，会提升到整个模块的头部，首先执行。<br>大括号内的变量名必须与被导入的模块接口名相同。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">foo();</span><br><span class="line">import &#123; foo &#125; from &apos;my_module&apos;;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import defaultMember from &quot;module-name&quot;;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 整体导入，as重命名为name</span><br><span class="line">import * as name from &quot;module-name&quot;;</span><br></pre></td></tr></table></figure>
-<p>可以利用变量解构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import &#123; member1 , member2 as alias2 , [...] &#125; from &quot;module-name&quot;;</span><br><span class="line">import defaultMember, &#123; member [ , [...] ] &#125; from &quot;module-name&quot;;</span><br><span class="line">import &quot;module-name&quot;;</span><br></pre></td></tr></table></figure></p>
+<p>可以利用变量解构，但是如果export采用了export default 则无法解构。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import &#123; member1 , member2 as alias2 , [...] &#125; from &quot;module-name&quot;;</span><br><span class="line">import defaultMember, &#123; member [ , [...] ] &#125; from &quot;module-name&quot;;</span><br><span class="line">import &quot;module-name&quot;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuyongshun.github.io/2017/08/18/ES6-import-export/" data-id="cjv8331bp000egkcu8p3brtnv" class="article-share-link">Share</a>
+      <a data-url="http://liuyongshun.github.io/2017/08/18/ES6-import-export/" data-id="cjv90bh6s0009y6cu51l36rnw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li></ul>
@@ -127,19 +129,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/08/24/node/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/08/18/ES6-class/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          node variable
+          ES6
         
       </div>
     </a>
   
   
-    <a href="/2017/08/18/ES6-class/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/03/24/new-article/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">ES6</div>
+      <div class="article-nav-title">js变量提升</div>
     </a>
   
 </nav>

@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://liuyongshun.github.io/2017/08/18/ES6-import-export/</loc>
+    
+    <lastmod>2019-05-04T04:27:15.953Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://liuyongshun.github.io/2019/05/03/ES6-async/</loc>
     
     <lastmod>2019-05-03T09:56:29.251Z</lastmod>
@@ -145,13 +152,6 @@
     <loc>http://liuyongshun.github.io/2018/01/19/ES6-variable-deconstruction/</loc>
     
     <lastmod>2018-01-18T14:36:26.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://liuyongshun.github.io/2017/08/18/ES6-import-export/</loc>
-    
-    <lastmod>2018-01-18T14:36:08.000Z</lastmod>
     
   </url>
   
