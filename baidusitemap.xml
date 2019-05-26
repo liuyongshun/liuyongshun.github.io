@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://liuyongshun.github.io/2019/04/27/npm/</loc>
+    <lastmod>2019-05-25</lastmod>
+  </url>  <url>
     <loc>http://liuyongshun.github.io/2017/08/18/ES6-import-export/</loc>
     <lastmod>2019-05-04</lastmod>
   </url>  <url>
@@ -11,9 +14,6 @@
     <lastmod>2019-05-03</lastmod>
   </url>  <url>
     <loc>http://liuyongshun.github.io/2017/08/18/ES6-class/</loc>
-    <lastmod>2019-04-27</lastmod>
-  </url>  <url>
-    <loc>http://liuyongshun.github.io/2019/04/27/npm/</loc>
     <lastmod>2019-04-27</lastmod>
   </url>  <url>
     <loc>http://liuyongshun.github.io/2019/04/13/h5-history/</loc>

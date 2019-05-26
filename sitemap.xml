@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://liuyongshun.github.io/2019/04/27/npm/</loc>
+    
+    <lastmod>2019-05-25T13:07:19.300Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://liuyongshun.github.io/2017/08/18/ES6-import-export/</loc>
     
     <lastmod>2019-05-04T04:27:15.953Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>http://liuyongshun.github.io/2017/08/18/ES6-class/</loc>
     
     <lastmod>2019-04-27T13:03:36.060Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://liuyongshun.github.io/2019/04/27/npm/</loc>
-    
-    <lastmod>2019-04-27T00:23:53.867Z</lastmod>
     
   </url>
   
