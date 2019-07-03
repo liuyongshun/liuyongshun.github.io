@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://liuyongshun.github.io/2019/04/27/npm/</loc>
-    <lastmod>2019-06-01</lastmod>
+    <loc>http://liuyongshun.github.io/2019/06/27/npmprinciple/</loc>
+    <lastmod>2019-06-30</lastmod>
+  </url>  <url>
+    <loc>http://liuyongshun.github.io/2017/09/10/webpack4/</loc>
+    <lastmod>2019-06-27</lastmod>
   </url>  <url>
     <loc>http://liuyongshun.github.io/2019/05/27/vscode-plugin/</loc>
+    <lastmod>2019-06-08</lastmod>
+  </url>  <url>
+    <loc>http://liuyongshun.github.io/2019/04/27/npm/</loc>
     <lastmod>2019-06-01</lastmod>
   </url>  <url>
     <loc>http://liuyongshun.github.io/2017/08/18/ES6-import-export/</loc>
