@@ -2,9 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://liuyongshun.github.io/2019/05/27/vscode-plugin/</loc>
+    
+    <lastmod>2019-10-08T11:09:35.843Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://liuyongshun.github.io/2019/10/05/node-api/</loc>
+    
+    <lastmod>2019-10-08T11:06:58.702Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://liuyongshun.github.io/2019/10/03/npm-cli/</loc>
+    
+    <lastmod>2019-10-07T13:50:30.548Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://liuyongshun.github.io/2019/09/03/weex/</loc>
+    
+    <lastmod>2019-09-03T13:49:28.099Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://liuyongshun.github.io/2019/06/27/npmprinciple/</loc>
     
-    <lastmod>2019-06-30T12:04:15.839Z</lastmod>
+    <lastmod>2019-07-03T13:34:10.995Z</lastmod>
     
   </url>
   
@@ -12,13 +40,6 @@
     <loc>http://liuyongshun.github.io/2017/09/10/webpack4/</loc>
     
     <lastmod>2019-06-27T12:35:56.792Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://liuyongshun.github.io/2019/05/27/vscode-plugin/</loc>
-    
-    <lastmod>2019-06-08T02:56:14.258Z</lastmod>
     
   </url>
   
