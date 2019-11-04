@@ -2,6 +2,48 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://liuyongshun.github.io/2018/01/19/vue-router/</loc>
+    
+    <lastmod>2019-11-04T13:26:10.897Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://liuyongshun.github.io/2019/05/27/vscode-plugin/</loc>
+    
+    <lastmod>2019-11-04T13:25:50.682Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://liuyongshun.github.io/2019/06/27/npmprinciple/</loc>
+    
+    <lastmod>2019-11-04T13:25:36.606Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://liuyongshun.github.io/2019/04/27/npm/</loc>
+    
+    <lastmod>2019-11-04T13:25:29.268Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://liuyongshun.github.io/2019/10/25/node-stream/</loc>
+    
+    <lastmod>2019-11-04T13:24:38.735Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://liuyongshun.github.io/2019/11/05/node-buffer/</loc>
+    
+    <lastmod>2019-11-04T13:23:54.635Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://liuyongshun.github.io/2019/10/07/weex/</loc>
     
     <lastmod>2019-10-08T11:20:07.251Z</lastmod>
@@ -16,13 +58,6 @@
   </url>
   
   <url>
-    <loc>http://liuyongshun.github.io/2019/05/27/vscode-plugin/</loc>
-    
-    <lastmod>2019-10-08T11:09:35.843Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://liuyongshun.github.io/2019/10/05/node-api/</loc>
     
     <lastmod>2019-10-08T11:06:58.702Z</lastmod>
@@ -30,23 +65,9 @@
   </url>
   
   <url>
-    <loc>http://liuyongshun.github.io/2019/06/27/npmprinciple/</loc>
-    
-    <lastmod>2019-07-03T13:34:10.995Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://liuyongshun.github.io/2017/09/10/webpack4/</loc>
     
     <lastmod>2019-06-27T12:35:56.792Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://liuyongshun.github.io/2019/04/27/npm/</loc>
-    
-    <lastmod>2019-06-01T04:17:13.659Z</lastmod>
     
   </url>
   
@@ -131,13 +152,6 @@
     <loc>http://liuyongshun.github.io/2018/08/04/%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%97%85%E9%80%94/</loc>
     
     <lastmod>2018-08-04T05:38:59.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://liuyongshun.github.io/2018/01/19/vue-router/</loc>
-    
-    <lastmod>2018-01-18T14:37:41.000Z</lastmod>
     
   </url>
   
