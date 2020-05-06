@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://liuyongshun.github.io/2019/04/13/video/</loc>
+    
+    <lastmod>2020-05-06T03:38:57.672Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://liuyongshun.github.io/2020/04/19/REACT-redux/</loc>
+    
+    <lastmod>2020-04-19T10:48:05.053Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://liuyongshun.github.io/2018/01/19/ES6-decorate/</loc>
+    
+    <lastmod>2020-04-19T09:31:10.638Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://liuyongshun.github.io/2020/04/19/JS-data-constractor/</loc>
+    
+    <lastmod>2020-04-19T07:41:12.453Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://liuyongshun.github.io/2017/08/24/node/</loc>
+    
+    <lastmod>2019-11-04T13:33:38.858Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://liuyongshun.github.io/2018/01/19/vue-router/</loc>
     
     <lastmod>2019-11-04T13:26:10.897Z</lastmod>
@@ -159,13 +194,6 @@
     <loc>http://liuyongshun.github.io/2017/12/08/tool/</loc>
     
     <lastmod>2018-01-18T14:37:33.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://liuyongshun.github.io/2017/08/24/node/</loc>
-    
-    <lastmod>2018-01-18T14:37:27.000Z</lastmod>
     
   </url>
   

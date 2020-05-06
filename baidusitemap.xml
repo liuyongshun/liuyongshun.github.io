@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://liuyongshun.github.io/2019/04/13/video/</loc>
+    <lastmod>2020-05-06</lastmod>
+  </url>  <url>
+    <loc>http://liuyongshun.github.io/2020/04/19/REACT-redux/</loc>
+    <lastmod>2020-04-19</lastmod>
+  </url>  <url>
+    <loc>http://liuyongshun.github.io/2018/01/19/ES6-decorate/</loc>
+    <lastmod>2020-04-19</lastmod>
+  </url>  <url>
+    <loc>http://liuyongshun.github.io/2020/04/19/JS-data-constractor/</loc>
+    <lastmod>2020-04-19</lastmod>
+  </url>  <url>
+    <loc>http://liuyongshun.github.io/2017/08/24/node/</loc>
+    <lastmod>2019-11-04</lastmod>
+  </url>  <url>
     <loc>http://liuyongshun.github.io/2018/01/19/vue-router/</loc>
     <lastmod>2019-11-04</lastmod>
   </url>  <url>
@@ -68,9 +83,6 @@
     <lastmod>2018-08-04</lastmod>
   </url>  <url>
     <loc>http://liuyongshun.github.io/2017/12/08/tool/</loc>
-    <lastmod>2018-01-18</lastmod>
-  </url>  <url>
-    <loc>http://liuyongshun.github.io/2017/08/24/node/</loc>
     <lastmod>2018-01-18</lastmod>
   </url>  <url>
     <loc>http://liuyongshun.github.io/2018/01/19/node-mongo-connect/</loc>
