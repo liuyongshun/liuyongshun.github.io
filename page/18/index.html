@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>七月</title>
@@ -72,14 +72,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-express" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-mongodb-command" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/01/19/express/" class="article-date">
+    <a href="/2018/01/19/mongodb-command/" class="article-date">
   <time datetime="2018-01-18T20:29:17.000Z" itemprop="datePublished">2018-01-18</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/NODE/">NODE</a>►<a class="article-category-link" href="/categories/NODE/express/">express</a>
+    <a class="article-category-link" href="/categories/NODE/">NODE</a>►<a class="article-category-link" href="/categories/NODE/mongoCommand/">mongoCommand</a>
   </div>
 
   </div>
@@ -90,7 +90,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/19/express/">express</a>
+      <a class="article-title" href="/2018/01/19/mongodb-command/">mongo command</a>
     </h1>
   
 
@@ -98,14 +98,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-简单服务器"><a href="#1-简单服务器" class="headerlink" title="1.简单服务器"></a>1.简单服务器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&apos;express&apos;);</span><br><span class="line">var app = express();</span><br><span class="line"></span><br><span class="line">// app.get 或app.post 设置各种请求方式。</span><br><span class="line">// 该处的路径是虚拟的路径不是本地文件的路径,如果设置（/user）,则通过（http://localhost:3000/user）访问该接口。</span><br><span class="line"></span><br><span class="line">app.get(&apos;/&apos;, function(req, res) &#123;</span><br><span class="line">  // send（string|object）或render（视图模板引擎）或sendFile（.txt|.html）</span><br><span class="line">  res.send(&apos;hello world&apos;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(3000)</span><br></pre></td></tr></table></figure>
-<h3 id="2-坑与深入理解"><a href="#2-坑与深入理解" class="headerlink" title="2.坑与深入理解"></a>2.坑与深入理解</h3><p>1.加载静态文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">目录结构：</span><br><span class="line">|——public</span><br><span class="line">|  |——css</span><br><span class="line">|  |——js</span><br><span class="line">|     |——jquery.js</span><br><span class="line">|——js</span><br><span class="line">|  |——jquery.js</span><br><span class="line">|——html</span><br><span class="line">|  |—— zz.html</span><br><span class="line">|——index.html</span><br><span class="line">|——index.js</span><br><span class="line"></span><br><span class="line">问题1：正确访问文件</span><br><span class="line"></span><br><span class="line">// 启动如下服务器，index.html 里直接&lt;script src=&quot;js/jquery.js&quot;&gt;&lt;/script&gt;，访问localhost:3000/in 路径，发现得不到jquery。</span><br><span class="line"></span><br><span class="line">// 处理方式，把js和css都放到一个public文件内。加上代码：app.use(express.static(&apos;public&apos;));</span><br><span class="line"></span><br><span class="line">// app.use有点类似全局变量。当你指定app.use(express.static(&apos;public&apos;));时。后面的get，post等都是去public里查询相应的文件。</span><br><span class="line"></span><br><span class="line">// 服务器代码</span><br><span class="line">const express = require(&apos;express&apos;);</span><br><span class="line">const app = express();</span><br><span class="line">// app.use(express.static(&apos;public&apos;));</span><br><span class="line"></span><br><span class="line">app.get(&apos;/in&apos;, function(req, res) &#123;</span><br><span class="line">     res.sendFile(__dirname + &apos;/index.html&apos;)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(3000, () =&gt; &#123;</span><br><span class="line">  console.log(&apos;Listening on: http://localhost:3000&apos;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">问题2： 路由匹配与引入文件的路径关系。</span><br><span class="line"></span><br><span class="line">// 注意： 在上面的服务器中，无论是index.html 还是html/zz.html。如果想通过&lt;script src=&quot;js/jquery.js&quot;&gt;&lt;/script&gt;正确找到文件。必须保证两件事情。</span><br><span class="line"></span><br><span class="line">// 1: app.use(express.static(&apos;public&apos;));</span><br><span class="line">// 2:app.get()的虚拟路径必须是一层（/user），不能是多层（/user/id）。如果是多层设置，则需要相对定位找到正确的位置。</span><br><span class="line"></span><br><span class="line">问题3：app.use的作用。</span><br><span class="line">如上，app.use(express.static(&apos;public&apos;));使下面的app.get()响应去public里查找样式文件，如果在写个app.post(),同样会去public查找。后面的路由匹配都基于此。</span><br><span class="line"></span><br><span class="line">加一个：</span><br><span class="line">app.use(/admin, function (req, res, next) &#123;</span><br><span class="line">    console.log(req.originalUrl); // &apos;/admin/in&apos;</span><br><span class="line">    console.log(req.baseUrl); // &apos;/admin&apos;</span><br><span class="line">    console.log(req.path); // &apos;/new&apos;</span><br><span class="line">    next();</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">首先：如果没有next()，程序会被挂起。浏览器访问时一直转圈。</span><br><span class="line">当加上上面这个use时，如果你app.get(/admin/in, function (req, res) &#123;&#125;)时，将会触发上面的console.log。但是app.get(/in, function (req, res)&#123;&#125;)则不会触发。</span><br><span class="line"></span><br><span class="line">app.use会给所有/admin和/admin下的子目录接口进行打印操作。</span><br></pre></td></tr></table></figure></p>
-<h3 id="3-next-钩子函数"><a href="#3-next-钩子函数" class="headerlink" title="3.next()钩子函数"></a>3.next()钩子函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">app.use(function(req,res,next)&#123;</span><br><span class="line">    console.log(&apos;111&apos;);</span><br><span class="line">    next();</span><br><span class="line">    console.log(&apos;222&apos;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.use(function(req,res,next)&#123;</span><br><span class="line">    console.log(&quot;333&quot;);</span><br><span class="line">    next();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line">111</span><br><span class="line">333</span><br><span class="line">222</span><br></pre></td></tr></table></figure>
+        <h3 id="mongodb命令"><a href="#mongodb命令" class="headerlink" title="mongodb命令"></a>mongodb命令</h3><ul>
+<li>use : 转换集合，若没有则创建</li>
+<li>show dbs : 显示所有的集合</li>
+<li><p>创建用户，权限管理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">db.createUser(</span><br><span class="line">...   &#123;</span><br><span class="line">...     user: &quot;dba&quot;,</span><br><span class="line">...     pwd: &quot;dba&quot;,</span><br><span class="line">...     roles: [ &#123; role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; &#125; ]</span><br><span class="line">...   &#125;</span><br><span class="line">... )</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用户登录</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.auth(&apos;liu&apos;,&apos;123&apos;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>db.abc.insert({&quot;a&quot;:1,&quot;b&quot;:2})</code> abc是集合名，插入数据</li>
+<li><code>db.abc.find()</code>  展示查看abc集合内的数据</li>
+<li><code>show users</code>  查看当前库下的用户</li>
+<li><code>db.system.users.find().pretty()</code>  查看所有的用户</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuyongshun.github.io/2018/01/19/express/" data-id="ck9usm2h8001hyjcufyp76agh" class="article-share-link">Share</a>
+      <a data-url="http://liuyongshun.github.io/2018/01/19/mongodb-command/" data-id="ck9usmlb6001g0lcu7f7sl25o" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
@@ -174,11 +187,11 @@
       <ul>
         
           <li>
-            <a href="/2020/04/19/JS-data-constractor/">data constructor</a>
+            <a href="/2020/04/19/REACT-redux/">react redux</a>
           </li>
         
           <li>
-            <a href="/2020/04/19/REACT-redux/">react redux</a>
+            <a href="/2020/04/19/JS-data-constractor/">data constructor</a>
           </li>
         
           <li>

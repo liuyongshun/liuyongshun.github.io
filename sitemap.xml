@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://liuyongshun.github.io/2018/01/19/ES6-array/</loc>
+    
+    <lastmod>2020-05-17T16:10:24.795Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://liuyongshun.github.io/2019/04/13/video/</loc>
     
-    <lastmod>2020-05-06T03:38:57.672Z</lastmod>
+    <lastmod>2020-05-10T22:04:37.358Z</lastmod>
     
   </url>
   
@@ -145,13 +152,6 @@
     <loc>http://liuyongshun.github.io/2018/01/19/ES6-object/</loc>
     
     <lastmod>2019-04-13T07:27:36.096Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://liuyongshun.github.io/2018/01/19/ES6-array/</loc>
-    
-    <lastmod>2019-04-13T07:23:51.798Z</lastmod>
     
   </url>
   

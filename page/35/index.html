@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>七月</title>
@@ -72,9 +72,9 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-vue-cli" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-webpack4" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/09/10/vue-cli/" class="article-date">
+    <a href="/2017/09/10/webpack4/" class="article-date">
   <time datetime="2017-09-10T08:00:20.000Z" itemprop="datePublished">2017-09-10</time>
 </a>
     
@@ -84,12 +84,102 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">├── build                                       // webpack配置文件</span><br><span class="line">    |——build.js</span><br><span class="line">    |——check-versions.js</span><br><span class="line">    |——dev-client.js</span><br><span class="line">    |——dev-server.js</span><br><span class="line">    |——utils.js</span><br><span class="line">    |——vue-loader.conf.js</span><br><span class="line">    |——webpack.base.conf.js</span><br><span class="line">    |——webpack.dev.conf.js</span><br><span class="line">    |——webpack.prod.conf.js</span><br><span class="line">├── config                                      // 项目打包路径配置</span><br><span class="line">    |dev.env.js</span><br><span class="line">    |——index.js</span><br><span class="line">    |——prod.env.js</span><br></pre></td></tr></table></figure>
+        <hr>
+<p>title: ‘webpack plugin’<br>date: 2019-06-18 20:29:17<br>tags: webpack<br>categories:</p>
+<ul>
+<li>WEBPACK</li>
+<li>plugin</li>
+</ul>
+<h3 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h3><ul>
+<li>webpack4里面将webpack 和 webpack-cli分离，使用时需要两个都安装一下。</li>
+</ul>
+<p><strong>最简单的配置</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  mode: &apos;production&apos;,</span><br><span class="line">  entry: &apos;./src/index.js&apos;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, &apos;dist&apos;),</span><br><span class="line">    filename: &apos;bundle.js&apos;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>tips：</strong></p>
+<ol>
+<li>webpack 默认加载webpack.config.js文件，可通过 <code>webpack --config ./zz.js</code>指定你想用的文件名。</li>
+</ol>
+<h3 id="加载器"><a href="#加载器" class="headerlink" title="加载器"></a>加载器</h3><table>
+<thead>
+<tr>
+<th>加载器</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>babel-loader</td>
+<td>转换es6，7的新特性</td>
+</tr>
+<tr>
+<td>css-loader</td>
+<td>支持css文件等加载和解析</td>
+</tr>
+<tr>
+<td>less-loader</td>
+<td>将less转换成css</td>
+</tr>
+<tr>
+<td>ts-loader</td>
+<td>将ts转换成js</td>
+</tr>
+<tr>
+<td>file-loader</td>
+<td>进行图片，字体等打包</td>
+</tr>
+<tr>
+<td>raw-loader</td>
+<td>将文件以字符串形式导入</td>
+</tr>
+<tr>
+<td>thread-loader</td>
+<td>多进程打包js和css</td>
+</tr>
+</tbody>
+</table>
+<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><table>
+<thead>
+<tr>
+<th>插件</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CommonsChunkPlugin</td>
+<td>将chunks相同模块代码提取成公共js</td>
+</tr>
+<tr>
+<td>CleanWebpackPlugin</td>
+<td>清理构建目录</td>
+</tr>
+<tr>
+<td>ExtractTextWebpackPlugin</td>
+<td>将css从bunlde文件里提取成独立css文件</td>
+</tr>
+<tr>
+<td>CopyWebpackPlugin</td>
+<td>将文件或者文件夹拷贝到构建的输出目录</td>
+</tr>
+<tr>
+<td>HtmlWebpackPlugin</td>
+<td>创建html文件去承载输出的bundle</td>
+</tr>
+<tr>
+<td>UglifyjsWebpackPlugin</td>
+<td>压缩js</td>
+</tr>
+<tr>
+<td>ZipWebpackPlugin</td>
+<td>将打包出的资源生成zip包</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuyongshun.github.io/2017/09/10/vue-cli/" data-id="ck9usm2hp002hyjcuyphx4j4q" class="article-share-link">Share</a>
+      <a data-url="http://liuyongshun.github.io/2017/09/10/webpack4/" data-id="ck9usmlcc002u0lcun1blcmnq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -156,11 +246,11 @@
       <ul>
         
           <li>
-            <a href="/2020/04/19/JS-data-constractor/">data constructor</a>
+            <a href="/2020/04/19/REACT-redux/">react redux</a>
           </li>
         
           <li>
-            <a href="/2020/04/19/REACT-redux/">react redux</a>
+            <a href="/2020/04/19/JS-data-constractor/">data constructor</a>
           </li>
         
           <li>

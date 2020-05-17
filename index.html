@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>七月</title>
@@ -72,14 +72,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-JS-data-constractor" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-REACT-redux" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/04/19/JS-data-constractor/" class="article-date">
+    <a href="/2020/04/19/REACT-redux/" class="article-date">
   <time datetime="2020-04-18T20:29:17.000Z" itemprop="datePublished">2020-04-18</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/JS/">JS</a>►<a class="article-category-link" href="/categories/JS/data-constructor/">data constructor</a>
+    <a class="article-category-link" href="/categories/REACT/">REACT</a>►<a class="article-category-link" href="/categories/REACT/redux/">redux</a>
   </div>
 
   </div>
@@ -90,7 +90,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/19/JS-data-constractor/">data constructor</a>
+      <a class="article-title" href="/2020/04/19/REACT-redux/">react redux</a>
     </h1>
   
 
@@ -98,14 +98,36 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="ES6对String的拓展"><a href="#ES6对String的拓展" class="headerlink" title="ES6对String的拓展"></a>ES6对String的拓展</h3>
+        <h3 id="一、原则"><a href="#一、原则" class="headerlink" title="一、原则"></a>一、原则</h3><ul>
+<li><p>单一数据源，创建一个 Redux store 来以存放应用中所有的 state。应用中应有且仅有一个 store。</p>
+</li>
+<li><p>State 是只读的，唯一改变 state 的方法就是触发 action，action.type 作为逻辑说明。</p>
+</li>
+<li><p>使用纯函数来执行修改，reducers 来描述 action 如何改变 state tree，reducers 应该是一个纯函数。</p>
+</li>
+</ul>
+<h3 id="二、特点"><a href="#二、特点" class="headerlink" title="二、特点"></a>二、特点</h3><ul>
+<li><p>redux 以 reducer 为拆分维度，然后 combineReducers 合成一个总 reducer 来创建 store，然后传给 React context，全局访问。</p>
+</li>
+<li><p>redux 把 reducer 生产的 state 闭包在内部，无法直接访问，只能 dispatch action 驱动 reducer 函数来改变 state，逻辑集中在 reducer 内，可预测维护。</p>
+</li>
+</ul>
+<h3 id="三、前置知识"><a href="#三、前置知识" class="headerlink" title="三、前置知识"></a>三、前置知识</h3><p>Context 提供了一种在组件之间共享此类值的方式，而不必显式地通过组件树的逐层传递 props。</p>
+<p>const MyContext = React.createContext(defaultValue);</p>
+<p>创建一个 Context 对象。当 React 渲染一个订阅了这个 Context 对象的组件，这个组件会从组件树中离自身最近的那个匹配的 Provider 中读取到当前的 context 值。</p>
+<p>Provider 接收一个 value 属性，传递给消费组件。一个 Provider 可以和多个消费组件有对应关系。多个 Provider 也可以嵌套使用，里层的会覆盖外层的数据。</p>
+<p>当 Provider 的 value 值发生变化时，它内部的所有消费组件都会重新渲染。Provider 及其内部 consumer 组件都不受制于 shouldComponentUpdate 函数，因此当 consumer 组件在其祖先组件退出更新的情况下也能更新。</p>
+<p>例子：</p>
+<p>每个 Context 对象都会返回一个 Provider React 组件，它允许消费组件订阅 context 的变化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuyongshun.github.io/2020/04/19/JS-data-constractor/" data-id="ck9usm2gz000vyjcu2y6e1nyb" class="article-share-link">Share</a>
+      <a data-url="http://liuyongshun.github.io/2020/04/19/REACT-redux/" data-id="ck9usmlax00120lcud6bssguz" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/REACT/">REACT</a></li></ul>
 
     </footer>
   </div>
@@ -171,11 +193,11 @@
       <ul>
         
           <li>
-            <a href="/2020/04/19/JS-data-constractor/">data constructor</a>
+            <a href="/2020/04/19/REACT-redux/">react redux</a>
           </li>
         
           <li>
-            <a href="/2020/04/19/REACT-redux/">react redux</a>
+            <a href="/2020/04/19/JS-data-constractor/">data constructor</a>
           </li>
         
           <li>
