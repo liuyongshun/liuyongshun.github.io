@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>env config | 七月</title>
+  <meta name="baidu-site-verification" content="vdMfpFtVYF">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Smiple, 简, jian, 简博客">
+  <meta name="description" content="IOS 基础环境搭建基础条件： mac 系统， xcode工具， brew软件管理， vscode 配置步骤：  下载最新的flutter的sdk下载稳定版本  将flutter目录配置到环境变量  找到 ~ 目录下的 .bash_profile环境变量文件( command + shift + . 显示隐藏文件)。执行命令 vim .bash_profile编辑文件。配置如下。   123456">
+<meta name="keywords" content="flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="env config">
+<meta property="og:url" content="http://liuyongshun.github.io/2020/01/19/FLUTTER-env/index.html">
+<meta property="og:site_name" content="七月">
+<meta property="og:description" content="IOS 基础环境搭建基础条件： mac 系统， xcode工具， brew软件管理， vscode 配置步骤：  下载最新的flutter的sdk下载稳定版本  将flutter目录配置到环境变量  找到 ~ 目录下的 .bash_profile环境变量文件( command + shift + . 显示隐藏文件)。执行命令 vim .bash_profile编辑文件。配置如下。   123456">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/23/YjRmwR.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/05/23/YjRnT1.png">
+<meta property="og:updated_time" content="2020-05-23T12:36:30.706Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="env config">
+<meta name="twitter:description" content="IOS 基础环境搭建基础条件： mac 系统， xcode工具， brew软件管理， vscode 配置步骤：  下载最新的flutter的sdk下载稳定版本  将flutter目录配置到环境变量  找到 ~ 目录下的 .bash_profile环境变量文件( command + shift + . 显示隐藏文件)。执行命令 vim .bash_profile编辑文件。配置如下。   123456">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/05/23/YjRmwR.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  <script></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">七月</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">是七月呀</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/link">链接</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://liuyongshun.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-FLUTTER-env" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/19/FLUTTER-env/" class="article-date">
+  <time datetime="2020-01-18T20:29:17.000Z" itemprop="datePublished">2020-01-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/FLUTTER/">FLUTTER</a>►<a class="article-category-link" href="/categories/FLUTTER/env/">env</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      env config
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="IOS-基础环境搭建"><a href="#IOS-基础环境搭建" class="headerlink" title="IOS 基础环境搭建"></a>IOS 基础环境搭建</h3><p><strong>基础条件：</strong></p>
+<p>mac 系统， xcode工具， brew软件管理， vscode</p>
+<p><strong>配置步骤：</strong></p>
+<ul>
+<li><p>下载最新的flutter的sdk<a href="https://flutter.dev/docs/development/tools/sdk/releases?tab=macos#macos" target="_blank" rel="noopener">下载稳定版本</a></p>
+</li>
+<li><p>将flutter目录配置到环境变量</p>
+</li>
+<li><p>找到 <code>~</code> 目录下的 <code>.bash_profile</code>环境变量文件( <code>command + shift + .</code> 显示隐藏文件)。<code>执行命令 vim .bash_profile</code>编辑文件。配置如下。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">export PUB_HOSTED_URL=https://pub.flutter-io.cn</span><br><span class="line">export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn</span><br><span class="line">export PATH=/Users/liuyongshun/Documents/flutter/bin:$PATH</span><br><span class="line"></span><br><span class="line"># `/Users/liuyongshun/Documents/flutter` 是我自己电脑的flutter的位置。根据自己实际情况改变</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>上面配置好以后，执行一下命令 <code>source .bash_profile</code></p>
+</li>
+<li><p><code>flutter --version</code> 如果能出来版本怎配置成功</p>
+</li>
+<li><p>执行<code>flutter doctor</code> 检测安装依赖，如果没有的，则需要安装（可以用brew）。</p>
+</li>
+<li><p>安装好各个依赖后，再次检查<code>flutter doctor</code>，通过后则可以创建项目了。</p>
+</li>
+<li><p>创建项目 <code>flutter create yourAppName</code> 生成一个初始的flutter项目。</p>
+</li>
+<li><p>开发时，需要对项目打包，以及对项目内的文件操作，所以要对项目目录设置开放权限。 <code>sudo chmod -R 777 yourAppName</code> 777可读，可写，可执行。</p>
+</li>
+<li><p>下载安装最新版xcode，配置Xcode命令行工具</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer</span><br><span class="line">sudo xcodebuild -runFirstLaunch</span><br><span class="line"></span><br><span class="line"># 当你使用最新版本的Xcode时，大多数情况下这是的正确路径。如果需要使用不同的版本，则需要特殊指定该路径。</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>项目导入xcode，flutter项目下ios目录下双击Runner.xcodeproj 自动在xcode打开。</p>
+</li>
+<li><p>打开一个模拟器<code>open -a Simulator</code>或者用如图位置打开。</p>
+</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2020/05/23/YjRmwR.png" alt></p>
+<ul>
+<li><p>运行项目 <code>cd yourAppName</code> 然后运行 <code>flutter run</code></p>
+</li>
+<li><p>一般情况不会在xcode上开放调试，太卡顿，也不好用。所以你还需要vscode，来正常开发。</p>
+</li>
+<li><p>vscode 安装插件flutter ，dark，Awesome Flutter Snippets三个插件。重启vscode。这时候可以关闭xcode。但是不要关闭模拟器。然后打开terminal,右下角能检测到你的模拟设备，如果提示没有找到flutter环境变量，可以手动配置。flutter run </p>
+</li>
+<li><p>跑起来后可以连接你没有关闭的xcode 模拟器，开发调试时有如下命令。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">r Hot reload. 🔥🔥🔥</span><br><span class="line">R Hot restart.</span><br><span class="line">h Repeat this help message.</span><br><span class="line">d Detach (terminate &quot;flutter run&quot; but leave application running).</span><br><span class="line">c Clear the screen</span><br><span class="line">q Quit (terminate the application on the device).</span><br></pre></td></tr></table></figure>
+<p><strong>如果不会vim：</strong></p>
+<p>在finder任意位置 – 右键标题 – 选择Macintosh HD – 用户 – 你的用户名 – 按快捷键 <code>command + shift + .</code> 显示隐藏文件 – 打开编辑并保存</p>
+<p><img src="https://s1.ax1x.com/2020/05/23/YjRnT1.png" alt></p>
+<p><strong>PS：</strong><br>如果上面的环境变量配置正常，但是flutter命令提示not find，建议重新下载sdk，或者换一个版本，可能存在下载问题</p>
+<h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">目录</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">android</td>
+<td style="text-align:center">平台相关代码</td>
+</tr>
+<tr>
+<td style="text-align:center">ios</td>
+<td style="text-align:center">平台相关代码</td>
+</tr>
+<tr>
+<td style="text-align:center">lib</td>
+<td style="text-align:center">flutter 相关代码，我们主要编写的代 码就在这个文件夹</td>
+</tr>
+<tr>
+<td style="text-align:center">test</td>
+<td style="text-align:center">用于存放测试代码</td>
+</tr>
+<tr>
+<td style="text-align:center">pubspec.yaml</td>
+<td style="text-align:center">配置文件，一般存放一些第三方库的依赖。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>入口</strong></p>
+<p>每一个 flutter 项目的 lib 目录里面都有一个 main.dart 这个文件就是 flutter 的入口文件,main.dart 里面的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">void main()&#123; runApp(MyApp())&#125;</span><br><span class="line">也可以简写</span><br><span class="line">void main()=&gt;runApp(MyApp());</span><br><span class="line"></span><br><span class="line">class MyApp extends StatelessWidget &#123;</span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    // TODO: implement build</span><br><span class="line">    return Center(</span><br><span class="line">      child: new Text(</span><br><span class="line">        &apos;Hello, 大是大非!&apos;,</span><br><span class="line">        textDirection: TextDirection.ltr,</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中的 main 方法是 dart 的入口方法。runApp 方法是 flutter 的入口方法。</p>
+<p>MyApp 是自定义的一个组件，每定义一个类，就是一个组件 ，如果开发过react，该处非常好理解。</p>
+<p>该runApp函数接受给定的Widget并使其成为widget树的根。</p>
+<p>在编写应用程序时，通常会创建新的widget，这些widget是无状态的StatelessWidget或者是有状态的StatefulWidget， 具体的选择取决于您的widget是否需要管理一些状态。</p>
+<p>widget的主要工作是实现一个build函数，用以构建自身。一个widget通常由一些较低级别widget组成。Flutter框架将依次构建这些widget，直到构建到最底层的子widget时，这些最低层的widget通常为RenderObject，它会计算并描述widget的几何形状。</p>
+<p><strong>flutter里所有和数字相关都是dobule类型，结尾要有小数，比如20 =&gt; 20.0</strong></p>
+<h3 id="入手开发"><a href="#入手开发" class="headerlink" title="入手开发"></a>入手开发</h3><p>环境配置好，找到入口文件后，就可以进入开发阶段了。</p>
+<ul>
+<li>组件MaterialApp 和 Scaffold ，MaterialApp作为根组件使用</li>
+</ul>
+<p>MaterialApp 下的 home 调用 Scaffold</p>
+<p>Scaffold：</p>
+<ul>
+<li><p>appBar: 显示在界面顶部一个appBar</p>
+</li>
+<li><p>body: 显示当前界面主要内容</p>
+</li>
+<li><p>drawer: 抽屉菜单控件</p>
+</li>
+</ul>
+<p><a href="https://flutterchina.club/web-analogs/" target="_blank" rel="noopener">对于web开发人员，开发转变对比</a></p>
+<h3 id="路由，命名路由，跳转，数据传递"><a href="#路由，命名路由，跳转，数据传递" class="headerlink" title="路由，命名路由，跳转，数据传递"></a>路由，命名路由，跳转，数据传递</h3><p><strong>基本路由跳转</strong></p>
+<p>当前页面: PageA.dart</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import &apos;../Search.dart&apos;;</span><br><span class="line"></span><br><span class="line">class _HomePageState extends State&lt;HomePage&gt; &#123;</span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return RaisedButton(</span><br><span class="line">      child: Text(&quot;跳转到搜索页面&quot;),</span><br><span class="line">      onPressed: () &#123;</span><br><span class="line">        //路由跳转 =====</span><br><span class="line">        Navigator.of(context).push(</span><br><span class="line">          MaterialPageRoute(</span><br><span class="line">            builder: (context)=&gt;SearchPage()</span><br><span class="line">          )</span><br><span class="line">        );</span><br><span class="line">        //路由跳转 =====</span><br><span class="line">      &#125;,</span><br><span class="line">      color: Theme.of(context).accentColor,</span><br><span class="line">      textTheme: ButtonTextTheme.primary</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>基本路由传值</strong></p>
+<p>跳转页PageA</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Navigator.of(context).push(</span><br><span class="line">  MaterialPageRoute(</span><br><span class="line">    builder: (context)=&gt;FormPage(name: &apos;表单&apos;)</span><br><span class="line">  )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>目的页 FormPage</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class FormPage extends StatelessWidget &#123;</span><br><span class="line">  // 定义title 数据类型</span><br><span class="line">  String titl;</span><br><span class="line">  // 接受参数 下面写法是title为可选参数。默认是表单</span><br><span class="line">  FormPage(&#123;this.title=&quot;表单&quot;&#125;);</span><br><span class="line">  // 接受参数 下面写法是必传数据</span><br><span class="line">  FormPage(this.title);</span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return Scaffold(</span><br><span class="line">      appBar: AppBar(</span><br><span class="line">        title: Text(this.title),</span><br><span class="line">      ),</span><br><span class="line">      body: Text(&apos;body&apos;)</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>返回上一页</strong></p>
+<p>发生跳转后，flutter回自动给头部加上返回按钮，但是有些时候我们需要手动触发返回。可以用如下方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Navigator.of(context).pop();</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuyongshun.github.io/2020/01/19/FLUTTER-env/" data-id="ckajnfidi000xm3cudorq4ebi" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flutter/">flutter</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/19/JS-data-constractor/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          data constructor
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/05/node-buffer/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">node buffer</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/array/">array</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/async/">async</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/class/">class</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/decorate/">decorate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/export-import/">export&import</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/fuction/">fuction</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/generator/">generator</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/object/">object</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/promise/">promise</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/set-map/">set&map</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/string/">string</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/variable-deconstruction/">variable&deconstruction</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/">FLUTTER</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/env/">env</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/">H5</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-history/">h5 history</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-video/">h5 video</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVASCRIPT/">JAVASCRIPT</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVASCRIPT/变量/">变量</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm/">algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/data-constructor/">data constructor</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/">NODE</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/express/">express</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/module/">module</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongo/">mongo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoCommand/">mongoCommand</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoodb/">mongoodb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-api/">node api</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-buffer/">node buffer</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-stream/">node stream</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/variable/">variable</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/">NPM</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/cli/">cli</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/npm-package/">npm package</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/">PLAY</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/eat/">eat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/photo/">photo</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/">REACT</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/redux/">redux</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/frequently/">frequently</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/mac/">mac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/vscode-plugin/">vscode plugin</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/">VUE</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/vueRouter/">vueRouter</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/">WEBPACK</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/plugin/">plugin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackDescription/">webpackDescription</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackMerge/">webpackMerge</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/">WEEX</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/weex/">weex</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/H5/">H5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/">NPM</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/REACT/">REACT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cli/">cli</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/">flutter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/play/">play</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/variable/">variable</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weex/">weex</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/H5/" style="font-size: 12.5px;">H5</a> <a href="/tags/JS/" style="font-size: 12.5px;">JS</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/NPM/" style="font-size: 12.5px;">NPM</a> <a href="/tags/REACT/" style="font-size: 10px;">REACT</a> <a href="/tags/cli/" style="font-size: 10px;">cli</a> <a href="/tags/es6/" style="font-size: 20px;">es6</a> <a href="/tags/flutter/" style="font-size: 10px;">flutter</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/node/" style="font-size: 17.5px;">node</a> <a href="/tags/play/" style="font-size: 12.5px;">play</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/variable/" style="font-size: 10px;">variable</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/weex/" style="font-size: 10px;">weex</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/19/REACT-redux/">react redux</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/19/JS-data-constractor/">data constructor</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/19/FLUTTER-env/">env config</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/05/node-buffer/">node buffer</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/25/node-stream/">node stream</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <ul class="hobby-outer">
+      <li class="hobby-item"><a href="http://blog.csdn.net/liuyongshun2/article">CSDN</a></li>
+      <li class="hobby-item"><a href="https://github.com/liuyongshun">GITHUB</a></li>
+    </ul>
+    <div id="footer-info" class="inner">
+      &copy; 2020 cheat&nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1274642270'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1274642270%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/link" class="mobile-nav-link">链接</a>
+  
+</nav>
+    
+
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<div id="totop">
+  <a title="javascript:;">返回<br>顶部</a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>

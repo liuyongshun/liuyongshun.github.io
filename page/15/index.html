@@ -72,14 +72,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-ES6-generator" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-video" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/09/02/ES6-generator/" class="article-date">
-  <time datetime="2018-09-02T14:29:17.000Z" itemprop="datePublished">2018-09-02</time>
+    <a href="/2019/04/13/video/" class="article-date">
+  <time datetime="2019-04-13T08:29:00.000Z" itemprop="datePublished">2019-04-13</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/ES6/">ES6</a>►<a class="article-category-link" href="/categories/ES6/generator/">generator</a>
+    <a class="article-category-link" href="/categories/H5/">H5</a>►<a class="article-category-link" href="/categories/H5/h5-video/">h5 video</a>
   </div>
 
   </div>
@@ -90,7 +90,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/02/ES6-generator/">generator</a>
+      <a class="article-title" href="/2019/04/13/video/">h5-video</a>
     </h1>
   
 
@@ -98,58 +98,338 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="一、generator"><a href="#一、generator" class="headerlink" title="一、generator"></a>一、generator</h3><p><strong>Generator 函数两个特征：</strong></p>
-<ol>
-<li><p>function关键字与函数名之间有一个星号；</p>
-</li>
-<li><p>函数体内部使用yield表达式，定义不同的内部状态。</p>
-</li>
-<li><p>普通函数，在为变量赋值时就会执行，例如:<code>let g = foo()</code>。 Generator 函数只有调用next方法时，才会执行。</p>
-</li>
-</ol>
-<h4 id="1-1书写方式及调用"><a href="#1-1书写方式及调用" class="headerlink" title="1.1书写方式及调用"></a>1.1书写方式及调用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// 推荐（yield表达式只能用在 Generator 函数里面）</span><br><span class="line">function* foo(x, y) &#123;</span><br><span class="line">  console.log(3)</span><br><span class="line">  let a = yield 3</span><br><span class="line">  console.log(4)</span><br><span class="line">&#125;</span><br><span class="line">// 其他</span><br><span class="line">function * foo(x, y) &#123; ··· &#125;</span><br><span class="line">function *foo(x, y) &#123; ··· &#125;</span><br><span class="line">function*foo(x, y) &#123; ··· &#125;</span><br><span class="line"></span><br><span class="line">// 调用:每个yield代表一个状态，每调用一次next()状态下移动一个。最后一个是函数的return</span><br><span class="line">let g = foo()</span><br><span class="line"></span><br><span class="line">// 函数执行时，并没有打印3，当执行第一次next()时，才打印出来。在执行第二次next()时。打印4。而该函数的内容是否执行。执行到哪里都由next()来控制。且外部的函数执行不会被阻塞（是不是想到了异步）。</span><br><span class="line"></span><br><span class="line">// next方法返回一个对象，它的value属性就是当前yield表达式的值hello，done属性的值false，表示遍历还没有结束。</span><br><span class="line"></span><br><span class="line">g.next() // 如果打印：&#123;value: 3, done: false&#125;</span><br><span class="line">g.next() // 如果打印：&#123;value: 3, done: true&#125; 当执行到return时代表结束了。done变为true</span><br><span class="line"></span><br><span class="line">第一次执行g.next()时，Generator 函数foo的上下文会加入堆栈，即开始运行foo内部的代码。等遇到yield 1时，foo上下文退出堆栈，内部状态冻结。第二次执行g.next()时，foo上下文重新加入堆栈，变成当前的上下文，重新恢复执行。</span><br></pre></td></tr></table></figure>
-<p>看了上面代码在谈谈协程，协程有点像函数，又有点像线程。它的运行流程大致如下。</p>
-<p>第一步，协程A开始执行。</p>
-<p>第二步，协程A执行到一半，进入暂停，执行权转移到协程B。</p>
-<p>第三步，（一段时间后）协程B交还执行权。</p>
-<p>第四步，协程A恢复执行。</p>
-<p>上面流程的协程A，就是异步任务，因为它分成两段（或多段）执行。</p>
-<p>上面代码它的奥妙就在其中的yield命令。它表示执行到此处，执行权将交给其他协程。也就是说，yield命令是异步两个阶段的分界线。其他代码2要等到yield结束后执行即执行.next()后。而不管yield等待多久都不会影响其他函数执行。</p>
-<h4 id="1-2-yield"><a href="#1-2-yield" class="headerlink" title="1.2 yield"></a>1.2 yield</h4><p><strong>执行</strong></p>
-<p>遍历器对象的next方法的运行逻辑如下。</p>
+        <h3 id="移动端video视频标签的探索"><a href="#移动端video视频标签的探索" class="headerlink" title="移动端video视频标签的探索"></a>移动端video视频标签的探索</h3><p>在这五一快乐的劳动日即将临近下，本以为最后一周散发着欢乐的气息。但是生活总是残酷的，甲方爸爸确总是热情的。</p>
+<h3 id="浏览器内核"><a href="#浏览器内核" class="headerlink" title="浏览器内核"></a>浏览器内核</h3><p><strong>主流浏览器内核</strong></p>
+<p>IE： Trident</p>
+<p>火狐： Gecko</p>
+<p>safari： Webkit （Safari内核，Chrome内核原型）</p>
+<p>Opera（旧）： Presto （Opera现已改用Google Chrome的Blink内核）</p>
+<p>Google和Opera： Blink （从webkit一个分支演变而来）</p>
+<p><strong>Blink</strong></p>
+<p>Google计划将这个渲染引擎作为Chromium（可理解为chrome的先行版，是谷歌开源出去的）计划的一部分，这一渲染引擎是开源引擎WebKit中WebCore组件的一个分支，并且应用在在Chrome（28及往后版本）、Opera（15及往后版本）。</p>
+<p><strong>WebCore</strong></p>
+<p>包含了目前被各个浏览器所使用的WebKit共享部分，是加载和渲染网页的基础部分，具体包括HTML解释器、CSS解释器等。</p>
+<p><strong>JavaScriptCore引擎</strong></p>
+<p>是WebKit中的默认JavaScript引擎。在Google的Chromium项目中，它被替换为V8引擎。</p>
+<p><strong>WebKit Ports部分</strong></p>
+<p>是WebKit红的非共享部分，属于WebKit被移植的模块。由于不同浏览器使得平台差异、依赖的第三方库和需求不同，从而导致多种WebKit版本。</p>
+<p><strong>国内PC浏览器</strong></p>
+<p>多数浏览器的新版本是“双核”甚至是“多核”，其中一个内核是Trident，然后再增加一个其他内核。一般把其他内核叫做“高速浏览模式”，而Trident则是“兼容浏览模式”。（绝大多数基于Chromium开源软件项目开发的，Chromium不是内核）</p>
+<p><strong>国内移动端</strong></p>
+<p>Android：</p>
+<p>使用率最高的就是Webkit内核，国内浏览器多数都是基于开源内核Webkit进行二次开发的。</p>
+<p>iPhone：</p>
+<p>由于系统封闭，不允许除系统自带浏览器内核以外的浏览器内核进入，因此各家浏览器的开发均为在Safari内核的基础上进行二次开发。</p>
+<p><strong>总结：</strong></p>
 <ul>
-<li><p>遇到yield表达式，就暂停执行后面的操作，并将紧跟在yield后面的那个表达式的值，作为返回的对象的value属性值。</p>
+<li><p>WebKit是一种用来让网页浏览器绘制网页的排版引擎。</p>
 </li>
-<li><p>下一次调用next方法时，再继续往下执行，直到遇到下一个yield表达式。</p>
+<li><p>Webkit亦使用于Apple iOS、BlackBerry Tablet OS、Tizen及Amazon Kindle的默认浏览器。</p>
 </li>
-<li><p>如果没有再遇到新的yield表达式，就一直运行到函数结束，直到return语句为止，并将return语句后面的表达式的值，作为返回的对象的value属性值。</p>
+<li><p>WebKit中WebCore组件的分支——Blink被用于chrome。</p>
 </li>
-<li><p>如果该函数没有return语句，则返回的对象的value属性值为undefined。</p>
+<li><p>Chromium（开源出去）与Google Chrome共享大部分代码和功能，但功能和商标之间有一些细微差别。</p>
+</li>
+<li><p>Chromium为Google Chrome提供了绝大多数的源代码，包括用户界面，Blink渲染引擎和V8JavaScript引擎。</p>
+</li>
+<li><p>Google使用该代码（Chromium）来制作其Chrome浏览器，该浏览器比Chromium具有更多功能。</p>
+</li>
+<li><p>所有以Chromium为基础的浏览器都使用Blink。</p>
 </li>
 </ul>
-<p><strong>yield表达式本身没有返回值，或者说总是返回undefined。next方法可以带一个参数，该参数就会被当作<code>上一个yield</code>表达式的返回值。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function* fss() &#123;</span><br><span class="line">  let aa = 3</span><br><span class="line">  var reset = yield 1111;</span><br><span class="line">  console.log(reset)  // 当传true时，该值发生了改变</span><br><span class="line">  if(reset) &#123; aa = 4&#125; // 该处重新赋值</span><br><span class="line">  console.log(aa)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var g = fss();</span><br><span class="line">g.next()</span><br><span class="line">g.next(true)</span><br></pre></td></tr></table></figure>
-<p><strong>yield表达式如果用在另一个表达式之中，必须放在圆括号里面。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function* demo() &#123;</span><br><span class="line">  console.log(&apos;Hello&apos; + yield); // SyntaxError</span><br><span class="line">  console.log(&apos;Hello&apos; + yield 123); // SyntaxError</span><br><span class="line"></span><br><span class="line">  console.log(&apos;Hello&apos; + (yield)); // OK</span><br><span class="line">  console.log(&apos;Hello&apos; + (yield 123)); // OK</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="1-3-for…of-循环"><a href="#1-3-for…of-循环" class="headerlink" title="1.3 for…of 循环"></a>1.3 for…of 循环</h4><p><strong>以自动遍历 Generator 函数时生成的Iterator对象，且此时不再需要调用next方法。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 不会取得return的值： 一旦next方法的返回对象的done属性为true，for...of循环就会中止，且不包含该返回对象，</span><br><span class="line"></span><br><span class="line">function* aa () &#123;</span><br><span class="line">  yield 1</span><br><span class="line">  yield 2</span><br><span class="line">  yield 3</span><br><span class="line">  yield 4</span><br><span class="line">  yield 5</span><br><span class="line">  return 6</span><br><span class="line">&#125;</span><br><span class="line">for (let a of aa()) &#123;</span><br><span class="line">  console.log(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 同样的可以用... 拓展运算符</span><br><span class="line">console.log([...aa()])</span><br></pre></td></tr></table></figure>
-<h4 id="1-4-yield-表达式"><a href="#1-4-yield-表达式" class="headerlink" title="1.4 yield* 表达式"></a>1.4 yield* 表达式</h4><p><strong>如果在 Generator 函数内部，调用另一个 Generator 函数，默认情况下是没有效果的。所以用<code>yield*</code></strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function* foo() &#123;</span><br><span class="line">  yield &apos;a&apos;;</span><br><span class="line">  yield &apos;b&apos;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function* bar() &#123;</span><br><span class="line">  yield &apos;x&apos;;</span><br><span class="line">  yield* foo();</span><br><span class="line">  yield &apos;y&apos;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">for (let v of bar())&#123;</span><br><span class="line">  console.log(v);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="1-5-错误抛出"><a href="#1-5-错误抛出" class="headerlink" title="1.5 错误抛出"></a>1.5 错误抛出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Generator 函数内部还可以部署错误处理代码，捕获函数体外抛出的错误。</span><br><span class="line">function* gen(x)&#123;</span><br><span class="line">  try &#123;</span><br><span class="line">    var y = yield x + 2;</span><br><span class="line">  &#125; catch (e)&#123;</span><br><span class="line">    console.log(e);</span><br><span class="line">  &#125;</span><br><span class="line">  return y;</span><br><span class="line">&#125;</span><br><span class="line">var g = gen(1);</span><br><span class="line">g.next();</span><br><span class="line">g.throw(&apos;出错了&apos;);</span><br></pre></td></tr></table></figure>
-<h4 id="1-6-return-返回值"><a href="#1-6-return-返回值" class="headerlink" title="1.6 return 返回值"></a>1.6 return 返回值</h4><p>return调用后， 返回值的done属性为true，以后再调用next方法，done属性总是返回true。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function* gen() &#123;</span><br><span class="line">  yield 1;</span><br><span class="line">  yield 2;</span><br><span class="line">  yield 3;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var g = gen();</span><br><span class="line"></span><br><span class="line">g.next()        // &#123; value: 1, done: false &#125;</span><br><span class="line">g.return(&apos;foo&apos;) // &#123; value: &quot;foo&quot;, done: true &#125;</span><br><span class="line">g.next()        // &#123; value: undefined, done: true &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="1-7-状态机"><a href="#1-7-状态机" class="headerlink" title="1.7 状态机"></a>1.7 状态机</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Generator 是实现状态机的最佳结构。比如，下面的clock函数就是一个状态机。</span><br><span class="line"></span><br><span class="line">var ticking = true;</span><br><span class="line">var clock = function() &#123;</span><br><span class="line">  if (ticking)</span><br><span class="line">    console.log(&apos;Tick!&apos;);</span><br><span class="line">  else</span><br><span class="line">    console.log(&apos;Tock!&apos;);</span><br><span class="line">  ticking = !ticking;</span><br><span class="line">&#125;</span><br><span class="line">上面代码的clock函数一共有两种状态（Tick和Tock），每运行一次，就改变一次状态。这个函数如果用 Generator 实现，就是下面这样。</span><br><span class="line"></span><br><span class="line">var clock = function* () &#123;</span><br><span class="line">  while (true) &#123;</span><br><span class="line">    console.log(&apos;Tick!&apos;);</span><br><span class="line">    yield;</span><br><span class="line">    console.log(&apos;Tock!&apos;);</span><br><span class="line">    yield;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h4 id="1-8-异步封装"><a href="#1-8-异步封装" class="headerlink" title="1.8 异步封装"></a>1.8 异步封装</h4><p>注意，back函数中的next方法，必须加上obj，因为yield表达式，本身是没有值的，总是等于undefined。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 第一次执行next代码执行到yield后面的asyncData函数，1秒后执行back，在次调用next把异步返回的值作为上次next的参数传递进去。</span><br><span class="line"></span><br><span class="line">function asyncData () &#123;</span><br><span class="line">     console.log(3333)</span><br><span class="line">     setTimeout(() =&gt; &#123;</span><br><span class="line">       back()</span><br><span class="line">     &#125;, 1000)</span><br><span class="line">   &#125;</span><br><span class="line">   function back () &#123;</span><br><span class="line">     let obj = &#123;a: 3&#125;</span><br><span class="line">     m.next(obj)</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   function* foo () &#123;</span><br><span class="line">     let result = yield asyncData()</span><br><span class="line">     console.log(result)</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   let m = foo()</span><br><span class="line">   m.next()</span><br></pre></td></tr></table></figure>
-<h4 id="1-9-自执行，如果存在多个异步，需要等到前一个返回值在执行下一个"><a href="#1-9-自执行，如果存在多个异步，需要等到前一个返回值在执行下一个" class="headerlink" title="1.9 自执行，如果存在多个异步，需要等到前一个返回值在执行下一个"></a>1.9 自执行，如果存在多个异步，需要等到前一个返回值在执行下一个</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">let getAsyncData = function (obj) &#123;</span><br><span class="line">    return new Promise(function (resolve, reject) &#123;</span><br><span class="line">      setTimeout(() =&gt; &#123;</span><br><span class="line">        resolve(obj)</span><br><span class="line">      &#125;, 1000)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  function* foo () &#123;</span><br><span class="line">    let result = yield getAsyncData(&#123;a: 3&#125;)</span><br><span class="line">    let result2 = yield getAsyncData(&#123;b: 4&#125;)</span><br><span class="line">    console.log(result)</span><br><span class="line">    console.log(result2)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  function freeCarryOut (gen) &#123;</span><br><span class="line">    let g = gen()</span><br><span class="line"></span><br><span class="line">    // 利用递归操作，如果发现result的done不是true，继续执行next，一个循环判断的过程。</span><br><span class="line">    function next (data) &#123;</span><br><span class="line">       var result = g.next(data);</span><br><span class="line">       console.log(result)</span><br><span class="line">       if (result.done) &#123;</span><br><span class="line">         return result.value;</span><br><span class="line">       &#125; else &#123;</span><br><span class="line">        result.value.then(function(data) &#123;</span><br><span class="line">          next(data);</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     next();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  freeCarryOut(foo)</span><br></pre></td></tr></table></figure>
+<p><strong>参考：</strong></p>
+<p><a href="https://zh.wikipedia.org/wiki/Chromium" target="_blank" rel="noopener">Chromium wiki</a></p>
+<p><a href="https://zh.wikipedia.org/wiki/%E7%BD%91%E9%A1%B5%E6%B5%8F%E8%A7%88%E5%99%A8%E5%88%97%E8%A1%A8#%E5%9F%BA%E6%96%BCWebKit%E6%8E%92%E7%89%88%E5%BC%95%E6%93%8E" target="_blank" rel="noopener">网页浏览器列表</a></p>
+<p><a href="https://zh.wikipedia.org/wiki/%E6%8E%92%E7%89%88%E5%BC%95%E6%93%8E" target="_blank" rel="noopener">排版引擎（浏览器引擎、页面渲染引擎）</a></p>
+<p><strong>综上，无论安卓还是ios在做webkit的一些特性都会得到较好的支持。</strong></p>
+<h3 id="第一坑-同层播放"><a href="#第一坑-同层播放" class="headerlink" title="第一坑 同层播放"></a>第一坑 同层播放</h3><p>在移动端浏览器，video 在用户点击播放或者通过API video.play() 触发播放时，会强制以全屏置顶的形式进行播放。但是有些时候这并不符合我们的期待。网上找资料很多，但质量真的是不敢恭维。千篇一律不说，而且还不正确。</p>
+<h4 id="playsInline-true"><a href="#playsInline-true" class="headerlink" title="playsInline={true}"></a>playsInline={true}</h4><p>该属性为true可以取消全屏，实现同层播放，网上资料大多数都是<code>playsinline</code>实际上在ios10+该写法是不会生效的，而应是驼峰命名的方式。</p>
+<p>详情请参照：</p>
+<p><a href="https://developer.apple.com/documentation/webkitjs/htmlvideoelement" target="_blank" rel="noopener">apple developer</a></p>
+<p><a href="https://html.spec.whatwg.org/#the-video-element" target="_blank" rel="noopener">webkit对video的支持特性</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;video</span><br><span class="line">  playsInline=&#123;true&#125;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>特例：</strong></p>
+<p><code>playsInline={true}</code> 能满足大多数业务场景，但是在微信内表现有所不同，微信是采用了内部集成的x5内核（同样是x5但是qq内部和qq浏览器都默认是同层播放表现很奇怪）。</p>
+<p>x5内核（基于webkit深度定制）额外提供了同侧播放的属性。<code>x5-video-player-type=&quot;h5-page&quot;</code>。网络提供多数是<code>x5-video-player-type=&quot;h5&quot;</code>已经不符合新版本处理方式。</p>
+<p><a href="https://docs.qq.com/doc/DTUxGdWZic0RLR29B" target="_blank" rel="noopener">x5内核官方文档</a></p>
+<p><strong>国内浏览器</strong></p>
+<p>而国内常见的PC浏览器如UC浏览器、QQ浏览器、百度手机浏览器、360安全浏览器、谷歌浏览器、搜狗手机浏览器、猎豹浏览器以及移动端的UC、QQ、百度等手机浏览器都是根据Webkit修改过来的内核，本质上我们可以认为市场上移动端用户使用的基本上都是webkit内核或者基于 webkit 内核做修改的浏览器，所以 playsinline 的兼容性非常好！</p>
+<h3 id="第二坑-自动播放"><a href="#第二坑-自动播放" class="headerlink" title="第二坑 自动播放"></a>第二坑 自动播放</h3><p><strong>为什么禁止自动播放</strong></p>
+<ol>
+<li><p>自动播放会消耗大量的流量。</p>
+</li>
+<li><p>用户体验不好，突然播放的视频，影响用户体验。</p>
+</li>
+</ol>
+<p><strong>关于h5video的播放策略</strong></p>
+<p><a href="https://developers.google.com/web/updates/2017/09/autoplay-policy-changes" target="_blank" rel="noopener">chrome 自动播放策略</a></p>
+<p><a href="https://www.chromium.org/audio-video/autoplay" target="_blank" rel="noopener">chromium自动播放策略</a></p>
+<p><a href="https://webkit.org/blog/6784/new-video-policies-for-ios/" target="_blank" rel="noopener">webkit(ios)自动播放策略</a></p>
+<p>从<a href="https://zh.wikipedia.org/wiki/%E7%BD%91%E9%A1%B5%E6%B5%8F%E8%A7%88%E5%99%A8%E5%88%97%E8%A1%A8#%E5%9F%BA%E6%96%BCWebKit%E6%8E%92%E7%89%88%E5%BC%95%E6%93%8E" target="_blank" rel="noopener">网页浏览器列表</a>可以知道国内浏览器多数是基于chromium开发的。</p>
+<ul>
+<li><p>内容是静音的，或不包括任何音频(仅包括视频)</p>
+</li>
+<li><p>用户在浏览会话期间点击了站点上的某个地方</p>
+</li>
+<li><p>在移动设备上，如果该网站已被用户添加到主屏幕</p>
+</li>
+<li><p>在桌面，如果用户经常在网站上播放媒体，根据媒体参与指数</p>
+</li>
+</ul>
+<h4 id="关于通过点击出发的方式"><a href="#关于通过点击出发的方式" class="headerlink" title="关于通过点击出发的方式"></a>关于通过点击出发的方式</h4><p>js代码 + video设置autoPlay</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// js代码</span><br><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">  let video = document.querySelector(&apos;video&apos;)</span><br><span class="line">  video.addEventListener(&apos;click&apos;, function (params) &#123;</span><br><span class="line">    console.log(333)</span><br><span class="line">    video.play()</span><br><span class="line">  &#125;)</span><br><span class="line">  video.click()</span><br><span class="line">&#125;, 100);</span><br><span class="line"></span><br><span class="line">// video同时设置autoPlay</span><br></pre></td></tr></table></figure>
+<p><strong>测试机</strong></p>
+<p>安卓小米note3</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">微信</th>
+<th style="text-align:center">qq</th>
+<th style="text-align:center">qq浏览器</th>
+<th style="text-align:center">小米自带</th>
+<th style="text-align:center">via浏览器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">N</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+</tr>
+</tbody>
+</table>
+<p>iphone6 ios12</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">微信</th>
+<th style="text-align:center">qq</th>
+<th style="text-align:center">safari</th>
+<th style="text-align:center">UC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">N</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">Y</td>
+</tr>
+</tbody>
+</table>
+<h4 id="设置muted静默播放"><a href="#设置muted静默播放" class="headerlink" title="设置muted静默播放"></a>设置muted静默播放</h4><p><strong>测试机</strong></p>
+<p>安卓小米note3</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">微信</th>
+<th style="text-align:center">qq</th>
+<th style="text-align:center">qq浏览器</th>
+<th style="text-align:center">小米自带</th>
+<th style="text-align:center">via浏览器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">N</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+</tr>
+</tbody>
+</table>
+<p>iphone6 ios12</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">微信</th>
+<th style="text-align:center">qq</th>
+<th style="text-align:center">safari</th>
+<th style="text-align:center">UC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">N</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+</tr>
+</tbody>
+</table>
+<h3 id="关于网上流传的微信才处理方式"><a href="#关于网上流传的微信才处理方式" class="headerlink" title="关于网上流传的微信才处理方式"></a>关于网上流传的微信才处理方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"> function onBridgeReady() &#123;</span><br><span class="line">    /* eslint-disable */</span><br><span class="line">    alert(JSON.stringify(WeixinJSBridge));</span><br><span class="line">    let video = document.querySelector(&apos;video&apos;)</span><br><span class="line">    video.addEventListener(&apos;click&apos;, function (params) &#123;</span><br><span class="line">      alert(333)</span><br><span class="line">      video.play()</span><br><span class="line">    &#125;)</span><br><span class="line">    video.click()</span><br><span class="line">&#125;</span><br><span class="line">function wxback() &#123;</span><br><span class="line">    if (typeof WeixinJSBridge === &quot;undefined&quot;) &#123;</span><br><span class="line">        if (document.addEventListener) &#123;</span><br><span class="line">          alert(1)</span><br><span class="line">            document.addEventListener(&apos;WeixinJSBridgeReady&apos;, onBridgeReady, false);</span><br><span class="line">        &#125; else if (document.attachEvent) &#123;</span><br><span class="line">          alert(2)</span><br><span class="line">            document.attachEvent(&apos;WeixinJSBridgeReady&apos;, onBridgeReady);</span><br><span class="line">            document.attachEvent(&apos;onWeixinJSBridgeReady&apos;, onBridgeReady);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      alert(3)</span><br><span class="line">        onBridgeReady();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该方式可以处理ios下，微信自动播放问题。但是android下的微信依然无效。</p>
+<h3 id="第三方插件"><a href="#第三方插件" class="headerlink" title="第三方插件"></a>第三方插件</h3><h4 id="video-react-autoPlay属性"><a href="#video-react-autoPlay属性" class="headerlink" title="video-react autoPlay属性"></a>video-react autoPlay属性</h4><p><strong>测试机</strong></p>
+<p>安卓小米note3</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">微信</th>
+<th style="text-align:center">qq</th>
+<th style="text-align:center">qq浏览器</th>
+<th style="text-align:center">小米自带</th>
+<th style="text-align:center">via浏览器</th>
+<th style="text-align:center">UC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">N</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">N</td>
+</tr>
+</tbody>
+</table>
+<p>iphone6 ios12</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">微信</th>
+<th style="text-align:center">qq</th>
+<th style="text-align:center">safari</th>
+<th style="text-align:center">UC</th>
+<th style="text-align:center">百度</th>
+<th style="text-align:center">搜狗</th>
+<th style="text-align:center">qq浏览器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">N</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">N</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Aliplayer-autoPlay属性"><a href="#Aliplayer-autoPlay属性" class="headerlink" title="Aliplayer  autoPlay属性"></a>Aliplayer  autoPlay属性</h4><p><a href="https://help.aliyun.com/document_detail/125570.html#h2-h5-3" target="_blank" rel="noopener">阿里视频播放关于h5适配问题</a></p>
+<p>其实从阿里视频上面的描述也不难看出安卓碎片化，导致本就不理想的video功能，变得更加差异化。</p>
+<p><strong>测试机</strong></p>
+<p>安卓小米note3</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">微信</th>
+<th style="text-align:center">qq</th>
+<th style="text-align:center">qq浏览器</th>
+<th style="text-align:center">小米自带</th>
+<th style="text-align:center">via浏览器</th>
+<th style="text-align:center">UC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">N</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">N</td>
+</tr>
+</tbody>
+</table>
+<p>iphone6 ios12</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">微信</th>
+<th style="text-align:center">qq</th>
+<th style="text-align:center">safari</th>
+<th style="text-align:center">UC</th>
+<th style="text-align:center">百度</th>
+<th style="text-align:center">搜狗</th>
+<th style="text-align:center">qq浏览器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">N</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">N</td>
+</tr>
+</tbody>
+</table>
+<h4 id="video-js-autoPlay属性"><a href="#video-js-autoPlay属性" class="headerlink" title="video.js  autoPlay属性"></a>video.js  autoPlay属性</h4><p><strong>测试机</strong></p>
+<p>安卓小米note3</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">微信</th>
+<th style="text-align:center">qq</th>
+<th style="text-align:center">qq浏览器</th>
+<th style="text-align:center">小米自带</th>
+<th style="text-align:center">via浏览器</th>
+<th style="text-align:center">UC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">N</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">N</td>
+</tr>
+</tbody>
+</table>
+<p>iphone6 ios12</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">微信</th>
+<th style="text-align:center">qq</th>
+<th style="text-align:center">safari</th>
+<th style="text-align:center">UC</th>
+<th style="text-align:center">百度</th>
+<th style="text-align:center">搜狗</th>
+<th style="text-align:center">qq浏览器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">N</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">N</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总结</strong></p>
+<p>几波测试和各类官方文档查下来，能实现自动播放的，autoPlay能实现一小部分自动播放，通过模拟事件，可以拓展一部分浏览器兼容性自动播放。如果可以接受静音播放，能够支持较大一部分自动播放。在搭配上上微信的特殊处理可以额外拓展ios微信的自动播放。安卓微信暂时无解。无法实现自动播放。</p>
+<p>目前测试的机器和浏览器也相对较少，后续考虑测试更多种浏览器和更多机型。</p>
+<p><strong>后话</strong></p>
+<p>由于流量资费的降低，加上直播和视频的火爆程度，未来关于视频的需求应该也会常遇到，尤其是在活动类开发，因此关于视频的调研还是值得考虑做一下的，当遇到需求问题时，也能过更快，正准确的提出可能存在的问题，和解决方案能解决到什么样的底部。避免出现多次因为技术上的问题而带来的变更。</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a href="https://zh.wikipedia.org/wiki/Chromium" target="_blank" rel="noopener">Chromium wiki</a></p>
+<p><a href="https://zh.wikipedia.org/wiki/%E7%BD%91%E9%A1%B5%E6%B5%8F%E8%A7%88%E5%99%A8%E5%88%97%E8%A1%A8#%E5%9F%BA%E6%96%BCWebKit%E6%8E%92%E7%89%88%E5%BC%95%E6%93%8E" target="_blank" rel="noopener">网页浏览器列表</a></p>
+<p><a href="https://zh.wikipedia.org/wiki/%E6%8E%92%E7%89%88%E5%BC%95%E6%93%8E" target="_blank" rel="noopener">排版引擎（浏览器引擎、页面渲染引擎）</a></p>
+<p><a href="https://webkit.org/" target="_blank" rel="noopener">webkit官网</a></p>
+<p><a href="https://developer.apple.com/documentation/webkitjs/htmlvideoelement" target="_blank" rel="noopener">apple developer</a></p>
+<p><a href="https://docs.qq.com/doc/DTUxGdWZic0RLR29B" target="_blank" rel="noopener">x5内核官方对接文档</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuyongshun.github.io/2018/09/02/ES6-generator/" data-id="ckaidyvo40007szcuecy44uvq" class="article-share-link">Share</a>
+      <a data-url="http://liuyongshun.github.io/2019/04/13/video/" data-id="ckajnfign006cm3cumw74dvme" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/H5/">H5</a></li></ul>
 
     </footer>
   </div>
@@ -162,7 +442,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/14/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/41/">41</a><a class="extend next" rel="next" href="/page/16/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/14/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/43/">43</a><a class="extend next" rel="next" href="/page/16/">下一页</a>
   </nav>
 
 </section>
@@ -173,7 +453,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/array/">array</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/async/">async</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/class/">class</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/decorate/">decorate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/export-import/">export&import</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/fuction/">fuction</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/generator/">generator</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/object/">object</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/promise/">promise</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/set-map/">set&map</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/string/">string</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/variable-deconstruction/">variable&deconstruction</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/">H5</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-history/">h5 history</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-video/">h5 video</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVASCRIPT/">JAVASCRIPT</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVASCRIPT/变量/">变量</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm/">algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/data-constructor/">data constructor</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/">NODE</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/express/">express</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/module/">module</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongo/">mongo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoCommand/">mongoCommand</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoodb/">mongoodb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-api/">node api</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-buffer/">node buffer</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-stream/">node stream</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/variable/">variable</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/">NPM</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/cli/">cli</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/npm-package/">npm package</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/">PLAY</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/eat/">eat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/photo/">photo</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/">REACT</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/redux/">redux</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/frequently/">frequently</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/vscode-plugin/">vscode plugin</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/">VUE</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/vueRouter/">vueRouter</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/">WEBPACK</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/plugin/">plugin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackDescription/">webpackDescription</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackMerge/">webpackMerge</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/">WEEX</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/weex/">weex</a><span class="category-list-count">1</span></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/array/">array</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/async/">async</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/class/">class</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/decorate/">decorate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/export-import/">export&import</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/fuction/">fuction</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/generator/">generator</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/object/">object</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/promise/">promise</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/set-map/">set&map</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/string/">string</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/variable-deconstruction/">variable&deconstruction</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/">FLUTTER</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/env/">env</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/">H5</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-history/">h5 history</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-video/">h5 video</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVASCRIPT/">JAVASCRIPT</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVASCRIPT/变量/">变量</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm/">algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/data-constructor/">data constructor</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/">NODE</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/express/">express</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/module/">module</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongo/">mongo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoCommand/">mongoCommand</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoodb/">mongoodb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-api/">node api</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-buffer/">node buffer</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-stream/">node stream</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/variable/">variable</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/">NPM</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/cli/">cli</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/npm-package/">npm package</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/">PLAY</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/eat/">eat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/photo/">photo</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/">REACT</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/redux/">redux</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/frequently/">frequently</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/mac/">mac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/vscode-plugin/">vscode plugin</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/">VUE</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/vueRouter/">vueRouter</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/">WEBPACK</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/plugin/">plugin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackDescription/">webpackDescription</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackMerge/">webpackMerge</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/">WEEX</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/weex/">weex</a><span class="category-list-count">1</span></li></ul></li></ul>
     </div>
   </div>
 
@@ -183,7 +463,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/H5/">H5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/">NPM</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/REACT/">REACT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cli/">cli</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/play/">play</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/variable/">variable</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weex/">weex</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/H5/">H5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/">NPM</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/REACT/">REACT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cli/">cli</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/">flutter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/play/">play</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/variable/">variable</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weex/">weex</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -193,7 +473,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/H5/" style="font-size: 12.5px;">H5</a> <a href="/tags/JS/" style="font-size: 12.5px;">JS</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/NPM/" style="font-size: 12.5px;">NPM</a> <a href="/tags/REACT/" style="font-size: 10px;">REACT</a> <a href="/tags/cli/" style="font-size: 10px;">cli</a> <a href="/tags/es6/" style="font-size: 20px;">es6</a> <a href="/tags/node/" style="font-size: 17.5px;">node</a> <a href="/tags/play/" style="font-size: 12.5px;">play</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/variable/" style="font-size: 10px;">variable</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/weex/" style="font-size: 10px;">weex</a>
+      <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/H5/" style="font-size: 12.5px;">H5</a> <a href="/tags/JS/" style="font-size: 12.5px;">JS</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/NPM/" style="font-size: 12.5px;">NPM</a> <a href="/tags/REACT/" style="font-size: 10px;">REACT</a> <a href="/tags/cli/" style="font-size: 10px;">cli</a> <a href="/tags/es6/" style="font-size: 20px;">es6</a> <a href="/tags/flutter/" style="font-size: 10px;">flutter</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/node/" style="font-size: 17.5px;">node</a> <a href="/tags/play/" style="font-size: 12.5px;">play</a> <a href="/tags/tool/" style="font-size: 10px;">tool</a> <a href="/tags/variable/" style="font-size: 10px;">variable</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/weex/" style="font-size: 10px;">weex</a>
     </div>
   </div>
 
@@ -202,7 +482,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -223,15 +503,15 @@
           </li>
         
           <li>
+            <a href="/2020/01/19/FLUTTER-env/">env config</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/05/node-buffer/">node buffer</a>
           </li>
         
           <li>
             <a href="/2019/10/25/node-stream/">node stream</a>
-          </li>
-        
-          <li>
-            <a href="/2019/10/07/weex/">weex</a>
           </li>
         
       </ul>
