@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>git | 七月</title>
+  <meta name="baidu-site-verification" content="vdMfpFtVYF">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Smiple, 简, jian, 简博客">
+  <meta name="description" content="git 分支管理  master 分支保持全部特性。  每个开发者拉取自己的特性分支feture。  hotfix分支修复紧急问题。  release分支发布线上，并针对版本打tag。  pre-release 预发和测试。   git提交规范feat     - 新功能 feature fix      - 修复 bug docs     - 文档注释 style    - 代码格式(不影响代码">
+<meta name="keywords" content="tool">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git">
+<meta property="og:url" content="http://liuyongshun.github.io/2020/03/15/tool-git/index.html">
+<meta property="og:site_name" content="七月">
+<meta property="og:description" content="git 分支管理  master 分支保持全部特性。  每个开发者拉取自己的特性分支feture。  hotfix分支修复紧急问题。  release分支发布线上，并针对版本打tag。  pre-release 预发和测试。   git提交规范feat     - 新功能 feature fix      - 修复 bug docs     - 文档注释 style    - 代码格式(不影响代码">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s1.ax1x.com/2020/06/14/tzZHqU.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/06/14/tzlID1.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/06/14/tz3NlQ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/06/14/tz8Ans.png">
+<meta property="og:updated_time" content="2020-06-14T08:09:42.580Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git">
+<meta name="twitter:description" content="git 分支管理  master 分支保持全部特性。  每个开发者拉取自己的特性分支feture。  hotfix分支修复紧急问题。  release分支发布线上，并针对版本打tag。  pre-release 预发和测试。   git提交规范feat     - 新功能 feature fix      - 修复 bug docs     - 文档注释 style    - 代码格式(不影响代码">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/06/14/tzZHqU.png">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  <script></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">七月</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">是七月呀</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/link">链接</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://liuyongshun.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-tool-git" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/15/tool-git/" class="article-date">
+  <time datetime="2020-03-14T20:29:17.000Z" itemprop="datePublished">2020-03-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/TOOL/">TOOL</a>►<a class="article-category-link" href="/categories/TOOL/git/">git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      git
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="git-分支管理"><a href="#git-分支管理" class="headerlink" title="git 分支管理"></a>git 分支管理</h3><p><img src="https://s1.ax1x.com/2020/06/14/tzZHqU.png" alt></p>
+<ul>
+<li><p>master 分支保持全部特性。</p>
+</li>
+<li><p>每个开发者拉取自己的特性分支feture。</p>
+</li>
+<li><p>hotfix分支修复紧急问题。</p>
+</li>
+<li><p>release分支发布线上，并针对版本打tag。</p>
+</li>
+<li><p>pre-release 预发和测试。</p>
+</li>
+</ul>
+<h3 id="git提交规范"><a href="#git提交规范" class="headerlink" title="git提交规范"></a>git提交规范</h3><p>feat     - 新功能 feature</p>
+<p>fix      - 修复 bug</p>
+<p>docs     - 文档注释</p>
+<p>style    - 代码格式(不影响代码运行的变动)</p>
+<p>refactor - 重构、优化(既不增加新功能，也不是修复bug)</p>
+<p>perf     - 性能优化</p>
+<p>test     - 增加测试</p>
+<p>chore    - 构建过程或辅助工具的变动</p>
+<p>revert   - 回退</p>
+<p>build    - 打包</p>
+<h3 id="git-命令使用"><a href="#git-命令使用" class="headerlink" title="git 命令使用"></a>git 命令使用</h3><p>提交修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add -A </span><br><span class="line">或</span><br><span class="line">git add filepath</span><br></pre></td></tr></table></figure>
+<p>使用git在本地新建一个分支后，需要做远程分支关联</p>
+<ul>
+<li><code>git branch --set-upstream-to=origin/small(remoteName) small (localName)</code></li>
+</ul>
+<p>跟踪分支，如果本地分支想和远程的某个分支变成跟踪分支，即push 和 pull 自动同步</p>
+<ul>
+<li><code>git branch --track newsmall(localName) origin/newsmall(remoteName)</code></li>
+</ul>
+<p>git commit 想撤回</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git log （展示所有commit,退出查看日志：q） </span><br><span class="line"></span><br><span class="line">git reset commit_id（commit 的id号，前八位就行）</span><br></pre></td></tr></table></figure>
+<p>git add 想撤回</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD fileName </span><br><span class="line">或</span><br><span class="line">git reset HEAD (撤销全部add)</span><br></pre></td></tr></table></figure>
+<p>git add 想diff比较</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git diff --staged </span><br><span class="line">或 </span><br><span class="line">git diff --cached filepath</span><br></pre></td></tr></table></figure>
+<p>回退</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard commitID, 把整个 git 回退到这个 commitID 里</span><br><span class="line"></span><br><span class="line">git reset --soft commitID </span><br><span class="line"></span><br><span class="line">仅仅把所做的 commit 丢掉，而改动都保留在本地——通常用来修改，再重新 commit 一遍。</span><br></pre></td></tr></table></figure>
+<p>好奇其他分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff branchName filepath</span><br></pre></td></tr></table></figure>
+<p>git commit 想diff</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff commitId filepath</span><br></pre></td></tr></table></figure>
+<p>分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">创建分支：git branch myself</span><br><span class="line"></span><br><span class="line">切换分支：git checkout myself</span><br><span class="line"></span><br><span class="line">查看远程分支：git branch -r</span><br><span class="line"></span><br><span class="line">查看全部分支：git branch -a</span><br><span class="line"></span><br><span class="line">查看本地分支：git branch</span><br><span class="line"></span><br><span class="line">删除分支： git branch -D branchName</span><br><span class="line"></span><br><span class="line">删除远程分支:git push --delete origin oldName</span><br><span class="line"></span><br><span class="line">本地分支重命名：git branch -m oldName newName</span><br><span class="line"></span><br><span class="line">上传新命名的本地分支:git push origin newName</span><br><span class="line"></span><br><span class="line">把修改后的本地分支与远程分支关联:git branch --set-upstream-to origin/newName</span><br></pre></td></tr></table></figure>
+<p>将某个分支的修改带到另一个分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br><span class="line">git stash save “修改的信息&quot;</span><br><span class="line"></span><br><span class="line">切换到另一个分支git checkout anotherBranch</span><br><span class="line"></span><br><span class="line">git stash pop</span><br><span class="line">或者</span><br><span class="line">git stash list</span><br><span class="line">git stash apply stash@&#123;0&#125;</span><br></pre></td></tr></table></figure>
+<p>拉取代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git pull --rebase</span><br><span class="line"></span><br><span class="line">git pull 的默认行为是 git fetch + git merge</span><br><span class="line"></span><br><span class="line">git pull --rebase 则是git fetch + git rebase 执行过程中会将本地当前分支里的每个提交(commit)取消掉</span><br><span class="line"></span><br><span class="line">git fetch 从远程获取最新版本到本地，不会自动合并分支</span><br></pre></td></tr></table></figure>
+<p>git pull –rebase冲突</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git rebase --abort 会放弃合并，回到rebase操作之前的状态</span><br><span class="line"></span><br><span class="line">git rebase --skip 丢弃冲突的commits（慎用！！）</span><br><span class="line"></span><br><span class="line">git rebase --continue 合并冲突，提示开发者，一步一步解决</span><br></pre></td></tr></table></figure>
+<h3 id="ignore-规则"><a href="#ignore-规则" class="headerlink" title="ignore 规则"></a>ignore 规则</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/node/two/node_modules</span><br><span class="line">*.sublime*</span><br><span class="line">*.zip</span><br><span class="line">*.jshintrc</span><br><span class="line"># 忽略了node_modules文件</span><br><span class="line"># *.zip 过滤所有.zip文件</span><br><span class="line"># /fileName/do.txt 过滤某个具体文件</span><br><span class="line"># 前面加!表示只提交该内容</span><br><span class="line"># !*.zip只提交zip文件</span><br><span class="line"># doc/*.txt 会忽略 doc/child.txt 但不包括 doc/ddd/descendant.txt</span><br><span class="line"># build/ 忽略 build/ 目录下的所有文件</span><br></pre></td></tr></table></figure>
+<h3 id="多git管理"><a href="#多git管理" class="headerlink" title="多git管理"></a>多git管理</h3><ul>
+<li><p>在生成第二个第n个帐号密钥时，公匙，私匙要生成新的名字,不能还是id_rsa.pub, id_rsa </p>
+</li>
+<li><p>在.ssh目录下创建config文件（没有拓展名）</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Host gitlab.com</span><br><span class="line">    HostName 121.40.212.132</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa</span><br><span class="line">Host github.com</span><br><span class="line">    HostName github.com</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_p</span><br><span class="line">Host gitlab.sss.cn</span><br><span class="line">   User liuyongshun2@126.com</span><br><span class="line">   Hostname gitlab.sss.cn</span><br><span class="line">   IdentityFile ~/.ssh/sq_id_rsa</span><br></pre></td></tr></table></figure>
+<h3 id="业务场景"><a href="#业务场景" class="headerlink" title="业务场景"></a>业务场景</h3><p><strong>1.合并太多的commit</strong></p>
+<ul>
+<li><strong><code>git rebase -i HEAD~3</code> 对前四个补丁就行修改，就会进入以下界面</strong></li>
+</ul>
+<p><img src="https://s1.ax1x.com/2020/06/14/tzlID1.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">p,pick：保留该commit,不做更改</span><br><span class="line"></span><br><span class="line">r,reword：保留该commit，但我需要修改该commit的注释</span><br><span class="line"></span><br><span class="line">e,edit：保留该commit, 但我要停下来修改该提交(不仅仅修改注释)</span><br><span class="line"></span><br><span class="line">s,squash：将该commit和前一个commit合并</span><br><span class="line"></span><br><span class="line">f,fixup：将该commit和前一个commit合并，但我不要保留该提交的注释信息</span><br><span class="line"></span><br><span class="line">x,exec：执行shell命令</span><br><span class="line"></span><br><span class="line">d,drop：我要丢弃该commit</span><br></pre></td></tr></table></figure>
+<p><strong>fixup:</strong></p>
+<p>跟 squash 作用一样，但是会丢弃当前 commit 信息，使用上一个的；</p>
+<p><strong>squash:</strong></p>
+<p>则是可以让你重新写,需要修改时，把上面四个补丁最前面的 pick 改成对应操作（如 reword，fixup），然后保存退出即可。</p>
+<ul>
+<li><strong>将commit合并，修改内容（vim语法）,修改完后按esc进入vim的命令模式，输入:wq保存</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pick c4a113d 1 error</span><br><span class="line">s 62ca257 2 error</span><br><span class="line">s baf5621 3 error</span><br></pre></td></tr></table></figure>
+<p>上面s的意思是把第二次、第三次提交都合并到第一次提交上</p>
+<ul>
+<li><strong>保存后弹出如下内容，vim的dd命令是删除整行，删掉多余的commit描述，只留自己想要的即可（或者重新编辑）</strong></li>
+</ul>
+<p><img src="https://s1.ax1x.com/2020/06/14/tz3NlQ.png" alt></p>
+<ul>
+<li><strong>最终整理后合并commit后的效果,修改完后按esc进入vim的命令模式，输入:wq保存</strong></li>
+</ul>
+<p><img src="https://s1.ax1x.com/2020/06/14/tz8Ans.png" alt></p>
+<ul>
+<li>最后强制push上去，<code>git push --force</code></li>
+</ul>
+<p><strong>自我救赎</strong></p>
+<p><code>git rebase --abort</code></p>
+<p><strong>2.分支feature_dev，开发者A，提交了无用代码，n天后才通知B，此时B已经开发并提交了很多代码</strong></p>
+<ul>
+<li><p>新建分支，作为备份分支</p>
+</li>
+<li><p>git revert commitID 重做开发者A的几个提交去掉对应的代码</p>
+</li>
+<li><p>合并重组后的代码</p>
+</li>
+</ul>
+<p><strong>git revert</strong></p>
+<p><strong>使用 git revert <commit> 可以撤销指定的提交， 要撤销一串提交可以用 <code>&lt;commit1&gt;..&lt;commit2&gt;</code> 语法。 注意这是一个前开后闭区间，即不包括 commit1，但包括 commit2。</commit></strong></p>
+<p><code>git revert --no-commit f7742cd..551c408</code></p>
+<p>如果我们想撤销之前的某一版本，但是又想保留该目标版本后面的版本，可以用这种方法</p>
+<p><code>git revert commitId</code></p>
+<p><strong>git reset</strong></p>
+<p>如果想恢复到之前某个提交的版本，且那个版本之后提交的版本都不需要，可以使用该方法</p>
+<p><code>git reset --hard commitId</code></p>
+<p><strong>其他思路1</strong></p>
+<p>有提交：1、2、3、4、5、6、7、8、9、10， 想保留1+2+10</p>
+<ul>
+<li><p>可以先执行 <code>git checkout -b newbranch commitid2</code>来把1+2单拎出来。</p>
+</li>
+<li><p>然后执行然后git cherry-pick commitId10 将commit10拉过来。</p>
+</li>
+</ul>
+<p><strong>其他思路2</strong></p>
+<p>有提交：1、2、3、4、5、6、7、8、9、10，想踢出4，6，可以用上面的revert重写。</p>
+<p><strong>其他思路3</strong></p>
+<p>如果想剔除的和想保留的都很多，可以先用git rebase -i HEAD~n 合并提交在如上操作。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuyongshun.github.io/2020/03/15/tool-git/" data-id="ckbf97tmr0025ikcus39678qg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tool/">tool</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/03/19/tool-chrome/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          chrome
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/01/19/FLUTTER-env/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">env config</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/array/">array</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/async/">async</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/class/">class</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/decorate/">decorate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/export-import/">export&import</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/fuction/">fuction</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/generator/">generator</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/object/">object</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/promise/">promise</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/set-map/">set&map</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/string/">string</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/variable-deconstruction/">variable&deconstruction</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/">FLUTTER</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/env/">env</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/">H5</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-history/">h5 history</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-video/">h5 video</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVASCRIPT/">JAVASCRIPT</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVASCRIPT/变量/">变量</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm/">algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/data-constructor/">data constructor</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/">NODE</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/express/">express</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/module/">module</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongo/">mongo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoCommand/">mongoCommand</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoodb/">mongoodb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-api/">node api</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-buffer/">node buffer</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-stream/">node stream</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/variable/">variable</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/">NPM</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/cli/">cli</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/npm-package/">npm package</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/">PLAY</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/eat/">eat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/photo/">photo</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/">REACT</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/redux/">redux</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/chrome/">chrome</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/frequently/">frequently</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/mac/">mac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/nginx/">nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/vscode-plugin/">vscode plugin</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/">VUE</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/vueRouter/">vueRouter</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/">WEBPACK</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/plugin/">plugin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackDescription/">webpackDescription</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackMerge/">webpackMerge</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/">WEEX</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/weex/">weex</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/multi-platform/">multi-platform</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/multi-platform/multi-platform/">multi-platform</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/H5/">H5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/">NPM</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/REACT/">REACT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cli/">cli</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/">flutter</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/play/">play</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/variable/">variable</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weex/">weex</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/H5/" style="font-size: 12.5px;">H5</a> <a href="/tags/JS/" style="font-size: 12.5px;">JS</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/NPM/" style="font-size: 12.5px;">NPM</a> <a href="/tags/REACT/" style="font-size: 10px;">REACT</a> <a href="/tags/cli/" style="font-size: 10px;">cli</a> <a href="/tags/es6/" style="font-size: 20px;">es6</a> <a href="/tags/flutter/" style="font-size: 12.5px;">flutter</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/node/" style="font-size: 17.5px;">node</a> <a href="/tags/play/" style="font-size: 12.5px;">play</a> <a href="/tags/tool/" style="font-size: 15px;">tool</a> <a href="/tags/variable/" style="font-size: 10px;">variable</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/weex/" style="font-size: 10px;">weex</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/19/JS-data-constractor/">data constructor</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/19/REACT-redux/">react redux</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/19/paltform/">multi-platform</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/19/tool-chrome/">chrome</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/15/tool-git/">git</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <ul class="hobby-outer">
+      <li class="hobby-item"><a href="http://blog.csdn.net/liuyongshun2/article">CSDN</a></li>
+      <li class="hobby-item"><a href="https://github.com/liuyongshun">GITHUB</a></li>
+    </ul>
+    <div id="footer-info" class="inner">
+      &copy; 2020 cheat&nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1274642270'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1274642270%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/link" class="mobile-nav-link">链接</a>
+  
+</nav>
+    
+
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<div id="totop">
+  <a title="javascript:;">返回<br>顶部</a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>

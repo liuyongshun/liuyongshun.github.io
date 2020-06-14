@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://liuyongshun.github.io/2020/03/19/tool-chrome/</loc>
+    
+    <lastmod>2020-06-14T15:55:30.730Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://liuyongshun.github.io/2020/03/15/tool-git/</loc>
+    
+    <lastmod>2020-06-14T08:09:42.580Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://liuyongshun.github.io/2020/01/08/tool-nginx/</loc>
+    
+    <lastmod>2020-06-12T06:24:14.963Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://liuyongshun.github.io/2020/03/19/paltform/</loc>
+    
+    <lastmod>2020-06-04T15:23:39.550Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://liuyongshun.github.io/2020/04/19/REACT-redux/</loc>
+    
+    <lastmod>2020-05-24T13:15:29.966Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://liuyongshun.github.io/2019/04/08/tool-mac/</loc>
     
     <lastmod>2020-05-23T13:05:33.599Z</lastmod>
@@ -12,13 +47,6 @@
     <loc>http://liuyongshun.github.io/2020/01/19/FLUTTER-env/</loc>
     
     <lastmod>2020-05-23T12:36:30.706Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://liuyongshun.github.io/2020/04/19/REACT-redux/</loc>
-    
-    <lastmod>2020-05-22T23:26:45.584Z</lastmod>
     
   </url>
   
