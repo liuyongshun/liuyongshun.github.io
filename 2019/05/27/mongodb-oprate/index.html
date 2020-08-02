@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>mongo command oprate | 七月</title>
+  <meta name="baidu-site-verification" content="vdMfpFtVYF">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Smiple, 简, jian, 简博客">
+  <meta name="description" content="操作命令 use DATABASE_NAME 转换数据库,没有责创建数据库  show dbs : 显示所有数据库  db 查看当前数据库   用户  创建用户，权限管理  1234567db.createUser(...   &amp;#123;...     user: &amp;quot;dba&amp;quot;,...     pwd: &amp;quot;dba&amp;quot;,...     roles: [ &amp;#12">
+<meta name="keywords" content="node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongo command oprate">
+<meta property="og:url" content="http://liuyongshun.github.io/2019/05/27/mongodb-oprate/index.html">
+<meta property="og:site_name" content="七月">
+<meta property="og:description" content="操作命令 use DATABASE_NAME 转换数据库,没有责创建数据库  show dbs : 显示所有数据库  db 查看当前数据库   用户  创建用户，权限管理  1234567db.createUser(...   &amp;#123;...     user: &amp;quot;dba&amp;quot;,...     pwd: &amp;quot;dba&amp;quot;,...     roles: [ &amp;#12">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-06-26T11:39:02.809Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mongo command oprate">
+<meta name="twitter:description" content="操作命令 use DATABASE_NAME 转换数据库,没有责创建数据库  show dbs : 显示所有数据库  db 查看当前数据库   用户  创建用户，权限管理  1234567db.createUser(...   &amp;#123;...     user: &amp;quot;dba&amp;quot;,...     pwd: &amp;quot;dba&amp;quot;,...     roles: [ &amp;#12">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  <script></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">七月</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">是七月呀</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/link">链接</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://liuyongshun.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-mongodb-oprate" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/27/mongodb-oprate/" class="article-date">
+  <time datetime="2019-05-26T20:29:17.000Z" itemprop="datePublished">2019-05-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/NODE/">NODE</a>►<a class="article-category-link" href="/categories/NODE/mongoOprate/">mongoOprate</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      mongo command oprate
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="操作命令"><a href="#操作命令" class="headerlink" title="操作命令"></a>操作命令</h3><ul>
+<li><p><code>use DATABASE_NAME</code> 转换数据库,没有责创建数据库</p>
+</li>
+<li><p><code>show dbs</code> : 显示所有数据库</p>
+</li>
+<li><p><code>db</code> 查看当前数据库</p>
+</li>
+</ul>
+<p><strong>用户</strong></p>
+<ul>
+<li>创建用户，权限管理</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">db.createUser(</span><br><span class="line">...   &#123;</span><br><span class="line">...     user: &quot;dba&quot;,</span><br><span class="line">...     pwd: &quot;dba&quot;,</span><br><span class="line">...     roles: [ &#123; role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; &#125; ]</span><br><span class="line">...   &#125;</span><br><span class="line">... )</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>用户登录<code>db.auth(&#39;liu&#39;,&#39;123&#39;)</code></p>
+</li>
+<li><p><code>show users</code>  查看当前库下的用户</p>
+</li>
+<li><p><code>db.system.users.find().pretty()</code>  查看所有的用户</p>
+</li>
+</ul>
+<p><strong>集合</strong></p>
+<ul>
+<li><p><code>db.createCollection(name, options)</code> 创建集合</p>
+</li>
+<li><p><code>show collections</code> 或 <code>show tables</code> 查看已有集合</p>
+</li>
+<li><p><code>db.abc.insert({&quot;a&quot;:1,&quot;b&quot;:2})</code> abc是集合名，插入数据</p>
+</li>
+<li><p><code>db.COLLECTION_NAME.drop()</code> 删除集合</p>
+</li>
+</ul>
+<p><strong>文档</strong></p>
+<ul>
+<li><p><code>db.COLLECTION_NAME.insert(document)</code> 主键已经存在，则会抛异常</p>
+</li>
+<li><p><code>db.collection.insertOne()/replaceOne()</code> 如果 _id 主键存在则更新数据，如果不存在就插入数据</p>
+</li>
+<li><p><code>db.abc.find()</code>  展示查看abc集合内的文档</p>
+</li>
+<li><p><code>db.col.update({&#39;title&#39;:&#39;delete data&#39;},{$set:{&#39;title&#39;:&#39;mongod&#39;}})</code> 更新文档</p>
+</li>
+<li><p><code>db.col.update({&#39;title&#39;:&#39;delete data&#39;},{$set:{&#39;title&#39;:&#39;mongod&#39;}},{multi:true})</code>更新多个文档</p>
+</li>
+<li><p><code>db.col.remove({&#39;title&#39;:&#39;delete data&#39;})</code> 删除文档</p>
+</li>
+<li><p><code>db.COLLECTION_NAME.remove(DELETION_CRITERIA,1)</code>  删除一个</p>
+</li>
+<li><p><code>db.col.find().pretty()</code> 查询并美化数据</p>
+</li>
+<li><p><code>db.col.find({&quot;likes&quot;: {$gt:50}, $or: [{&quot;by&quot;: &quot;mongod&quot;},{&quot;title&quot;: &quot;something&quot;}]}).pretty()</code> 联合查询</p>
+</li>
+</ul>
+<h3 id="egg-mongodb"><a href="#egg-mongodb" class="headerlink" title="egg-mongodb"></a>egg-mongodb</h3><p><strong>Schema 配置</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">new Schema(&#123;..&#125;, options);</span><br><span class="line">// 或</span><br><span class="line">var schema = new Schema(&#123;..&#125;);</span><br><span class="line">schema.set(option, value);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>collection: 默认的collection名称是model的复数形式，上边说过，在这里也可以自定义</p>
+</li>
+<li><p>id: 默认true，Mongoose会默认生成一个虚拟值id,指向数据库的_id，但会转成字符串返回</p>
+</li>
+<li><p>minimize: Mongoose默认不保存空对象，若该项设为false将保存空对象</p>
+</li>
+<li><p>strict：默认为true，不能保存schema里没有声明的属性</p>
+</li>
+<li><p>toJSON: 对获取的数据进行转换, 比如时区转换或Decimal128类型转为string,就可以使用toJSON来完成</p>
+</li>
+<li><p>versionKey：版本锁设置在每一个文档（document）上，由mogoose生成。默认的值是__v，但是可以自定义</p>
+</li>
+<li><p>timestamps：会自动生成createdAt和updatedAt，还可以自定义名字</p>
+</li>
+</ul>
+<p><strong>mongo SchemaTypes</strong></p>
+<ul>
+<li><p>String</p>
+</li>
+<li><p>Number</p>
+</li>
+<li><p>Date</p>
+</li>
+<li><p>Buffer</p>
+</li>
+<li><p>Boolean</p>
+</li>
+<li><p>Mixed</p>
+</li>
+<li><p>ObjectId</p>
+</li>
+<li><p>Array</p>
+</li>
+<li><p>Decimal128 </p>
+</li>
+</ul>
+<p><strong>egg-mongodb 命令</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line">// 获取所有数据，返回是一个数组</span><br><span class="line">ctx.model.User.find()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 获取一个数据，返回是一个对象</span><br><span class="line">ctx.model.User.findOne()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 根据具体数据进行查询</span><br><span class="line">ctx.model.User.find(&#123; _id: &apos;5ba05c89b1f3b6355e1d635e&apos;, name: &apos;Alioth&apos; &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 条件查询</span><br><span class="line">// &quot;$lt&quot;  小于</span><br><span class="line">// &quot;$lte&quot; 小于等于</span><br><span class="line">// &quot;$gt&quot;  大于</span><br><span class="line">// &quot;$gte&quot; 大于等于</span><br><span class="line">// &quot;$ne&quot;  不等于</span><br><span class="line">ctx.model.User.find(&#123; create_at: &#123; $gte: new Date(2019, 7, 5), $lte: new Date(2019, 7, 6) &#125; &#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 或查询 OR</span><br><span class="line">// &quot;$in&quot; 一个键对应多个值</span><br><span class="line">// &quot;$nin&quot; 同上取反, 一个键不对应指定值</span><br><span class="line">// &quot;$or&quot; 多个条件匹配, 可以嵌套 $in 使用</span><br><span class="line">// &quot;$not&quot; 同上取反, 查询与特定模式不匹配的文档</span><br><span class="line">ctx.model.User.find(&#123; name: &#123; $in: [&apos;Alioth&apos;, &apos;Jodie&apos;] &#125; &#125;);</span><br><span class="line">ctx.model.User.find(&#123; $or: [&#123; _id: &apos;5ba05c89b1f3b6355e1d635e&apos; &#125;, &#123; name: &apos;Alioth&apos; &#125;] &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 类型查询（&quot;$exists&quot;条件判定）</span><br><span class="line">ctx.model.User.find(&#123; name: &#123; $exists: true &#125; &#125;, function (error, docs) &#123;</span><br><span class="line">  //返回表中所有存在name属性的结果</span><br><span class="line">&#125;);</span><br><span class="line">ctx.model.User.find(&#123; name: &#123; $exists: false &#125; &#125;, function (error, docs) &#123;</span><br><span class="line">  //返回表中所有不存在name属性的结果</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 匹配正则表达式查询</span><br><span class="line">ctx.model.User.find(&#123; name: /Alioth/i &#125;); // 返回表中name为 Alioth 的结果, 并忽略大小写</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 查询数组</span><br><span class="line">ctx.model.User.find(&#123; array: 10 &#125;); // 返回表中array(数组类型)键中有10的文档, array : [1,2,3,4,5,10] 会匹配到</span><br><span class="line">ctx.model.User.find(&#123; &apos;array[5]&apos;: 10 &#125;); // 返回表中array(数组类型)键中下标5对应的值是10, array : [1,2,3,4,5,10] 会匹配到</span><br><span class="line">ctx.model.User.find(&#123; array: [5, 10] &#125;); // 返回表中查询匹配array数组中既有5又有10的结果</span><br><span class="line">ctx.model.User.find(&#123; array: &#123; $size: 3 &#125; &#125;); // 返回表中查询匹配array数组长度为3 的的结果</span><br><span class="line">ctx.model.User.find(&#123; array: &#123; $slice: 10 &#125; &#125;); // 返回表中查询匹配array数组的前10个元素</span><br><span class="line">ctx.model.User.find(&#123; array: &#123; $slice: [5, 10] &#125; &#125;); // 返回表中查询匹配array数组的第5个到第10个元素</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// where</span><br><span class="line">// 用它可以执行任意javacript语句作为查询的一部分,如果回调函数返回 true 文档就作为结果的一部分返回</span><br><span class="line">// 其中this为数据表中的数据，上述返回表中属性x+属性y=10的所有数据</span><br><span class="line">ctx.model.User.find(&#123; $where: &apos;this.x + this.y === 10&apos; &#125;);</span><br><span class="line">ctx.model.User.find(&#123; $where: &apos;function()&#123; return this.x + this.y ===10; &#125;&apos; &#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 删除数据,conditions为查询条件，与查询数据介绍的一样，callback为操作成功后的回调函数</span><br><span class="line">ctx.model.User.remove(conditions, callback);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 更新数据, 参数1:查询条件, 参数2:更新对象</span><br><span class="line">ctx.model.User.update(conditions, update, callback);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 查询表中特定_id，并对data中所包含的属性进行更新。</span><br><span class="line">let data = &#123; name: &apos;ddd&apos; &#125;</span><br><span class="line">ctx.model.User.update(&#123; _id: &apos;5ef58218f50e85f5a618749b&apos; &#125;, data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// &quot;$inc&quot;增减修改器,只对数字有效,找到age=22的文档,修改文档的age值自增1</span><br><span class="line">ctx.model.User.update(&#123; &quot;age&quot;: 22 &#125;, &#123; $inc: &#123; &quot;age&quot;: 1 &#125; &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// &apos;$set&apos; 指定一个键的值,这个键不存在就创建它.例:软删除，找到特定_id数据，增加或者修改isDelete属性</span><br><span class="line">ctx.model.User.update(&#123; _id: &apos;5ef58218f50e85f5a618749b&apos; &#125;, &#123; $set: &#123; isDelete: true &#125; &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// &quot;$unset&quot;删除一个键,执行后create_at键不存在</span><br><span class="line">ctx.model.User.update(&#123; create_at: new Date(2019, 7, 5) &#125;, &#123; $unset: &#123; create_at: &apos;&apos; &#125; &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 对表中的数据进行排序，先按&apos;isSetTop&apos;降序，再按&apos;sort&apos;升序，最后按&apos;editTime&apos;降序, 1升序, -1降序。</span><br><span class="line">ctx.model.User.sort(&#123; isSetTop: -1, sort: 1, editTime: -1 &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 限制返回结果的数量, 返回为前面3条数据</span><br><span class="line">ctx.model.User.limit(3);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 跳过前3个文档,返回其余</span><br><span class="line">ctx.model.User.skip(3);</span><br><span class="line"></span><br><span class="line">// 分页查询</span><br><span class="line"></span><br><span class="line">// 其中pageSize和pageNum为动态传递数据，返回Article表中特定_id在每页数据为pageSize条件下的第pageNum页中的数据，并按照“isSetTop”降序，再按“sort”升序，最后按“editTime”降序进行排序。</span><br><span class="line">ctx.model.User.find(&#123; _id: &apos;5ba05c89b1f3b6355e1d635e&apos; &#125;).skip(pageSize * (pageNum - 1)).limit(parseInt(pageSize)).sort(&#123; isSetTop: -1, sort: 1, editTime: -1 &#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuyongshun.github.io/2019/05/27/mongodb-oprate/" data-id="ckdcq6vt3002ed8cudsghlclg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/05/27/vscode-plugin/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          vscode
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/03/ES6-async/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">string</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/array/">array</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/async/">async</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/class/">class</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/decorate/">decorate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/export-import/">export&import</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/fuction/">fuction</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/generator/">generator</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/object/">object</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/promise/">promise</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/reflect/">reflect</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/set-map/">set&map</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/string/">string</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/variable-deconstruction/">variable&deconstruction</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/">FLUTTER</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/dart/">dart</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/env/">env</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/">H5</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-history/">h5 history</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-video/">h5 video</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVASCRIPT/">JAVASCRIPT</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVASCRIPT/变量/">变量</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm/">algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm2/">algorithm2</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/data-constructor/">data constructor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/principle/">principle</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/">NODE</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/express/">express</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/module/">module</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongo/">mongo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoCommand/">mongoCommand</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoOprate/">mongoOprate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoodb/">mongoodb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-api/">node api</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-buffer/">node buffer</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-stream/">node stream</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/variable/">variable</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/">NPM</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/cli/">cli</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/npm-package/">npm package</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/">PLAY</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/eat/">eat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/photo/">photo</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/">REACT</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/redux/">redux</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/chrome/">chrome</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/chrome-perf/">chrome-perf</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/frequently/">frequently</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/mac/">mac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/nginx/">nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/vscode-plugin/">vscode plugin</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/">VUE</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/vueRouter/">vueRouter</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/">WEBPACK</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/plugin/">plugin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackDescription/">webpackDescription</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackMerge/">webpackMerge</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/">WEEX</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/weex/">weex</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/multi-platform/">multi-platform</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/multi-platform/multi-platform/">multi-platform</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/H5/">H5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/">NPM</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/REACT/">REACT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cli/">cli</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/">flutter</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/play/">play</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/variable/">variable</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weex/">weex</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/H5/" style="font-size: 11.67px;">H5</a> <a href="/tags/JS/" style="font-size: 15px;">JS</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/NPM/" style="font-size: 11.67px;">NPM</a> <a href="/tags/REACT/" style="font-size: 10px;">REACT</a> <a href="/tags/cli/" style="font-size: 10px;">cli</a> <a href="/tags/es6/" style="font-size: 20px;">es6</a> <a href="/tags/flutter/" style="font-size: 13.33px;">flutter</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/node/" style="font-size: 18.33px;">node</a> <a href="/tags/play/" style="font-size: 11.67px;">play</a> <a href="/tags/tool/" style="font-size: 16.67px;">tool</a> <a href="/tags/variable/" style="font-size: 10px;">variable</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/weex/" style="font-size: 10px;">weex</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/19/REACT-redux/">redux &amp; react-redux</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/19/JS-data-constractor/">data constructor</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/27/tool-chrome-perf/">chrome-perf</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/19/paltform/">multi-platform</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/19/tool-chrome/">chrome</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <ul class="hobby-outer">
+      <li class="hobby-item"><a href="http://blog.csdn.net/liuyongshun2/article">CSDN</a></li>
+      <li class="hobby-item"><a href="https://github.com/liuyongshun">GITHUB</a></li>
+    </ul>
+    <div id="footer-info" class="inner">
+      &copy; 2020 cheat&nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1274642270'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1274642270%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/link" class="mobile-nav-link">链接</a>
+  
+</nav>
+    
+
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<div id="totop">
+  <a title="javascript:;">返回<br>顶部</a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>

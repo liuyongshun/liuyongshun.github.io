@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>七月</title>
+  <meta name="baidu-site-verification" content="vdMfpFtVYF">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Smiple, 简, jian, 简博客">
+  <meta name="description" content="得与失之间，是我所有的美好和思念">
+<meta name="keywords" content="Smiple, 简, jian, 简博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="七月">
+<meta property="og:url" content="http://liuyongshun.github.io/page/51/index.html">
+<meta property="og:site_name" content="七月">
+<meta property="og:description" content="得与失之间，是我所有的美好和思念">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="七月">
+<meta name="twitter:description" content="得与失之间，是我所有的美好和思念">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  <script></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">七月</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">是七月呀</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/link">链接</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://liuyongshun.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-node-module" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/25/node-module/" class="article-date">
+  <time datetime="2017-08-24T22:08:46.000Z" itemprop="datePublished">2017-08-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/NODE/">NODE</a>►<a class="article-category-link" href="/categories/NODE/module/">module</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/25/node-module/">node module</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="node模块"><a href="#node模块" class="headerlink" title="node模块"></a>node模块</h2><p><strong> Node与浏览器、W3C组织、CommonJS组织、ECMAScript之间的关系</strong></p>
+<p><img src="http://or0drint7.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20170823220022.png" alt></p>
+<h3 id="一、CommonJS的模块规范"><a href="#一、CommonJS的模块规范" class="headerlink" title="一、CommonJS的模块规范"></a>一、CommonJS的模块规范</h3><p><strong>CommonJS对模块定义：模块引用、模块定义、和模块标识。</strong></p>
+<h4 id="1-模块引入"><a href="#1-模块引入" class="headerlink" title="1.模块引入"></a>1.模块引入</h4><p><code>var math = require(&#39;math&#39;);</code></p>
+<ul>
+<li>优先缓存，不论核心模块还是文件模块，require()方法的二次加载都是优先缓存加载。</li>
+</ul>
+<p>模块引入要经历三个步骤：</p>
+<ol>
+<li>路径分析</li>
+<li>文件定位</li>
+<li>编译执行</li>
+</ol>
+<p><strong>路径分析：</strong><br>node中模块分核心模块(node提供)和文件模块(用户编写)两类。对于核心模块，在node源码中编进了二进制文件，所以引入时省略到后两步，且速度快。文件模块是运行时动态加载的，需要完整的路径分析，文件定位，编译执行过成。</p>
+<p><strong>ruquire()方法只接受标识符做为参数，node标识符有以下几类。</strong></p>
+<ul>
+<li>核心模块http、fs、path</li>
+<li>. 或.. 开始的相对路径模块</li>
+<li>以/开始的绝对路径模块</li>
+<li>非路径形式的文件模块</li>
+</ul>
+<h4 id="1-1路径分析"><a href="#1-1路径分析" class="headerlink" title="1.1路径分析"></a>1.1路径分析</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// index.js</span><br><span class="line">console.log(module.paths)</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">[ &apos;C:\\Users\\liuyongshun\\Desktop\\node_modules&apos;,</span><br><span class="line">  &apos;C:\\Users\\liuyongshun\\node_modules&apos;,</span><br><span class="line">  &apos;C:\\Users\\node_modules&apos;,</span><br><span class="line">  &apos;C:\\node_modules&apos; ]</span><br></pre></td></tr></table></figure>
+<ol>
+<li>当前目录下的node_modules</li>
+<li>父目录下的node_modules</li>
+<li>父目录的父目录下的node_modules</li>
+</ol>
+<p><strong>note:</strong>类似于作用域链的原理，因此路径越深，耗时越长。require()优先请求node_modules文件下的内容，而后才是自定义的模块。</p>
+<h4 id="1-2文件定位"><a href="#1-2文件定位" class="headerlink" title="1.2文件定位"></a>1.2文件定位</h4><p>二次引入时，优先缓存，或省略掉路径分析，和文件定位。</p>
+<ul>
+<li><p>文件定位时拓展名分析<br>CommonJS规范允许标识符中不含拓展名，Node会按.js、.json、.node的次序补足，依次尝试。在尝试过程中调用fs模块同步阻塞式地判断文件是否存在。</p>
+</li>
+<li><p>文件定位时目录分析和包</p>
+</li>
+</ul>
+<p>&#x3000;&#x3000;require()通过分析文件拓展名之后，没找到对应文件但得到一个目录（node_modules基本都是目录，各类npm的插件）此时会将目录当做包处理。<br>&#x3000;&#x3000;在这过成中，node首先在当前目录下查找package.json（CommonJS包规范定义的包描述文件），通过JSON.parse()解析出包描述对象，进行文件定位。</p>
+<h4 id="1-3-模块编译"><a href="#1-3-模块编译" class="headerlink" title="1.3 模块编译"></a>1.3 模块编译</h4><p>编译和执行是引入模块的最后阶段。定位到文件后，node会新建一个模块对象，然后根据路径载入并编译。</p>
+<ul>
+<li>.js 通过fs模块同步读取文件后编译执行。</li>
+<li>.node 通过dlopen()方法加载。</li>
+<li>.json 通过fs同步读取，用JSON.parse()解析，返回结果。</li>
+<li>其他被当.js文件载入。</li>
+</ul>
+<p>每个编译成功的模块都会将其文件路径最为索引缓存在Module._cache对象上，以提高二次引入的性能。</p>
+<p>node编译过成中对JavaScript进行了头尾包装。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">头部：</span><br><span class="line"> (function (exports, require, module, __filename, __dirname) &#123;\n </span><br><span class="line">    // content</span><br><span class="line">尾部：</span><br><span class="line"> \n&#125;);</span><br><span class="line"></span><br><span class="line"> // 包装后的结果，避免了污染全局变量</span><br><span class="line"> (function (exports, require, module, __filename, __dirname) &#123;</span><br><span class="line">    var math = require(&apos;math&apos;);</span><br><span class="line">    exports.area = function (radius) &#123;</span><br><span class="line">        return Math.PI * radius * radius;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuyongshun.github.io/2017/08/25/node-module/" data-id="ckdcq6vt1002bd8cujb80mo31" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/50/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="page-number" href="/page/50/">50</a><span class="page-number current">51</span><a class="page-number" href="/page/52/">52</a><a class="page-number" href="/page/53/">53</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/52/">下一页</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/array/">array</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/async/">async</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/class/">class</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/decorate/">decorate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/export-import/">export&import</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/fuction/">fuction</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/generator/">generator</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/object/">object</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/promise/">promise</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/reflect/">reflect</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/set-map/">set&map</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/string/">string</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/variable-deconstruction/">variable&deconstruction</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/">FLUTTER</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/dart/">dart</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/env/">env</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/">H5</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-history/">h5 history</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-video/">h5 video</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVASCRIPT/">JAVASCRIPT</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVASCRIPT/变量/">变量</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm/">algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm2/">algorithm2</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/data-constructor/">data constructor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/principle/">principle</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/">NODE</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/express/">express</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/module/">module</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongo/">mongo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoCommand/">mongoCommand</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoOprate/">mongoOprate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoodb/">mongoodb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-api/">node api</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-buffer/">node buffer</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-stream/">node stream</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/variable/">variable</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/">NPM</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/cli/">cli</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/npm-package/">npm package</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/">PLAY</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/eat/">eat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/photo/">photo</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/">REACT</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/redux/">redux</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/chrome/">chrome</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/chrome-perf/">chrome-perf</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/frequently/">frequently</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/mac/">mac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/nginx/">nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/vscode-plugin/">vscode plugin</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/">VUE</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/vueRouter/">vueRouter</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/">WEBPACK</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/plugin/">plugin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackDescription/">webpackDescription</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackMerge/">webpackMerge</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/">WEEX</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/weex/">weex</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/multi-platform/">multi-platform</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/multi-platform/multi-platform/">multi-platform</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/H5/">H5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/">NPM</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/REACT/">REACT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cli/">cli</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/">flutter</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/play/">play</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/variable/">variable</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weex/">weex</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/H5/" style="font-size: 11.67px;">H5</a> <a href="/tags/JS/" style="font-size: 15px;">JS</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/NPM/" style="font-size: 11.67px;">NPM</a> <a href="/tags/REACT/" style="font-size: 10px;">REACT</a> <a href="/tags/cli/" style="font-size: 10px;">cli</a> <a href="/tags/es6/" style="font-size: 20px;">es6</a> <a href="/tags/flutter/" style="font-size: 13.33px;">flutter</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/node/" style="font-size: 18.33px;">node</a> <a href="/tags/play/" style="font-size: 11.67px;">play</a> <a href="/tags/tool/" style="font-size: 16.67px;">tool</a> <a href="/tags/variable/" style="font-size: 10px;">variable</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/weex/" style="font-size: 10px;">weex</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/19/REACT-redux/">redux &amp; react-redux</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/19/JS-data-constractor/">data constructor</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/27/tool-chrome-perf/">chrome-perf</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/19/paltform/">multi-platform</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/19/tool-chrome/">chrome</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <ul class="hobby-outer">
+      <li class="hobby-item"><a href="http://blog.csdn.net/liuyongshun2/article">CSDN</a></li>
+      <li class="hobby-item"><a href="https://github.com/liuyongshun">GITHUB</a></li>
+    </ul>
+    <div id="footer-info" class="inner">
+      &copy; 2020 cheat&nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1274642270'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1274642270%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/link" class="mobile-nav-link">链接</a>
+  
+</nav>
+    
+
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<div id="totop">
+  <a title="javascript:;">返回<br>顶部</a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>
