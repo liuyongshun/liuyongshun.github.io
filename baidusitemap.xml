@@ -2,10 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://liuyongshun.github.io/2020/04/19/REACT-redux/</loc>
-    <lastmod>2020-08-02</lastmod>
+    <lastmod>2020-08-08</lastmod>
+  </url>  <url>
+    <loc>http://liuyongshun.github.io/2020/06/19/AST/</loc>
+    <lastmod>2020-08-08</lastmod>
   </url>  <url>
     <loc>http://liuyongshun.github.io/2020/01/19/FLUTTER-dart/</loc>
-    <lastmod>2020-07-22</lastmod>
+    <lastmod>2020-08-03</lastmod>
   </url>  <url>
     <loc>http://liuyongshun.github.io/2020/01/19/FLUTTER-env/</loc>
     <lastmod>2020-07-21</lastmod>
@@ -155,9 +158,6 @@
     <lastmod>2018-01-18</lastmod>
   </url>  <url>
     <loc>http://liuyongshun.github.io/2018/01/19/webpack-merge/</loc>
-    <lastmod>2018-01-18</lastmod>
-  </url>  <url>
-    <loc>http://liuyongshun.github.io/2018/01/19/AST/</loc>
     <lastmod>2018-01-18</lastmod>
   </url>  <url>
     <loc>http://liuyongshun.github.io/2018/01/19/webpack-base/</loc>

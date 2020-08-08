@@ -72,14 +72,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-ES6-decorate" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-ES6-array" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/01/19/ES6-decorate/" class="article-date">
+    <a href="/2018/01/19/ES6-array/" class="article-date">
   <time datetime="2018-01-18T20:29:17.000Z" itemprop="datePublished">2018-01-18</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/ES6/">ES6</a>►<a class="article-category-link" href="/categories/ES6/decorate/">decorate</a>
+    <a class="article-category-link" href="/categories/ES6/">ES6</a>►<a class="article-category-link" href="/categories/ES6/array/">array</a>
   </div>
 
   </div>
@@ -90,7 +90,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/19/ES6-decorate/">decorate</a>
+      <a class="article-title" href="/2018/01/19/ES6-array/">array</a>
     </h1>
   
 
@@ -98,31 +98,295 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="一、-定义"><a href="#一、-定义" class="headerlink" title="一、　定义"></a>一、　定义</h3><p><strong>装饰器是一种函数，写成@ + 函数名。它可以放在类和类方法的定义前面。</strong></p>
-<p><strong>装饰器只能用于类和类的方法，不能用于函数，因为存在函数提升。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@frozen</span><br><span class="line">class Foo &#123;</span><br><span class="line">  @configurable(false)</span><br><span class="line">  method() &#123;&#125;</span><br><span class="line">  expensiveMethod() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="二、装饰器使用"><a href="#二、装饰器使用" class="headerlink" title="二、装饰器使用"></a>二、装饰器使用</h3><p><strong>testable函数的参数target是MyTestableClass类本身。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@testable</span><br><span class="line">class MyTestableClass &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function testable(target) &#123;</span><br><span class="line">  target.isTestable = true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(MyTestableClass.isTestable) // true</span><br></pre></td></tr></table></figure>
-<h3 id="三、封装多参数"><a href="#三、封装多参数" class="headerlink" title="三、封装多参数"></a>三、封装多参数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function testable(isTestable) &#123;</span><br><span class="line">  return function(target) &#123;</span><br><span class="line">    target.isTestable = isTestable;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@testable(true)</span><br><span class="line">class MyTestableClass &#123;&#125;</span><br><span class="line">console.log(MyTestableClass.isTestable) // true</span><br></pre></td></tr></table></figure>
-<h3 id="四、-react中使用"><a href="#四、-react中使用" class="headerlink" title="四、 react中使用"></a>四、 react中使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class MyReactComponent extends React.Component &#123;&#125;</span><br><span class="line">export default connect(mapStateToProps, mapDispatchToProps)(MyReactComponent);</span><br><span class="line"></span><br><span class="line">装饰器</span><br><span class="line"></span><br><span class="line">@connect(mapStateToProps, mapDispatchToProps)</span><br><span class="line">export default class MyReactComponent extends React.Component &#123;&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="五、类的装饰器"><a href="#五、类的装饰器" class="headerlink" title="五、类的装饰器"></a>五、类的装饰器</h3><ul>
-<li><p>装饰器第一个参数是类的原型对象，Person.prototype</p>
+        <h3 id="一、拓展运算符号应用"><a href="#一、拓展运算符号应用" class="headerlink" title="一、拓展运算符号应用"></a>一、拓展运算符号应用</h3><p>1.当函数参数较多时，用来传一个数组，通过拓展运算：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">let arrs = [3, 5, 6]</span><br><span class="line">function add (a, b, c) &#123;</span><br><span class="line">  console.log(a, b, c)</span><br><span class="line">&#125;</span><br><span class="line">add(...arrs)</span><br></pre></td></tr></table></figure>
+<p>2.配合Math,获取最大值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let arrs = [1, 3, 5]</span><br><span class="line">Math.max(...arrs)</span><br></pre></td></tr></table></figure>
+<p><strong>另一种方式es5：</strong></p>
+<p>Math.max其实是Number的方法，数组通过apply调用。</p>
+<p>Math.max.apply(Number, [1, 4, 5, 6, 2, 3])</p>
+<p>3.合并数组，还是蛮方便的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var a = [1, 3]</span><br><span class="line">var b = [2, 4]</span><br><span class="line">console.log([...a, ...b])</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>拓展运算符,仔细体会下面的代码，vue的mapGetters等用法</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">let obj1 = &#123;</span><br><span class="line">  a: 3</span><br><span class="line">&#125;</span><br><span class="line">let obj2 = &#123;</span><br><span class="line">  b: 3</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let arrSub = [obj1, obj2]</span><br><span class="line">let objSub = &#123;obj1, obj2&#125;</span><br><span class="line"></span><br><span class="line">// 在自仔细体会一下拓展运算符的功能,数组拓展后索引被用来做属性名字</span><br><span class="line">let obj4 = &#123;</span><br><span class="line">  ...arrSub</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 对象的拓展会直接取对象名字作为属性名字，对象属性简写</span><br><span class="line">let obj5 = &#123;</span><br><span class="line">  ...objSub</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5.解决数组复制的引用问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">let aa = [1, 3]</span><br><span class="line"></span><br><span class="line">let bb = aa</span><br><span class="line"></span><br><span class="line">aa[0] = 3</span><br><span class="line"></span><br><span class="line">console.log(bb)</span><br><span class="line"></span><br><span class="line">=================</span><br><span class="line"></span><br><span class="line">let arr = [3, 5]</span><br><span class="line"></span><br><span class="line">const a2 = [...arr]  或者  const [...a2] = arr</span><br><span class="line"></span><br><span class="line">arr[0] = 7</span><br><span class="line"></span><br><span class="line">console.log(a2)</span><br></pre></td></tr></table></figure>
+<h3 id="二、Array-from"><a href="#二、Array-from" class="headerlink" title="二、Array.from()"></a>二、Array.from()</h3><p>1.将类数组转化为数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">let arr = &#123;</span><br><span class="line">&apos;0&apos;: &apos;a&apos;,</span><br><span class="line">&apos;1&apos;: &apos;b&apos;,</span><br><span class="line">&apos;2&apos;: &apos;c&apos;,</span><br><span class="line">length: 3</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// ES5</span><br><span class="line">var arr1 = [].slice.call(arr)</span><br><span class="line"></span><br><span class="line">// ES6</span><br><span class="line">let arr2 = Array.from(arr)</span><br><span class="line"></span><br><span class="line">对于document.querySelectorAll()返回的节点集合和argments均可。</span><br></pre></td></tr></table></figure>
+<p>2.将字符串转为数组，然后返回字符串的长度。可以避免 JavaScript 将大于\uFFFF的 Unicode 字符，算作两个字符的 bug 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function countSymbols(string) &#123;</span><br><span class="line">return Array.from(string).length</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="三、Array-of"><a href="#三、Array-of" class="headerlink" title="三、Array.of()"></a>三、Array.of()</h3><p>1.将一组值，转换为数组</p>
+<p>Array.of用来避免Array()或new Array()的问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Array(3)             // [, , ,]</span><br><span class="line">Array(3, 11, 8)      // [3, 11, 8]</span><br><span class="line"></span><br><span class="line">Array.of(undefined)  // [undefined]</span><br><span class="line">Array.of(1, 2)       // [1, 2]</span><br></pre></td></tr></table></figure>
+<h3 id="四、find-和-findIndex"><a href="#四、find-和-findIndex" class="headerlink" title="四、find() 和 findIndex()"></a>四、find() 和 findIndex()</h3><p>1、find(); 返回第一个满足条件的值，没有undefined。回调三个参数，当前值，当前索引，原数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var ARR = [1, 4, 7, 33]</span><br><span class="line">ARR.find(function(value, index, arr) &#123;</span><br><span class="line">  return value &gt; 20</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>2、findIndex() 同上，只不过是返回了第一个的索引。能够识别NaN</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[NaN].findIndex(e =&gt; Object.is(NaN, e))</span><br></pre></td></tr></table></figure>
+<h3 id="五、数组常用方法"><a href="#五、数组常用方法" class="headerlink" title="五、数组常用方法"></a>五、数组常用方法</h3><p><strong>forEach: </strong></p>
+<ul>
+<li><p>没有返回值</p>
 </li>
-<li><p>第二个参数是所要装饰的属性名</p>
+<li><p>break，continue）不可以跳出</p>
 </li>
-<li><p>第三个参数是该属性的描述对象。</p>
+<li><p>callback有三个参数, element, index, array。</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">  @readonly</span><br><span class="line">  name() &#123; return `$&#123;this.first&#125; $&#123;this.last&#125;` &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function readonly(target, name, descriptor)&#123;</span><br><span class="line">  // descriptor对象原来的值如下</span><br><span class="line">  // &#123;</span><br><span class="line">  //   value: specifiedFunction,</span><br><span class="line">  //   enumerable: false,</span><br><span class="line">  //   configurable: true,</span><br><span class="line">  //   writable: true</span><br><span class="line">  // &#125;;</span><br><span class="line">  descriptor.writable = false;</span><br><span class="line">  return descriptor;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="六、-mixin-混入"><a href="#六、-mixin-混入" class="headerlink" title="六、 mixin 混入"></a>六、 mixin 混入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">export function mixins(...list) &#123;</span><br><span class="line">  return function (target) &#123;</span><br><span class="line">    Object.assign(target.prototype, ...list);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">import &#123; mixins &#125; from &apos;./mixins&apos;;</span><br><span class="line"></span><br><span class="line">const Foo = &#123;</span><br><span class="line">  foo() &#123; console.log(&apos;foo&apos;) &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">@mixins(Foo)</span><br><span class="line">class MyClass &#123;&#125;</span><br><span class="line"></span><br><span class="line">let obj = new MyClass();</span><br><span class="line">obj.foo() // &quot;foo&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br><span class="line">let forEach = arr.forEach((a, n, i) =&gt; &#123;&#125;)</span><br><span class="line">console.log(forEach)</span><br><span class="line"></span><br><span class="line">for (let i = 0; i&lt; arr.length; i++) &#123;</span><br><span class="line">  // if (i === 3)  break</span><br><span class="line">  if (i === 3)  continue</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>filter: </strong></p>
+<ul>
+<li><p>返回符合条件的新数组</p>
+</li>
+<li><p>break，continue）不可以跳出</p>
+</li>
+<li><p>callback三个参数, element, index, array</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let filter = arr.filter((a, n, i) =&gt; &#123; return n &gt; 3 &#125;)</span><br><span class="line">console.log(filter)</span><br></pre></td></tr></table></figure>
+<p><strong>every: </strong></p>
+<ul>
+<li><p>返回布尔值，所有的满足条件为true，遇到一个不满足即刻退出, 返回false,</p>
+</li>
+<li><p>break，continue不可以跳出，</p>
+</li>
+<li><p>callback三个参数，element, index, array</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let every = arr.every((a, n, i) =&gt; &#123; return a &gt; 3 &#125;)</span><br><span class="line">console.log(every)</span><br></pre></td></tr></table></figure>
+<p><strong>some：</strong></p>
+<ul>
+<li><p>返回布尔值，遇到一个满足条件的值后即刻返回true，否则返回false</p>
+</li>
+<li><p>break，continue）不可以跳出</p>
+</li>
+<li><p>callback三个参数，element, index, array</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let some = arr.some((a, n, i) =&gt; &#123; return a &gt; 3 &#125;)</span><br><span class="line">console.log(some)</span><br></pre></td></tr></table></figure>
+<p><strong>map：</strong></p>
+<ul>
+<li><p>返回新的数组，数组的每一项是返回的值，没有return 则每一项都是undefined</p>
+</li>
+<li><p>break，continue 不可以跳出</p>
+</li>
+<li><p>callback三个参数，element, index, array</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let map = arr.map((a, n, i) =&gt; &#123;</span><br><span class="line">  let val = a * 2 + 3</span><br><span class="line">  return val</span><br><span class="line">&#125;)</span><br><span class="line">console.log(map)</span><br></pre></td></tr></table></figure>
+<p><strong>reduce：</strong></p>
+<ul>
+<li><p>返回任意内容</p>
+</li>
+<li><p>break，continue不可以跳出</p>
+</li>
+<li><p>callback四个参数，accumulator: 计算参数，每次计算得到的return值（下面指定了初始值10）, element, index, array,与callback同级的参数还有initialValue，作为callback第一个参数的初始参数。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let reduce = arr.reduce((a, n, i, j) =&gt; &#123;</span><br><span class="line">  console.log(a, n, i, j, &apos;reduce&apos;)</span><br><span class="line">  return a + n</span><br><span class="line">&#125;, 10)</span><br><span class="line">console.log(reduce)</span><br></pre></td></tr></table></figure>
+<p><strong>find：</strong></p>
+<ul>
+<li><p>返回第一个符合条件的数组元素</p>
+</li>
+<li><p>break，continue不可以跳出</p>
+</li>
+<li><p>callback三个参数， element, index, array。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let find = arr.find((a, n, i) =&gt; &#123;</span><br><span class="line">  return a &gt; 4</span><br><span class="line">&#125;)</span><br><span class="line">console.log(find)</span><br></pre></td></tr></table></figure>
+<p><strong>findIndex：</strong></p>
+<ul>
+<li><p>返回第一个符合条件的元素索引，没有返回-1</p>
+</li>
+<li><p>break，continue不可以跳出</p>
+</li>
+<li><p>callback三个参数， element, index, array。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let find = arr.findIndex((a, n, i) =&gt; &#123;</span><br><span class="line">  return a &gt; 4</span><br><span class="line">&#125;)</span><br><span class="line">console.log(find)</span><br></pre></td></tr></table></figure>
+<p><strong>indexOf：</strong></p>
+<p>返回第一个符合条件的元素索引, 没有返回-1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1, 3, 5, 8].indexOf(8)</span><br></pre></td></tr></table></figure>
+<p><strong>fill: </strong></p>
+<p>填充数组，三个参数，填充内容，开始位置，结束位置。可以用来清空数组任意位置内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&apos;a&apos;, &apos;b&apos;, &apos;c&apos;].fill(&apos;&apos;, 1, 2)</span><br></pre></td></tr></table></figure>
+<p><strong>PS:新建一个初始长度为n的数组</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">方式1:es6</span><br><span class="line"></span><br><span class="line">let arr = Array.from(&#123; length: 100 &#125;)</span><br><span class="line">// Object.keys(arr)</span><br><span class="line"></span><br><span class="line">方式2:es5</span><br><span class="line">let arr = Array.apply(null,&#123; length: 100 &#125;)</span><br><span class="line">// Object.keys(arr)</span><br><span class="line"></span><br><span class="line">方式3:es6</span><br><span class="line">Array.from(new Array(100).keys())</span><br><span class="line">方式4:es6</span><br><span class="line">[...Array(100).keys()]</span><br></pre></td></tr></table></figure>
+<p><strong>includes：</strong></p>
+<ul>
+<li><p>返回true 或 false</p>
+</li>
+<li><p>两个参数：参数二是搜索的起始位置，默认为 0。如果为负数，则表示倒数的位置</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[1, 2, 3].includes(2)     // true</span><br><span class="line">[1, 2, 3].includes(2, -1) // true</span><br><span class="line">[1, 2, 3].includes(4)     // false</span><br><span class="line">[1, 2, NaN].includes(NaN) // true</span><br></pre></td></tr></table></figure>
+<p><strong>entries，keys，values：</strong></p>
+<ul>
+<li><p>它们都返回一个遍历器对象，可以用for…of循环进行遍历</p>
+</li>
+<li><p>唯一的区别是keys()是对键名的遍历、values()是对键值的遍历，entries()是对键值对的遍历</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 快速生成二维数组</span><br><span class="line"></span><br><span class="line">let arr = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;].entries()</span><br><span class="line">Array.from(arr)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">let arrKey = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;].keys()</span><br><span class="line">console.log(...arrKey)</span><br><span class="line">console.log(Array.from(arrKey))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">let arrVal = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;].values()</span><br><span class="line">console.log(...arrVal)</span><br><span class="line">console.log(Array.from(arrVal))</span><br></pre></td></tr></table></figure>
+<p><strong>Array.isArray:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Array.isArray([1, 2, 3])   // true</span><br><span class="line">Array.isArray(&#123;foo: 123&#125;)  // false</span><br><span class="line">Array.isArray(&apos;foobar&apos;);   // false</span><br><span class="line">Array.isArray(undefined);  // false</span><br><span class="line"></span><br><span class="line">if (!Array.isArray) &#123;</span><br><span class="line">  Array.isArray = function(arg) &#123;</span><br><span class="line">    return Object.prototype.toString.call(arg) === &apos;[object Array]&apos;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="六、操作数组"><a href="#六、操作数组" class="headerlink" title="六、操作数组"></a>六、操作数组</h3><p><strong>push：</strong></p>
+<ul>
+<li><p>方法可向数组的末尾添加一个或多个元素，并<strong>返回新的长度</strong></p>
+</li>
+<li><p>新元素将添加在数组的<strong>末尾</strong></p>
+</li>
+<li><p>此方法改变<strong>原数组</strong>的长度</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3]</span><br><span class="line">console.log(arr.push(9))    // 4</span><br><span class="line">console.log(arr)            // [1, 2, 3 , 9]</span><br></pre></td></tr></table></figure>
+<p><strong>shift：</strong></p>
+<ul>
+<li><p>把数组的第一个元素从其中删除，并<strong>返回第一个元素的值</strong></p>
+</li>
+<li><p>此方法改变<strong>原数组</strong>的长度</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3]</span><br><span class="line">console.log(arr.shift())   // 1</span><br><span class="line">console.log(arr)           // [2, 3]</span><br></pre></td></tr></table></figure>
+<p><strong>unshift：</strong></p>
+<ul>
+<li><p>向数组的开头添加一个或更多元素，并<strong>返回新的长度</strong></p>
+</li>
+<li><p>该方法将改变<strong>原数组</strong>的数目</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3]</span><br><span class="line">console.log(arr.unshift(9))    // 4</span><br><span class="line">console.log(arr)               // [9, 1, 2, 3]</span><br></pre></td></tr></table></figure>
+<p><strong>pop：</strong></p>
+<ul>
+<li><p>用于删除数组的最后一个元素并<strong>返回删除的元素</strong></p>
+</li>
+<li><p>此方法改变<strong>原数组</strong>的长度</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3]</span><br><span class="line">console.log(arr.pop())   // 3</span><br><span class="line">console.log(arr)           // [1, 2]</span><br></pre></td></tr></table></figure>
+<p><strong>split：</strong></p>
+<ul>
+<li><p>用于把一个字符串分割成字符串数组</p>
+</li>
+<li><p>如果把空字符串 (“”) 用作分割参数，每个字符之间都会被分割</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(&apos;a;b;c;d&apos;).split(&apos;;&apos;)  // [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;]</span><br><span class="line"></span><br><span class="line">(&apos;a;b;c;d&apos;).split(&apos;&apos;)   // [&quot;a&quot;, &quot;;&quot;, &quot;b&quot;, &quot;;&quot;, &quot;c&quot;, &quot;;&quot;, &quot;d&quot;]</span><br></pre></td></tr></table></figure>
+<p><strong>join：</strong></p>
+<ul>
+<li>join() 方法用于把数组中的所有元素转换一个字符串</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[1, 2, 3].join(&apos;;&apos;)  // &quot;1;2;3&quot;</span><br><span class="line">[1, 2, 3].join(&apos;&apos;)   // &apos;123&apos;</span><br></pre></td></tr></table></figure>
+<p><strong>splice：</strong></p>
+<ul>
+<li><p>如果从数组中删除了元素，则返回的是含有被删除的元素的数组</p>
+</li>
+<li><p>用于添加或删除数组中的元素</p>
+</li>
+<li><p>这种方法会改变<strong>原始数组</strong></p>
+</li>
+<li><p>参数：(index,howmany,item1,…..,itemX)</p>
+</li>
+<li><p>index：必需，规定从何处添加/删除元素。该参数是开始插入和（或）删除的数组元素的下标，必须是数字</p>
+</li>
+<li><p>可选，规定应该删除多少元素。必须是数字，但可以是 “0”。如未规定，则删除从 index 开始到原数组结尾的所有元素</p>
+</li>
+<li><p>可选，要添加到数组的新元素</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let arr = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;]</span><br><span class="line">console.log(arr.splice(1, 1))    // b</span><br><span class="line">console.log(arr)                 // [&quot;a&quot;, &quot;c&quot;, &quot;d&quot;]</span><br><span class="line"></span><br><span class="line">// 添加</span><br><span class="line"></span><br><span class="line">let arr = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;]</span><br><span class="line">console.log(arr.splice(2,0, 77))   // []</span><br><span class="line">console.log(arr)                   // [&quot;a&quot;, &quot;b&quot;, 77, &quot;c&quot;, &quot;d&quot;]</span><br></pre></td></tr></table></figure>
+<p><strong>slice：</strong></p>
+<ul>
+<li><p>slice() 方法可从已有的数组中返回选定的元素</p>
+</li>
+<li><p>slice()方法可提取字符串的某个部分，并以新的字符串返回被提取的部分</p>
+</li>
+<li><p>slice() 方法<strong>不会改变原始数组</strong></p>
+</li>
+<li><p>参数： start  和   end</p>
+</li>
+<li><p>start：可选，如是负数，从数组尾部开始算起。-1 指最后一个元素，-2 指倒数第二个元素，以此类推</p>
+</li>
+<li><p>end： 可选，未指定，取start到数组结尾，负数，从数组尾部开始算</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;]</span><br><span class="line">console.log(arr..slice(2, 3))   // [&apos;c&apos;]</span><br><span class="line">console.log(arr)                // [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;]</span><br></pre></td></tr></table></figure>
+<p><strong>reverse：</strong></p>
+<ul>
+<li>该方法会改变原来的数组，而不会创建新的数组</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let arr = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;]</span><br><span class="line">console.log(arr.reverse())  // [&quot;d&quot;, &quot;c&quot;, &quot;b&quot;, &quot;a&quot;]</span><br></pre></td></tr></table></figure>
+<p><strong>concat：</strong></p>
+<ul>
+<li><p>concat() 方法用于连接两个或多个数组</p>
+</li>
+<li><p>该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 2, 3]</span><br><span class="line">let arr2 = [4, 5, 5]</span><br><span class="line">console.log(arr2.concat(arr)) // [4, 5, 6, 1, 2, 3]</span><br><span class="line">console.log(arr2)             // [4, 5, 5]</span><br><span class="line">console.log(arr)              // [1, 2, 3]</span><br></pre></td></tr></table></figure>
+<p><strong>sort：</strong></p>
+<ul>
+<li><p>对数组的引用。请注意，数组在原数组上进行排序，不生成副本</p>
+</li>
+<li><p>sort() 方法用于对数组的元素进行排序</p>
+</li>
+<li><p>排序顺序可以是字母或数字，并按升序或降序</p>
+</li>
+<li><p>默认排序顺序为按字母升序</p>
+</li>
+<li><p>当数字是按字母顺序排列时”40”将排在”5”前面</p>
+</li>
+<li><p>使用数字排序，你必须通过一个函数作为参数来调用</p>
+</li>
+<li><p>函数指定数字是按照升序还是降序排列</p>
+</li>
+<li><p>这种方法会改变原始数组</p>
+</li>
+</ul>
+<p><strong>function的两个参数分别是数组的n+1和n的相邻两项</strong></p>
+<p>（n+1）- n ： 是按照从小到大排序， 反之从大到小。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr = [40,100,1,5,25,10]</span><br><span class="line">arr.sort(function(a,b)&#123;return a-b&#125;)</span><br><span class="line">console.log(arr)  // [1, 5, 10, 25, 40, 100]</span><br></pre></td></tr></table></figure>
+<p>基于sort的一个排序方法分离</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// 分开数字和字符</span><br><span class="line"></span><br><span class="line">function s(a, b) &#123;</span><br><span class="line">  if (a &gt; b) return 1</span><br><span class="line">    return -1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 分开浮点数和整数</span><br><span class="line"></span><br><span class="line">function m(a, b) &#123;</span><br><span class="line">  if (a &gt; Math.floor(a)) return 1</span><br><span class="line">  if (b &gt; Math.floor(b)) return -1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// [1, 2, 3, 3, 4, 5, 9, &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;a&quot;, &quot;b&quot;, &quot;c&quot;]</span><br><span class="line">let str = [&apos;a&apos;, &apos;c&apos;, &apos;A&apos;, &apos;b&apos;, &apos;C&apos;, &apos;B&apos;, 1, 3, 2, 9, 4, 3, 5].sort(s)</span><br><span class="line"></span><br><span class="line">// [1, 4, 2, 4.22, 1.21, 2.44]</span><br><span class="line">let floor = [1, 4, 2, 4.22, 1.21, 2.44].sort(m)</span><br></pre></td></tr></table></figure>
+<p><strong>copyWithin:</strong></p>
+<ul>
+<li><p>改变原数组</p>
+</li>
+<li><p>参数：target, start, end</p>
+</li>
+<li><p>target：必需。复制到指定目标索引位置</p>
+</li>
+<li><p>start：可选。元素复制的起始位置</p>
+</li>
+<li><p>end： 可选。停止复制的索引位置 (默认为 array.length)。如果为负值，表示倒数</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let arr = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]</span><br><span class="line">arr.copyWithin(2, 0)     // [&quot;a&quot;, &quot;b&quot;, &quot;a&quot;]</span><br></pre></td></tr></table></figure>
+<p><strong>lastIndexOf:</strong></p>
+<ul>
+<li><p>返回一个指定的元素在数组中最后出现的位置，从该字符串的后面向前查找</p>
+</li>
+<li><p>如果要检索的元素没有出现，则该方法返回 -1</p>
+</li>
+<li><p>该方法将从尾到头地检索数组中指定元素 item。开始检索的位置在数组的 start 处或数组的结尾（没有指定 start 参数时）。如果找到一个 item，则返回 item 从尾向前检索第一个次出现在数组的位置。数组的索引开始位置是从 0 开始的</p>
+</li>
+<li><p>如果在数组中没找到指定元素则返回 -1。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let arr = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;g&apos;, &apos;l&apos;]</span><br><span class="line">arr.lastIndexOf(&apos;g&apos;)   // 4</span><br></pre></td></tr></table></figure>
+<p><strong>toString：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&apos;f&apos;, &apos;c&apos;].toString()  // f,c</span><br></pre></td></tr></table></figure>
+<p><strong>js类型判断：</strong></p>
+<p>Object.prototype.toString: Object.prototype下的toString是最原始方式，其他类型都或多或少重写了toString()方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Object.prototype.toString.call(&#123;&#125;)             // [object Object]</span><br><span class="line"></span><br><span class="line">Object.prototype.toString.call([])             // [object Array]</span><br><span class="line"></span><br><span class="line">Object.prototype.toString.call(function()&#123;&#125;)   // [object Function]</span><br><span class="line"></span><br><span class="line">Object.prototype.toString.call(&apos;&apos;)             // [object String]</span><br><span class="line"></span><br><span class="line">Object.prototype.toString.call(1)              // [object Number]</span><br><span class="line"></span><br><span class="line">Object.prototype.toString.call(true)           // [object Boolean]</span><br><span class="line"></span><br><span class="line">Object.prototype.toString.call(null)           // [object Null]</span><br><span class="line"></span><br><span class="line">Object.prototype.toString.call(undefined)      // [object Undefined]</span><br><span class="line"></span><br><span class="line">Object.prototype.toString.call()               // [object Undefined]</span><br><span class="line"></span><br><span class="line">Object.prototype.toString.call(new Date())     // [object Date]</span><br><span class="line"></span><br><span class="line">Object.prototype.toString.call(/at/)           // [object RegExp]</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuyongshun.github.io/2018/01/19/ES6-decorate/" data-id="ckdcq6vru000bd8cu7z3q5467" class="article-share-link">Share</a>
+      <a data-url="http://liuyongshun.github.io/2018/01/19/ES6-array/" data-id="ckdcq7px1000efhcuq85luusu" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li></ul>
 
     </footer>
   </div>
@@ -146,7 +410,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/array/">array</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/async/">async</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/class/">class</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/decorate/">decorate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/export-import/">export&import</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/fuction/">fuction</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/generator/">generator</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/object/">object</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/promise/">promise</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/reflect/">reflect</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/set-map/">set&map</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/string/">string</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/variable-deconstruction/">variable&deconstruction</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/">FLUTTER</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/dart/">dart</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/env/">env</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/">H5</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-history/">h5 history</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-video/">h5 video</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVASCRIPT/">JAVASCRIPT</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVASCRIPT/变量/">变量</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm/">algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm2/">algorithm2</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/data-constructor/">data constructor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/principle/">principle</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/">NODE</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/express/">express</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/module/">module</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongo/">mongo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoCommand/">mongoCommand</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoOprate/">mongoOprate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoodb/">mongoodb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-api/">node api</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-buffer/">node buffer</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-stream/">node stream</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/variable/">variable</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/">NPM</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/cli/">cli</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/npm-package/">npm package</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/">PLAY</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/eat/">eat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/photo/">photo</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/">REACT</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/redux/">redux</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/chrome/">chrome</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/chrome-perf/">chrome-perf</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/frequently/">frequently</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/mac/">mac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/nginx/">nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/vscode-plugin/">vscode plugin</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/">VUE</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/vueRouter/">vueRouter</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/">WEBPACK</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/plugin/">plugin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackDescription/">webpackDescription</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackMerge/">webpackMerge</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/">WEEX</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/weex/">weex</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/multi-platform/">multi-platform</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/multi-platform/multi-platform/">multi-platform</a><span class="category-list-count">1</span></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/array/">array</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/async/">async</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/class/">class</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/decorate/">decorate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/export-import/">export&import</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/fuction/">fuction</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/generator/">generator</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/object/">object</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/promise/">promise</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/reflect/">reflect</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/set-map/">set&map</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/string/">string</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/variable-deconstruction/">variable&deconstruction</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/">FLUTTER</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/dart/">dart</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/env/">env</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/">H5</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-history/">h5 history</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-video/">h5 video</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JAVASCRIPT/">JAVASCRIPT</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JAVASCRIPT/变量/">变量</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm/">algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm2/">algorithm2</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/data-constructor/">data constructor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/principle/">principle</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/">NODE</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/express/">express</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/module/">module</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongo/">mongo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoCommand/">mongoCommand</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoOprate/">mongoOprate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoodb/">mongoodb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-api/">node api</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-buffer/">node buffer</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-stream/">node stream</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/variable/">variable</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/">NPM</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/cli/">cli</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/npm-package/">npm package</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/">PLAY</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/eat/">eat</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/photo/">photo</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/">REACT</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/redux/">redux</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/chrome/">chrome</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/chrome-perf/">chrome-perf</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/frequently/">frequently</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/mac/">mac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/nginx/">nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/vscode-plugin/">vscode plugin</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/">VUE</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/vueRouter/">vueRouter</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/">WEBPACK</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/ast/">ast</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/plugin/">plugin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackDescription/">webpackDescription</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackMerge/">webpackMerge</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/">WEEX</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/weex/">weex</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/multi-platform/">multi-platform</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/multi-platform/multi-platform/">multi-platform</a><span class="category-list-count">1</span></li></ul></li></ul>
     </div>
   </div>
 
@@ -175,7 +439,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -188,11 +452,15 @@
       <ul>
         
           <li>
-            <a href="/2020/04/19/REACT-redux/">redux &amp; react-redux</a>
+            <a href="/2020/06/19/AST/">AST</a>
           </li>
         
           <li>
             <a href="/2020/04/19/JS-data-constractor/">data constructor</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/19/REACT-redux/">redux &amp; react-redux</a>
           </li>
         
           <li>
@@ -201,10 +469,6 @@
         
           <li>
             <a href="/2020/03/19/paltform/">multi-platform</a>
-          </li>
-        
-          <li>
-            <a href="/2020/03/19/tool-chrome/">chrome</a>
           </li>
         
       </ul>
