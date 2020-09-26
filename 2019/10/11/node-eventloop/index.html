@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>node | 七月</title>
+  <meta name="baidu-site-verification" content="vdMfpFtVYF">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Smiple, 简, jian, 简博客">
+  <meta name="description" content="node事件循环Node.js采用V8作为js的解析引擎，而I/O处理方面使用了自己设计的libuv，libuv是一个基于事件驱动的跨平台抽象层，封装了不同操作系统一些底层特性，对外提供统一的API，事件循环机制也是它里面的实现  V8引擎解析JavaScript脚本  解析后的代码，调用Node API  libuv库负责Node API的执行。将不同的任务分配给不同的线程，形成一个EventL">
+<meta name="keywords" content="node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node">
+<meta property="og:url" content="http://liuyongshun.github.io/2019/10/11/node-eventloop/index.html">
+<meta property="og:site_name" content="七月">
+<meta property="og:description" content="node事件循环Node.js采用V8作为js的解析引擎，而I/O处理方面使用了自己设计的libuv，libuv是一个基于事件驱动的跨平台抽象层，封装了不同操作系统一些底层特性，对外提供统一的API，事件循环机制也是它里面的实现  V8引擎解析JavaScript脚本  解析后的代码，调用Node API  libuv库负责Node API的执行。将不同的任务分配给不同的线程，形成一个EventL">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-09-24T15:07:44.852Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="node">
+<meta name="twitter:description" content="node事件循环Node.js采用V8作为js的解析引擎，而I/O处理方面使用了自己设计的libuv，libuv是一个基于事件驱动的跨平台抽象层，封装了不同操作系统一些底层特性，对外提供统一的API，事件循环机制也是它里面的实现  V8引擎解析JavaScript脚本  解析后的代码，调用Node API  libuv库负责Node API的执行。将不同的任务分配给不同的线程，形成一个EventL">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  <script></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">七月</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">是七月呀</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/link">链接</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://liuyongshun.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-node-eventloop" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/11/node-eventloop/" class="article-date">
+  <time datetime="2019-10-10T21:24:00.000Z" itemprop="datePublished">2019-10-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/NODE/">NODE</a>►<a class="article-category-link" href="/categories/NODE/node-eventloop/">node eventloop</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      node
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="node事件循环"><a href="#node事件循环" class="headerlink" title="node事件循环"></a>node事件循环</h3><p>Node.js采用V8作为js的解析引擎，而I/O处理方面使用了自己设计的libuv，libuv是一个基于事件驱动的跨平台抽象层，封装了不同操作系统一些底层特性，对外提供统一的API，事件循环机制也是它里面的实现</p>
+<ul>
+<li><p>V8引擎解析JavaScript脚本</p>
+</li>
+<li><p>解析后的代码，调用Node API</p>
+</li>
+<li><p>libuv库负责Node API的执行。将不同的任务分配给不同的线程，形成一个EventLoop，以异步的方式将任务的执行结果返回给V8引擎</p>
+</li>
+<li><p>V8引擎再将结果返回给用户</p>
+</li>
+</ul>
+<h3 id="event-loop-机制"><a href="#event-loop-机制" class="headerlink" title="event loop 机制"></a>event loop 机制</h3><h4 id="node-事件机制分六个阶段"><a href="#node-事件机制分六个阶段" class="headerlink" title="node 事件机制分六个阶段"></a>node 事件机制分六个阶段</h4><p>timers -&gt; pending callbacks -&gt; idle, prepare -&gt; poll -&gt; check -&gt; close callbacks</p>
+<p><strong>定时器：</strong>执行 setTimeout 和 setInterval 回调函数</p>
+<p><strong>待定回调：</strong>执行一些系统操作回调，比如 TCP 错误，名字会让人误解为执行 I/O 回调处理程序</p>
+<p><strong>idle, prepare：</strong>仅系统内部使用</p>
+<p><strong>轮询：</strong>检索新的 I/O 事件;执行与 I/O 相关的回调，其余情况将在适当的时候在此 <strong>阻塞</strong></p>
+<p><strong>检测：</strong>setImmediate() 回调函数在这里执行</p>
+<p><strong>关闭回调函数：</strong>一些关闭的回调函数，如：socket.on(‘close’, …)</p>
+<p>一些读写，以及用户的交互操作，都在 poll 轮询阶段处理</p>
+<h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><p>当 Node.js 启动后，它会初始化事件循环，处理已提供的输入脚本，它可能会调用一些异步的 API、调度定时器，或者调用 process.nextTick()，然后开始处理事件循环</p>
+<ul>
+<li><p>执行输入代码</p>
+</li>
+<li><p>执行 process.nextTick 回调</p>
+</li>
+<li><p>执行 microtasks</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">  console.log(&apos;macro&apos;);</span><br><span class="line">&#125;, 0);</span><br><span class="line"></span><br><span class="line">var micro = new Promise((resolve) =&gt; &#123;</span><br><span class="line">  resolve(&apos;micro&apos;)</span><br><span class="line">&#125;)</span><br><span class="line">micro.then(res =&gt; &#123;</span><br><span class="line">  console.log(res)</span><br><span class="line">&#125;)</span><br><span class="line">process.nextTick(() =&gt; &#123;</span><br><span class="line">  console.log(&apos;nextTick&apos;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// nextTick</span><br><span class="line">// micro</span><br><span class="line">// macro</span><br></pre></td></tr></table></figure>
+<h4 id="timer"><a href="#timer" class="headerlink" title="timer"></a>timer</h4><p>timers 阶段会执行 setTimeout 和 setInterval 回调，并且是由 poll 阶段控制的。在 Node 中定时器指定的时间也不是准确时间，只能是尽快执行</p>
+<ul>
+<li><p>检查 timer 队列是否有到期的 timer 回调，如果有，将到期的 timer 回调按照 timerId 升序执行</p>
+</li>
+<li><p>检查是否有 process.nextTick 任务，如果有，全部执行</p>
+</li>
+<li><p>检查是否有microtask，如果有，全部执行</p>
+</li>
+<li><p>退出该阶段</p>
+</li>
+</ul>
+<h4 id="pending-callbacks"><a href="#pending-callbacks" class="headerlink" title="pending callbacks"></a>pending callbacks</h4><ul>
+<li><p>检查是否有 pending 的 I/O 回调。如果有，执行回调</p>
+</li>
+<li><p>检查是否有 process.nextTick 任务，如果有，全部执行</p>
+</li>
+<li><p>检查是否有microtask，如果有，全部执行</p>
+</li>
+<li><p>退出该阶段</p>
+</li>
+</ul>
+<h4 id="poll"><a href="#poll" class="headerlink" title="poll"></a>poll</h4><p><strong>两个重要功能</strong></p>
+<ul>
+<li><p>处理 poll 队列的事件</p>
+</li>
+<li><p>当有已超时的 timer，执行它的回调函数</p>
+</li>
+</ul>
+<p><strong>进入该阶段，且轮询队列不是空</strong></p>
+<ul>
+<li><p>事件循环将同步执行 poll 队列里的回调，直到队列为空或执行的回调达到系统上限</p>
+</li>
+<li><p>如果没有其他阶段的事要处理，事件循环将会一直阻塞在这个阶段，等待新的 I/O 事件加入 poll 队列中</p>
+</li>
+</ul>
+<p><strong>进入该阶段，且轮询队列是空</strong></p>
+<p>&nbsp;<strong>1. 如果 check 队列已经被 setImmediate 设定了回调, 事件循环将结束 poll 阶段往下进入 check 阶段来执行 check 队列里面的回调</strong></p>
+<ul>
+<li><p>检查是否有 process.nextTick 回调，如果有，全部执行</p>
+</li>
+<li><p>检查是否有 microtaks，如果有，全部执行</p>
+</li>
+</ul>
+<p>&nbsp;<strong>2. 如果 setImmediate 没有回调，则事件循环将等待在 poll 阶段，等待新的回调添加到队列中，然后立即执行</strong></p>
+<ul>
+<li><p>检查是否有 process.nextTick 回调，如果有，全部执行</p>
+</li>
+<li><p>检查是否有 microtaks，如果有，全部执行</p>
+</li>
+</ul>
+<p>&nbsp;<strong>3. 一旦轮询队列为空，发现有一个或多个计时器已准备就绪，则事件循环将绕回计时器阶段以执行这些计时器的回调</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;)</span><br><span class="line"></span><br><span class="line">const readStartTime = Date.now()</span><br><span class="line"></span><br><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">  console.log(&apos;延时8毫秒&apos;)</span><br><span class="line">&#125;, 8)</span><br><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">  console.log(&apos;延时200毫秒&apos;, `实际执行用时$&#123;Date.now() - readStartTime&#125;`)</span><br><span class="line">&#125;, 200)</span><br><span class="line"></span><br><span class="line">function someAsyncOperation(callback) &#123;</span><br><span class="line">  fs.readFile(&apos;./file.js&apos;, callback);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">someAsyncOperation(() =&gt; &#123;</span><br><span class="line">  const timestart = Date.now()</span><br><span class="line">  while (Date.now() - timestart &lt; 500) &#123;&#125;</span><br><span class="line">  console.log(`读取文件和执行回调耗时$&#123;Date.now() - readStartTime&#125;`)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">setTimeout(() =&gt; &#123;</span><br><span class="line">  console.log(&apos;延时0毫秒&apos;)</span><br><span class="line">&#125;)</span><br><span class="line">setImmediate(() =&gt; &#123;</span><br><span class="line">  console.log(&apos;setImmediate&apos;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// setImmediate  和 延时0毫秒的 setTimout 随机1，2位</span><br><span class="line">// 延时0毫秒</span><br><span class="line">// 延时8毫秒</span><br><span class="line">// 读取文件和执行回调耗时548</span><br><span class="line">// 延时200毫秒 实际执行用时549</span><br></pre></td></tr></table></figure>
+<p><strong>为什么 setTimeout 和 setImmediate 打印先后不一？</strong></p>
+<ul>
+<li><p>setTimeout 在 timers 阶段执行，而 setImmediate 在 check 阶段执行，且 setTimeout 延时是0，理论setTimeout会早于setImmediate完成</p>
+</li>
+<li><p>但实际上，Node 做不到0毫秒，最少也需要1毫秒，setTimeout(f, 0)等同于setTimeout(f, 1)</p>
+</li>
+<li><p>实际执行进入事件循环以后，有可能到了1毫秒，也可能没到，取决于运行状况。如果没到，说明 timers 阶段没有到期的回调可以执行，进入下一个阶段</p>
+</li>
+</ul>
+<p><strong>但是，下面的代码一定是先输出2，再输出1</strong></p>
+<p>代码会先进入 poll 阶段，然后是 check 阶段，最后才是 timers 阶段</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;);</span><br><span class="line">fs.readFile(&apos;test.js&apos;, () =&gt; &#123;</span><br><span class="line">  setTimeout(() =&gt; console.log(1));</span><br><span class="line">  setImmediate(() =&gt; console.log(2));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>为什么200毫秒的timer回调会到549之后才执行？</strong></p>
+<ul>
+<li><p>node 初始化后，进入timer阶段，此时可能过了 1ms 也可能没有，如果过了，则执行回调用打印 <code>延时0毫秒</code>，此时队列已经没有可执行的回调。结束并进入下一个阶段</p>
+</li>
+<li><p>进入 pending callbacks 阶段，发现队列为空，结束并进入下一个阶段</p>
+</li>
+<li><p>进入内部阶段无（idle，prepare），发现队列为空，结束并进入下一个阶段</p>
+</li>
+<li><p>进入 poll 循环阶段，此时它有一个空队列（fs.readFile 尚未完成，一般要100ms左右），而空队列的时候有两种情况，有 setImmediate 调度则进入 check 阶段，执行 setImmediate， 没有 setImmediate 则事件循环将等待（阻塞在此）回调(I/O回调)被添加到队列中，然后立即执行</p>
+</li>
+<li><p>第一轮大循环存在 setImmediate 且未执行，因此结束poll 阶段，进入check 执行 setImmediate，执行完后，check队列已经清空，结束并进入下一个阶段</p>
+</li>
+<li><p>进入关闭阶段，发现队列为空，结束</p>
+</li>
+<li><p>检查是否有活跃度的 handles（定时器、IO等事件句柄），发现仍存在未执行的内容，再次进入timer</p>
+</li>
+<li><p>而此时 8 ms的定时器已经到达时间限制（执行上面的代码花费时间不足200ms，所以 200ms 还没有到），将该回调拿出并执行</p>
+</li>
+<li><p>执行完成后不再有可执行回调，再次结束进入下一个阶段</p>
+</li>
+<li><p>进入 pending callbacks 阶段，发现队列为空，结束并进入下一个阶段</p>
+</li>
+<li><p>进入内部阶段无（idle，prepare），发现队列为空，结束并进入下一个阶段</p>
+</li>
+<li><p>再次到达 poll 阶段时，此时 readFile 可能完成，亦可能未完成，如果完成了，则回调进入poll队列，立即同步至执行，如果未完成，队列依然为空。检测 setImmediate 是否有调度</p>
+</li>
+<li><p>上一个循环 setImmediate 已经执行完， 所以没有 setImmediate 调度，则事件循环将在此阶段等待回调（readFile的回调）被添加到队列中，然后立即执行（执行花费500ms，此时setTimeout 已经到时间了，但是阻塞在这里）</p>
+</li>
+<li><p>readFile的回调执行结束，poll 轮询清空，发现此时已经有到期的定时器，然后绕回到timer，执行 setTimeout 回调</p>
+</li>
+</ul>
+<h4 id="check阶段"><a href="#check阶段" class="headerlink" title="check阶段"></a>check阶段</h4><p>setImmediate()的回调会被加入check队列中</p>
+<ul>
+<li><p>如果有immediate回调，则执行所有immediate回调</p>
+</li>
+<li><p>检查是否有 process.nextTick 回调，如果有，全部执行</p>
+</li>
+<li><p>检查是否有 microtaks，如果有，全部执行</p>
+</li>
+<li><p>退出 check 阶段</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">setImmediate(() =&gt; &#123;</span><br><span class="line">  console.log(&apos;setImmediate 一次&apos;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">setImmediate(() =&gt; &#123;</span><br><span class="line">  console.log(&apos;setImmediate 二次&apos;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">process.nextTick(() =&gt; &#123;</span><br><span class="line">  console.log(&apos;nextTick&apos;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const P = new Promise((resolve) =&gt; &#123;</span><br><span class="line">  resolve(&apos;micro&apos;)</span><br><span class="line">&#125;)</span><br><span class="line">P.then(res =&gt; &#123;</span><br><span class="line">  console.log(res)</span><br><span class="line">&#125;)</span><br><span class="line">// nextTick</span><br><span class="line">// micro</span><br><span class="line">// setImmediate 一次</span><br><span class="line">// setImmediate 二次</span><br></pre></td></tr></table></figure>
+<h4 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h4><p>检查是否有活跃的 handles（定时器、IO等事件句柄）</p>
+<ul>
+<li><p>如果有，继续下一轮循环</p>
+</li>
+<li><p>如果没有，结束事件循环，退出程序</p>
+</li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://nodejs.org/zh-cn/docs/guides/event-loop-timers-and-nexttick/" target="_blank" rel="noopener">node机制</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuyongshun.github.io/2019/10/11/node-eventloop/" data-id="ckfjqp2kq002wktcueis6j122" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/10/25/node-stream/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          node stream
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/07/weex/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">weex</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DEV/">DEV</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DEV/trouble/">trouble</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/array/">array</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/async/">async</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/class/">class</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/decorate/">decorate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/export-import/">export&import</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/fuction/">fuction</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/generator/">generator</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/object/">object</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/promise/">promise</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/proxy/">proxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/reflect/">reflect</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/set-map/">set&map</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/string/">string</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/variable-deconstruction/">variable&deconstruction</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/">FLUTTER</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/dart/">dart</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/env/">env</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/">H5</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-history/">h5 history</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-video/">h5 video</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-CSS/">HTML & CSS</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-CSS/HTML-CSS/">HTML & CSS</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm/">algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm2/">algorithm2</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/base/">base</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/data-constructor/">data constructor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/principle/">principle</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/">NODE</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/express/">express</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/module/">module</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongo/">mongo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoCommand/">mongoCommand</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoOprate/">mongoOprate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoodb/">mongoodb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-api/">node api</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-buffer/">node buffer</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-eventloop/">node eventloop</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-stream/">node stream</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/variable/">variable</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/">NPM</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/cli/">cli</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/npm-package/">npm package</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/">PLAY</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/photo/">photo</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/">REACT</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/react/">react</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/redux/">redux</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/chrome/">chrome</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/chrome-perf/">chrome-perf</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/debug/">debug</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/frequently/">frequently</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/mac/">mac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/nginx/">nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/vscode-plugin/">vscode plugin</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/">VUE</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/principle/">principle</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/vueRouter/">vueRouter</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/web/">web</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/">WEBPACK</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/ast/">ast</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/plugin/">plugin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackDescription/">webpackDescription</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackMerge/">webpackMerge</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/">WEEX</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/weex/">weex</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/multi-platform/">multi-platform</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/multi-platform/multi-platform/">multi-platform</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/performance/">performance</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/performance/performance/">performance</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DEV/">DEV</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/H5/">H5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/">NPM</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/REACT/">REACT</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cli/">cli</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/">flutter</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/performance/">performance</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/play/">play</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/variable/">variable</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weex/">weex</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DEV/" style="font-size: 10px;">DEV</a> <a href="/tags/ES6/" style="font-size: 11.67px;">ES6</a> <a href="/tags/H5/" style="font-size: 11.67px;">H5</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JS/" style="font-size: 15px;">JS</a> <a href="/tags/NPM/" style="font-size: 11.67px;">NPM</a> <a href="/tags/REACT/" style="font-size: 11.67px;">REACT</a> <a href="/tags/cli/" style="font-size: 10px;">cli</a> <a href="/tags/es6/" style="font-size: 20px;">es6</a> <a href="/tags/flutter/" style="font-size: 13.33px;">flutter</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/node/" style="font-size: 18.33px;">node</a> <a href="/tags/performance/" style="font-size: 10px;">performance</a> <a href="/tags/play/" style="font-size: 10px;">play</a> <a href="/tags/tool/" style="font-size: 16.67px;">tool</a> <a href="/tags/variable/" style="font-size: 10px;">variable</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue/" style="font-size: 11.67px;">vue</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/weex/" style="font-size: 10px;">weex</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/19/AST/">AST</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/15/REACT-sourceone/">react</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/19/REACT-redux/">redux &amp; react-redux</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/19/JS-data-constractor/">data constructor</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/03/JS-base/">base</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <ul class="hobby-outer">
+      <li class="hobby-item"><a href="http://blog.csdn.net/liuyongshun2/article">CSDN</a></li>
+      <li class="hobby-item"><a href="https://github.com/liuyongshun">GITHUB</a></li>
+    </ul>
+    <div id="footer-info" class="inner">
+      &copy; 2020 cheat&nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1274642270'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1274642270%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/link" class="mobile-nav-link">链接</a>
+  
+</nav>
+    
+
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<div id="totop">
+  <a title="javascript:;">返回<br>顶部</a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>
