@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>七月</title>
+  <meta name="baidu-site-verification" content="vdMfpFtVYF">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Smiple, 简, jian, 简博客">
+  <meta name="description" content="得与失之间，是我所有的美好和思念">
+<meta name="keywords" content="Smiple, 简, jian, 简博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="七月">
+<meta property="og:url" content="http://liuyongshun.github.io/page/35/index.html">
+<meta property="og:site_name" content="七月">
+<meta property="og:description" content="得与失之间，是我所有的美好和思念">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="七月">
+<meta name="twitter:description" content="得与失之间，是我所有的美好和思念">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  <script></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">七月</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">是七月呀</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/link">链接</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://liuyongshun.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-performance-load" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/13/performance-load/" class="article-date">
+  <time datetime="2019-06-13T10:24:00.000Z" itemprop="datePublished">2019-06-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/performance/">performance</a>►<a class="article-category-link" href="/categories/performance/performance/">performance</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/13/performance-load/">网站访问流程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="URL-解析"><a href="#URL-解析" class="headerlink" title="URL 解析"></a>URL 解析</h3><ol>
+<li><p>检查 URL 是否合法，并根据你输入的内容进行自动完成、字符编码等操作</p>
+</li>
+<li><p>由于安全隐患，会使用 HSTS 强制客户端使用 HTTPS 访问页面</p>
+</li>
+<li><p>进行如安全检查、访问限制</p>
+</li>
+<li><p>检查缓存</p>
+</li>
+</ol>
+<h3 id="DNS-查询"><a href="#DNS-查询" class="headerlink" title="DNS 查询"></a>DNS 查询</h3><p>如<code>https://ex.com</code>, 被定位到IP地址为 93.184.216.34 的服务器。以前没有访问过这个网站，就需要进行DNS查找</p>
+<p>浏览器通过服务器名称请求DNS进行查找，最终返回一个IP地址，第一次请求之后，这个IP地址可能会被缓存一段时间，这段时间内可以通过从缓存里面检索IP，加速后续的请求</p>
+<p>通过主机名加载一个页面通常仅需要DNS查找一次。但 DNS 需要对不同的页面指向的主机名进行查找，如fonts, images, scripts 都不同的主机名，DNS会对每一个进行查找（DNS预加载优化dns-prefetch）</p>
+<ol>
+<li><p>先检查浏览器缓存中有没有对应域名解析的IP地址，有则返回</p>
+</li>
+<li><p>否则到操作系统的hosts文件中查找，有则返回</p>
+</li>
+<li><p>否则向<strong>外网</strong>的本地区域名服务器（运营商提供）发起查询请求，本地服务器收到请求之后，会先查询本地缓存，有则返回</p>
+</li>
+<li><p>否则会向跟域名服务器发起请求，根域名返回来的是一个所查询域（根的子域，.com）的主域名服务器的地址</p>
+</li>
+<li><p>接着，本地服务器再向上一步（4步）返回来的域名服务器下发送请求</p>
+</li>
+<li><p>得返回此域名对应的Name Server域名服务器的地址，通常就是你注册的域名服务器</p>
+</li>
+<li><p>得到Name Server 服务器地址之后，Local DNS 再次向Name server 服务器发送请求，域名服务器会查询存储的域名和IP的映射关系表，得到目标IP记录</p>
+</li>
+</ol>
+<p><strong>基本流程图</strong></p>
+<p><img src="https://s1.ax1x.com/2020/10/13/04eLYn.png" alt></p>
+<p><strong>递归查找</strong></p>
+<p>一路查下去中间不返回，得到最终结果才返回信息（浏览器到本地DNS服务器的过程）</p>
+<p><strong>DNS 劫持</strong></p>
+<p>通过某种手段，使用户在输入网址后，无法访问到正确的 DNS 服务器</p>
+<ul>
+<li><p>本机DNS劫持: 用户的计算机感染上木马病毒，或者恶意软件之后，恶意修改本地DNS配置，比如修改本地hosts文件，缓存等</p>
+</li>
+<li><p>路由DNS劫持: 路由器密码被破解，攻击者可以侵入到路由管理员账号中，修改路由器的默认配置</p>
+</li>
+<li><p>攻击DNS服务器：直接攻击DNS服务器，例如对DNS服务器进行DDOS攻击，可以是DNS服务器宕机，出现异常请求，还可以利用某些手段感染dns服务器的缓存，使给用户返回来的是恶意的ip地址</p>
+</li>
+</ul>
+<h3 id="TCP-连接"><a href="#TCP-连接" class="headerlink" title="TCP 连接"></a>TCP 连接</h3><p>图片来自于<a href="https://blog.csdn.net/cc1949/article/details/79063439" target="_blank" rel="noopener">这里</a></p>
+<p><strong>数据包：</strong>从上往下，每经过一层，协议就会在包头上面做点手脚，加点东西，传送到接收端，再层层解套出来</p>
+<p><img src="https://s1.ax1x.com/2020/10/13/04ndKK.jpg" alt></p>
+<h4 id="1-应用层：发送-HTTP-请求"><a href="#1-应用层：发送-HTTP-请求" class="headerlink" title="1. 应用层：发送 HTTP 请求"></a>1. 应用层：发送 HTTP 请求</h4><ul>
+<li><p>上一步得到服务器 IP 地址，浏览器开始构造一个 HTTP 报文，包括：请求报头、请求方法、目标地址、遵循的协议，请求主体（其他参数）</p>
+</li>
+<li><p>浏览器只能发送 GET、POST 方法，而打开网页使用的是 GET 方法</p>
+</li>
+</ul>
+<h4 id="2-传输层：TCP-传输报文"><a href="#2-传输层：TCP-传输报文" class="headerlink" title="2. 传输层：TCP 传输报文"></a>2. 传输层：TCP 传输报文</h4><ul>
+<li><p>传输层会发起一条到达服务器的 TCP 连接，为方便传输，对数据进行分割（段为单位），并编号，方便服务器准确地还原报文信息</p>
+</li>
+<li><p>在建立连接前，会先进行 TCP 三次握手</p>
+</li>
+</ul>
+<p><strong>三次握手建立连接</strong></p>
+<p>TCP的”三次握手“技术经常被称为”SYN-SYN-ACK“—更确切的是 SYN, SYN-ACK, ACK— 通过TCP首先发送了三个消息进行协商，开始一个TCP会话在两台电脑之间，意味着每台服务器之间还要来回发送三条消息，而请求尚未发出</p>
+<p>图片来自<a href="https://www.cnblogs.com/xiaolincoding/p/12638546.html" target="_blank" rel="noopener">这里</a></p>
+<p><img src="https://s1.ax1x.com/2020/10/13/04Mt8s.png" alt></p>
+<ol>
+<li><p>开始客户端和服务端都处于 CLOSED 状态 -&gt; 先是服务端主动监听某个端口，处于 LISTEN 状态</p>
+</li>
+<li><p>第一个 SYN 报文：客户端会随机初始化序号（client_isn），将此序号置于 TCP 首部的「序号」字段中，同时把 SYN 标志位置为 1 。接着把第一个 SYN 报文发送给服务端，表示向服务端发起连接，该报文不包含应用层数据，之后客户端处于 SYN-SENT 状态</p>
+</li>
+<li><p>第二个 SYN + ACK 报文<br>服务端收到客户端的 SYN 报文后，首先服务端也随机初始化自己的序号，将此序号填入 TCP 首部的「序号」字段中，其次把 TCP 首部的「确认应答号」字段填入 client_isn + 1, 接着把 SYN 和 ACK 标志位置为 1。最后把该报文发给客户端，该报文也不包含应用层数据，之后服务端处于 SYN-RCVD 状态</p>
+</li>
+<li><p>第三个 ACK 报文<br>客户端收到服务端报文后，还要向服务端回应最后一个应答报文，首先该应答报文 TCP 首部 ACK 标志位置为 1 ，其次「确认应答号」字段填入 server_isn + 1 ，最后把报文发送给服务端，这次报文可以携带客户到服务器的数据，之后客户端处于 ESTABLISHED 状态</p>
+</li>
+</ol>
+<p><strong>第三次握手是可以携带数据的，前两次握手是不可以携带数据的</strong></p>
+<h4 id="3-HTTPS-的-TLS-协商"><a href="#3-HTTPS-的-TLS-协商" class="headerlink" title="3. HTTPS 的 TLS 协商"></a>3. HTTPS 的 TLS 协商</h4><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/Performance/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E9%A1%B5%E9%9D%A2%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86" target="_blank" rel="noopener">这里</a></p>
+<p><img src="https://s1.ax1x.com/2020/10/14/043UFU.jpg" alt></p>
+<p>为了在HTTPS上建立安全连接，另一种握手是必须的。更确切的说是TLS协商 ，它决定了什么密码将会被用来加密通信，验证服务器，在进行真实的数据传输之前建立安全连接。在发送真正的请求内容之前还需要三次往返服务器</p>
+<h4 id="3-网络层：IP协议查询Mac地址"><a href="#3-网络层：IP协议查询Mac地址" class="headerlink" title="3. 网络层：IP协议查询Mac地址"></a>3. 网络层：IP协议查询Mac地址</h4><ul>
+<li><p>将数据段打包，并加入源及目标的IP地址，并且负责寻找传输路线</p>
+</li>
+<li><p>判断目标地址是否与当前地址处于同一网络中，是的话直接根据 Mac 地址发送，否则使用路由表查找下一跳地址，以及使用 ARP 协议查询它的 Mac 地址</p>
+</li>
+</ul>
+<h4 id="4-链路层：以太网协议"><a href="#4-链路层：以太网协议" class="headerlink" title="4. 链路层：以太网协议"></a>4. 链路层：以太网协议</h4><ul>
+<li><p>把数据分割成若干小块作为传输单位进行发送（数据包）</p>
+</li>
+<li><p>以太网规定连入网络的所有设备都必须具备“网卡”接口，数据包都是从一块网卡传递到另一块网卡，网卡的地址就是 Mac 地址。每一个 Mac 地址都是独一无二的</p>
+</li>
+</ul>
+<h3 id="服务器处理请求"><a href="#服务器处理请求" class="headerlink" title="服务器处理请求"></a>服务器处理请求</h3><ul>
+<li><p>接受 TCP 报文后，会对连接进行处理，对HTTP协议进行解析（请求方法、域名、路径等），并且进行一些验证</p>
+</li>
+<li><p>如果需要重定向，则重定向</p>
+</li>
+<li><p>请求的是否是真实资源，是返回资源，否返回API响应</p>
+</li>
+</ul>
+<h3 id="浏览器接受响应"><a href="#浏览器接受响应" class="headerlink" title="浏览器接受响应"></a>浏览器接受响应</h3><p>浏览器接收到来自服务器的响应资源后，会对资源进行分析</p>
+<ul>
+<li><p>解压缩（比如 gzip）</p>
+</li>
+<li><p>根据不同状态码做不同的事（重定向）</p>
+</li>
+<li><p>对响应资源做缓存</p>
+</li>
+<li><p>根据资源的 MIME 类型去解析不同内容（js, img, css）</p>
+</li>
+</ul>
+<h3 id="解析渲染页面"><a href="#解析渲染页面" class="headerlink" title="解析渲染页面"></a>解析渲染页面</h3><p>“解析”是浏览器将通过网络接收的数据转换为DOM和CSSOM的步骤，通过渲染器把DOM和CSSOM在屏幕上绘制成页面</p>
+<h4 id="解析HTML生成DOM树"><a href="#解析HTML生成DOM树" class="headerlink" title="解析HTML生成DOM树"></a>解析HTML生成DOM树</h4><p>浏览器解析是从上往下一行一行地解析的</p>
+<ol>
+<li><p>解码：传输回来的其实都是一些二进制字节数据，浏览器根据文件指定编码（例如UTF-8）转换成字符串（HTML）</p>
+</li>
+<li><p>预解析：提前加载资源，减少处理时间，会识别一些会请求资源的属性（img的src），并将这个请求加到请求队列中</p>
+</li>
+<li><p>符号化（Tokenization）：词法分析的过程，将输入解析成符号（开始｜结束标签、属性名、属性值等）</p>
+</li>
+<li><p>构建DOM树，树反映了不同标记之间的关系和层次结构。嵌套在其他标记中的标记是子节点。DOM节点越多，构建DOM树时间越长</p>
+</li>
+<li><p>浏览器构建DOM树时，这个过程占用了主线程</p>
+</li>
+</ol>
+<p><strong>注意</strong></p>
+<ul>
+<li><p>如果文档格式良好，则解析它会简单而快速（语义化）</p>
+</li>
+<li><p>DOM节点越多，构建DOM树时间越长（嵌套过深）</p>
+</li>
+<li><p>当解析器发现非阻塞资源（图片），浏览器会请求这些资源并且继续解析。当遇到一个CSS文件时，解析也可以继续进行</p>
+</li>
+<li><p>但script标签（没有 async 或 defer 属性）会阻塞渲染并停止HTML的解析。浏览器的预加载扫描器会加速这个过程，但过多仍是瓶颈</p>
+</li>
+</ul>
+<p><em>预加载扫描仪</em></p>
+<p>构建DOM树时，占用了主线程。此时，预加载扫描仪将解析可用的内容并请求高优先级资源，如CSS、JavaScript和web字体。它将在后台检索资源，以便在主HTML解析器到达请求的资源时，它们可能已经在运行，或者已经被下载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; src=&quot;styles.css&quot;/&gt;</span><br><span class="line">&lt;script src=&quot;myscript.js&quot; async&gt;&lt;/script&gt;</span><br><span class="line">&lt;img src=&quot;myimage.jpg&quot; alt=&quot;image description&quot;/&gt;</span><br><span class="line">&lt;script src=&quot;anotherscript.js&quot; async&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>主线程在解析HTML和CSS时，预加载扫描器将找到脚本和图像，并开始下载它们。为了确保脚本不会阻塞进程，当JavaScript解析和执行顺序不重要时，可以添加async属性或defer属性</p>
+<p>等待获取CSS不会阻塞HTML的解析或者下载，但是它的确阻塞JavaScript，因为JavaScript经常用于查询元素的CSS属性</p>
+<h4 id="解析CSS生成CSSOM规则树"><a href="#解析CSS生成CSSOM规则树" class="headerlink" title="解析CSS生成CSSOM规则树"></a>解析CSS生成CSSOM规则树</h4><ul>
+<li><p>DOM和CSSOM是两棵树，它们是独立的数据结构，浏览器遍历CSS中的每个规则集，根据CSS选择器创建具有父、子和兄弟关系的节点树</p>
+</li>
+<li><p>匹配一个节点对应的 CSS 规则时，是按照从右到左的顺序的，例如：div p {}会先寻找所有的p标签然后判断它的父元素是否为div</p>
+</li>
+</ul>
+<p><strong>所以有如下 css 注意事项</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 避免最右侧选择器范围高于左侧，毫无疑问 div 数量远远大于 id，这种写法性能较差</span><br><span class="line"></span><br><span class="line">#id div &#123;&#125;</span><br><span class="line"></span><br><span class="line">// 避免层级太深</span><br><span class="line"></span><br><span class="line">#id .class1 .class2 .class3 .class4 .class5 &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>渲染阻塞</strong></p>
+<ul>
+<li><p>当浏览器遇到一个 script 标记时，DOM 构建将暂停，直至脚本完成执行，然后继续构建DOM</p>
+</li>
+<li><p>每次去执行JavaScript脚本都会严重地阻塞DOM树的构建，如果JavaScript脚本还操作了CSSOM，而正好这个CSSOM还没有下载和构建，浏览器甚至会延迟脚本执行和构建DOM，直至完成其CSSOM的下载和构建</p>
+</li>
+</ul>
+<p><em>script 标签的位置很重要</em></p>
+<ul>
+<li><p>CSS 优先：引入顺序上，CSS 资源先于 JavaScript 资源</p>
+</li>
+<li><p>JS置后：我们通常把JS代码放到页面底部，且JavaScript 应尽量少影响 DOM 的构建</p>
+</li>
+</ul>
+<h4 id="将DOM树与CSSOM规则树合并在一起生成渲染树"><a href="#将DOM树与CSSOM规则树合并在一起生成渲染树" class="headerlink" title="将DOM树与CSSOM规则树合并在一起生成渲染树"></a>将DOM树与CSSOM规则树合并在一起生成渲染树</h4><p> DOM 树和 CSS 规则树合并的过程，渲染树会忽略那些不需要渲染的节点，比如设置了display:none的节点</p>
+<h4 id="遍历渲染树开始布局，计算每个节点的位置大小信息"><a href="#遍历渲染树开始布局，计算每个节点的位置大小信息" class="headerlink" title="遍历渲染树开始布局，计算每个节点的位置大小信息"></a>遍历渲染树开始布局，计算每个节点的位置大小信息</h4><p>布局阶段会从渲染树的根节点开始遍历，然后确定每个节点对象在页面上的确切大小与位置，布局阶段的输出是一个盒子模型，它会精确地捕获每个元素在屏幕内的确切位置与大小</p>
+<h4 id="将渲染树每个节点绘制到屏幕"><a href="#将渲染树每个节点绘制到屏幕" class="headerlink" title="将渲染树每个节点绘制到屏幕"></a>将渲染树每个节点绘制到屏幕</h4><p>在绘制阶段，遍历渲染树，调用渲染器的paint()方法在屏幕上显示其内容。渲染树的绘制工作是由浏览器的 UI后端组件完成的</p>
+<h3 id="webkit-和-gecko"><a href="#webkit-和-gecko" class="headerlink" title="webkit 和 gecko"></a>webkit 和 gecko</h3><p><strong>webkit</strong></p>
+<p><img src="https://s1.ax1x.com/2020/10/23/BEsTg0.png" alt></p>
+<p><strong>gecko</strong></p>
+<p><img src="https://s1.ax1x.com/2020/10/23/BEs7vV.png" alt></p>
+<h3 id="测试css的影响"><a href="#测试css的影响" class="headerlink" title="测试css的影响"></a>测试css的影响</h3><p>// bootstrap 4m大小，将网速调整为3g</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">      setTimeout(() =&gt; &#123;</span><br><span class="line">        console.log(document.getElementById(&apos;root&apos;))</span><br><span class="line">      &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;./bootstrap.css&quot;&gt; </span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;root&quot;&gt;过大的css是否阻塞dom展示呢？&lt;/div&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">      console.log(&apos;scripts 脚本是否被css阻塞呢？&apos;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>根据下面的图片得出三点</strong></p>
+<ul>
+<li><p>css 加载没有阻塞 DOM 解析，此时css没加载完，但是打印出来 div 标签，说明DOM解析成功了</p>
+</li>
+<li><p>虽然DOM树解析了，但是页面依然空白，说明渲染被阻塞</p>
+</li>
+<li><p>script 脚本的 console 没有被输出，所以阻塞了js的解析</p>
+</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2020/10/25/BmruSs.png" alt></p>
+<h3 id="浏览器每一帧做什么"><a href="#浏览器每一帧做什么" class="headerlink" title="浏览器每一帧做什么"></a>浏览器每一帧做什么</h3><ul>
+<li><p>目前大多数设备的屏幕刷新率为 60 次/秒，每个帧的预算时间仅比 16 毫秒多一点 (1 秒/ 60 = 16.66 毫秒)</p>
+</li>
+<li><p>如果在页面中有一个动画或渐变效果，那么浏览器渲染动画或页面的每一帧的速率也需要跟设备屏幕的刷新率保持一致</p>
+</li>
+<li><p>浏览器并不需要执行所有步骤。如果没有新的 HTML 要解析，那么解析 HTML 的步骤就不会触发</p>
+</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2020/10/27/BlQujS.png" alt></p>
+<ol>
+<li><p>开始新的一帧：垂直同步信号触发，开始渲染新的一帧图像</p>
+</li>
+<li><p>输入事件和用户交互事件处理：所有的事件处理函数（touchmove，scroll，click）都应该最先触发</p>
+</li>
+<li><p>requestAnimationFrame：样式计算，在本次任务之后，如果你改变了很多样式，不会引起多次样式计算，所以是变更元素的理想位置，它们会在稍后被批量处理。注意：不要查询进行计算才能得到的样式或者布局属性（el.style.offsetWidth）。会导致重新计算样式，或者布局，或者二者都发生，进一步导致强制同步布局，乃至布局颠簸</p>
+</li>
+<li><p>解析 HTML（Parse HTML）：处理新添加的 HTML，创建 DOM 元素</p>
+</li>
+<li><p>重新计算样式（Recalc Styles）：为新添加或变更的内容计算样式，根据css选择器计算出哪些元素应用哪些 CSS 规则</p>
+</li>
+<li><p>布局（Layout）：在知道一个元素应用哪些规则之后，和它要占据的空间大小及其在屏幕的位置</p>
+</li>
+<li><p>Paint: 第一步，对所有新加入的元素，或进行改变显示状态的元素，记录 draw 调用，创建绘图调用的列表；第二步是栅格化（Rasterization），在这一步实际执行了 draw 的调用，并进行填充像素</p>
+</li>
+<li><p>合成（Composite）：页面的各部分可能被绘制到多层，由此它们需要按正确顺序绘制到屏幕上，以便正确渲染页面</p>
+</li>
+<li><p>帧结束：各个层的所有的块都被栅格化成位图后，新的块和输入数据（可能在事件处理程序中被更改过）被提交给 GPU 线程</p>
+</li>
+<li><p>发送帧：图块被 GPU 线程上传到 GPU。GPU 使用四边形和矩阵（所有常用的 GL 数据类型）将图块 draw 在屏幕上</p>
+</li>
+<li><p>本帧 还有剩余时间，执行requestIdleCallback</p>
+</li>
+</ol>
+<h3 id="结合谷歌开发者文档提到的-render-performance"><a href="#结合谷歌开发者文档提到的-render-performance" class="headerlink" title="结合谷歌开发者文档提到的 render performance"></a>结合谷歌开发者文档提到的 render performance</h3><h4 id="工作时需要注意五个主要区域"><a href="#工作时需要注意五个主要区域" class="headerlink" title="工作时需要注意五个主要区域"></a>工作时需要注意五个主要区域</h4><p>javascript -&gt; style -&gt; layout -&gt; paint -&gt; composite</p>
+<p><strong>在实现视觉变化时，管道针对指定帧的运行通常有三种方式：</strong></p>
+<p>修改元素的“layout”属性，例如改变了元素的几何属性（例如宽度、高度、左侧或顶部位置等），那么浏览器将必须检查所有其他元素，然后“自动重排”页面</p>
+<ul>
+<li>javascript -&gt; style -&gt; layout -&gt; paint -&gt; composite</li>
+</ul>
+<p>只改“paint only”属性（例如背景图片、文字颜色或阴影等），即不会影响页面布局的属性，则浏览器会跳过布局，但是会重绘</p>
+<ul>
+<li>javascript -&gt; style -&gt; paint -&gt; composite</li>
+</ul>
+<p>更改一个既不要布局也不要绘制的属性，则浏览器将跳到只执行合成（transform 和 opacity）</p>
+<ul>
+<li>javascript -&gt; style -&gt; composite</li>
+</ul>
+<p><strong>其实从上面我们也很清楚的明白一些事情</strong></p>
+<p>性能开销： 重排 &gt; 重绘 &gt; 直接合成</p>
+<p><strong>怎么避免</strong></p>
+<ul>
+<li><p>尽量减少重排，也就是位置，大小，布局的改变</p>
+</li>
+<li><p>坚持使用 transform 和 opacity 属性更改来实现动画</p>
+</li>
+<li><p>使用 will-change 或 translateZ 提升移动的元素（ios层叠兼容问题，A,B兄弟元素B的层级高于A，A子元素的z-index无论多少无法覆盖B元素，可以使用translateZ）</p>
+</li>
+<li><p>避免过度使用提升规则；各层都需要内存和管理开销（）</p>
+</li>
+</ul>
+<h4 id="优化javascript"><a href="#优化javascript" class="headerlink" title="优化javascript"></a>优化javascript</h4><p>1、对于动画，避免 setTimeout 或 setInterval，请使用 requestAnimationFrame</p>
+<p>requestAnimationFrame 除了与浏览器刷新频率一致这一特点外，还有就是正好在帧的开头，css 样式布局等未发生计算。避免了多次计算的情况</p>
+<p>2、将长时间运行的 JavaScript 从主线程移到 Web Worker(兼容性要考虑)</p>
+<ul>
+<li><p>Web Worker 新开线程，存在兼容问题，需要考量</p>
+</li>
+<li><p>没有DOM访问权限</p>
+</li>
+<li><p>可以处理大量的数据，避免阻塞页面</p>
+</li>
+<li><p>主要 api，发送消息 postMesssage，接收消息 onmessage 或 addEventListener(‘message’, () =&gt;{})</p>
+</li>
+</ul>
+<p>3、使用微任务来执行对多个帧的 DOM 更改</p>
+<ul>
+<li>将大任务，分成微任务，时间分片设计</li>
+</ul>
+<h4 id="强制布局布局抖动"><a href="#强制布局布局抖动" class="headerlink" title="强制布局布局抖动"></a>强制布局布局抖动</h4><p><strong>强制布局</strong></p>
+<p>将一帧送到屏幕会采用如下顺序 <code>javascript -&gt; style -&gt; layout -&gt; paint -&gt; composite</code>，但可以使用 JavaScript 强制浏览器提前执行布局。这被称为强制同步布局</p>
+<p>如果在获取某个元素的高度之前，已更改其样式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 错误</span><br><span class="line">function getBoxHeight() &#123;</span><br><span class="line">  box.classList.add(&apos;super-big&apos;);</span><br><span class="line">  console.log(box.offsetHeight);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 正确</span><br><span class="line">function getBoxHeight() &#123;</span><br><span class="line">  console.log(box.offsetHeight);</span><br><span class="line">  box.classList.add(&apos;super-big&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了获取高度，必须先应用样式更改（增加super-big类），然后运行布局。这时它才能返回正确的高度。这是不必要的，并且开销很大</p>
+<p><strong>布局抖动：</strong>大量的进行强制布局操作</p>
+<p><em>布局（也就是重排）改变几乎总是作用到整个文档</em></p>
+<ul>
+<li><p>循环的每次迭代读取一个样式值 (box.offsetWidth)，然后立即使用此值来更新段落的宽度 (paragraphs[i].style.width)</p>
+</li>
+<li><p>在循环的下次迭代时，浏览器必须考虑样式已更改这一事实，因为 offsetWidth 是上次请求的（在上一次迭代中），因此它必须应用样式更改，然后运行布局，拿到更新的宽度（其实宽度的值并没变化）</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 错误方法</span><br><span class="line">for (var i = 0; i &lt; paragraphs.length; i++) &#123;</span><br><span class="line">  paragraphs[i].style.width = box.offsetWidth + &apos;px&apos;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 修正方法先读后写</span><br><span class="line">var width = box.offsetWidth;</span><br><span class="line">for (var i = 0; i &lt; paragraphs.length; i++) &#123;</span><br><span class="line">  paragraphs[i].style.width = width + &apos;px&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://developers.google.com/web/fundamentals/performance/rendering/" target="_blank" rel="noopener">资料</a></p>
+<p><a href="https://github.com/hushicai/hushicai.github.io/issues/5" target="_blank" rel="noopener">浏览器每一帧</a></p>
+<p><a href="https://aerotwist.com/blog/the-anatomy-of-a-frame/" target="_blank" rel="noopener">The Anatomy of a Frame</a></p>
+<p><a href="https://www.youtube.com/watch?v=Lpk1dYdo62o" target="_blank" rel="noopener">视频</a></p>
+<p><a href="https://www.jianshu.com/p/a32b890c29b1" target="_blank" rel="noopener">渲染</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuyongshun.github.io/2019/06/13/performance-load/" data-id="ckgzau8lc00b2yccueq42w3nv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/performance/">performance</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/34/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><a class="page-number" href="/page/34/">34</a><span class="page-number current">35</span><a class="page-number" href="/page/36/">36</a><a class="page-number" href="/page/37/">37</a><span class="space">&hellip;</span><a class="page-number" href="/page/70/">70</a><a class="extend next" rel="next" href="/page/36/">下一页</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DEV/">DEV</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DEV/trouble/">trouble</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/array/">array</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/async/">async</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/class/">class</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/decorate/">decorate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/export-import/">export&import</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/fuction/">fuction</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/generator/">generator</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/object/">object</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/promise/">promise</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/proxy/">proxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/reflect/">reflect</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/set-map/">set&map</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/string/">string</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/variable-deconstruction/">variable&deconstruction</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/">FLUTTER</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/dart/">dart</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/env/">env</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/">H5</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-history/">h5 history</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-video/">h5 video</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-CSS/">HTML & CSS</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-CSS/HTML-CSS/">HTML & CSS</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HYBRID/">HYBRID</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HYBRID/hybrid/">hybrid</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/FP/">FP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm/">algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm2/">algorithm2</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/base/">base</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/data-constructor/">data constructor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/principle/">principle</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/">NODE</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/express/">express</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/module/">module</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongo/">mongo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoCommand/">mongoCommand</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoOprate/">mongoOprate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoodb/">mongoodb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-api/">node api</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-buffer/">node buffer</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-eventloop/">node eventloop</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-stream/">node stream</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/variable/">variable</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/">NPM</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/cli/">cli</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/npm-package/">npm package</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/">PLAY</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/photo/">photo</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/">REACT</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/hook/">hook</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/react/">react</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/redux/">redux</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/chrome/">chrome</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/chrome-perf/">chrome-perf</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/debug/">debug</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/frequently/">frequently</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/mac/">mac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/nginx/">nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/vscode-plugin/">vscode plugin</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TS/">TS</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TS/ts-base/">ts base</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/">VUE</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/principle/">principle</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/vueRouter/">vueRouter</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/web/">web</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/">WEBPACK</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/ast/">ast</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/plugin/">plugin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpack-react/">webpack-react</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackDescription/">webpackDescription</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/">WEEX</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/use/">use</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/weex/">weex</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/performance/">performance</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/performance/performance/">performance</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/performance/time-slice/">time slice</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DEV/">DEV</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/H5/">H5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HYBRID/">HYBRID</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/">NPM</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/REACT/">REACT</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TS/">TS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cli/">cli</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/">flutter</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/performance/">performance</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/play/">play</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/variable/">variable</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weex/">weex</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DEV/" style="font-size: 10px;">DEV</a> <a href="/tags/ES6/" style="font-size: 11.43px;">ES6</a> <a href="/tags/H5/" style="font-size: 11.43px;">H5</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HYBRID/" style="font-size: 10px;">HYBRID</a> <a href="/tags/JS/" style="font-size: 15.71px;">JS</a> <a href="/tags/NPM/" style="font-size: 11.43px;">NPM</a> <a href="/tags/REACT/" style="font-size: 12.86px;">REACT</a> <a href="/tags/TS/" style="font-size: 10px;">TS</a> <a href="/tags/cli/" style="font-size: 10px;">cli</a> <a href="/tags/es6/" style="font-size: 20px;">es6</a> <a href="/tags/flutter/" style="font-size: 11.43px;">flutter</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/node/" style="font-size: 18.57px;">node</a> <a href="/tags/performance/" style="font-size: 12.86px;">performance</a> <a href="/tags/play/" style="font-size: 10px;">play</a> <a href="/tags/tool/" style="font-size: 17.14px;">tool</a> <a href="/tags/variable/" style="font-size: 10px;">variable</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue/" style="font-size: 11.43px;">vue</a> <a href="/tags/webpack/" style="font-size: 14.29px;">webpack</a> <a href="/tags/weex/" style="font-size: 11.43px;">weex</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/10/11/webpack-react/">webpack react</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/11/ts-base/">ts base</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/20/performance-time-split/">time slice</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/19/AST/">AST</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/19/REACT-hook/">hook</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <ul class="hobby-outer">
+      <li class="hobby-item"><a href="http://blog.csdn.net/liuyongshun2/article">CSDN</a></li>
+      <li class="hobby-item"><a href="https://github.com/liuyongshun">GITHUB</a></li>
+    </ul>
+    <div id="footer-info" class="inner">
+      &copy; 2020 cheat&nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1274642270'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1274642270%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/link" class="mobile-nav-link">链接</a>
+  
+</nav>
+    
+
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<div id="totop">
+  <a title="javascript:;">返回<br>顶部</a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>
