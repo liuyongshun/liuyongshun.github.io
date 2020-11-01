@@ -72,9 +72,9 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-vue-cli" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-webpack4" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/09/10/vue-cli/" class="article-date">
+    <a href="/2017/09/10/webpack4/" class="article-date">
   <time datetime="2017-09-10T08:00:20.000Z" itemprop="datePublished">2017-09-10</time>
 </a>
     
@@ -84,12 +84,191 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">├── build                                       // webpack配置文件</span><br><span class="line">    |——build.js</span><br><span class="line">    |——check-versions.js</span><br><span class="line">    |——dev-client.js</span><br><span class="line">    |——dev-server.js</span><br><span class="line">    |——utils.js</span><br><span class="line">    |——vue-loader.conf.js</span><br><span class="line">    |——webpack.base.conf.js</span><br><span class="line">    |——webpack.dev.conf.js</span><br><span class="line">    |——webpack.prod.conf.js</span><br><span class="line">├── config                                      // 项目打包路径配置</span><br><span class="line">    |dev.env.js</span><br><span class="line">    |——index.js</span><br><span class="line">    |——prod.env.js</span><br></pre></td></tr></table></figure>
+        <hr>
+<p>title: webpack principle<br>date: 2020-06-18 20:29:17<br>tags: webpack<br>categories:</p>
+<ul>
+<li>WEBPACK</li>
+<li>principle</li>
+</ul>
+<h3 id="一、基础"><a href="#一、基础" class="headerlink" title="一、基础"></a>一、基础</h3><p>查找 node_modules/webpack/.bin 的 webpack.sh 或 webpack.cmd 文件</p>
+<p><strong>在 MAC 下可尝试如下脚本，进一步了解命令行</strong></p>
+<p>1、新建脚本文件 shellA.sh</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># dirname $0，取得当前执行的脚本文件的父目录</span><br><span class="line">basepath=$(cd `dirname $0`; pwd)</span><br><span class="line">echo &quot;取得当前执行的脚本文件的父目录:$basepath&quot;</span><br><span class="line"></span><br><span class="line"># 打印当前路径</span><br><span class="line">currentPath=$(pwd)</span><br><span class="line">echo &quot;当前文件夹路径: $currentPath&quot;</span><br></pre></td></tr></table></figure>
+<p>2、设置脚本权限 <code>chmod o+w shellA.sh</code></p>
+<p>3、source 读取脚本并执行 <code>soucre shellA.sh</code></p>
+<p><strong>在 node 开发中，对外开放的命令行，要在 package.json 的 bin 字段指定<a href="https://liuyongshun.github.io/2019/10/03/npm-cli/">node 脚本工具开发</a></strong></p>
+<h3 id="webpack-源码"><a href="#webpack-源码" class="headerlink" title="webpack 源码"></a>webpack 源码</h3><ul>
+<li>从webpack 的 package.son 中可知，webpack 命令执行，直接调用了 bin 目录下的脚本</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;bin&quot;: &#123;</span><br><span class="line">  &quot;webpack&quot;: &quot;bin/webpack.js&quot;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>bin/webpack.js</code> 的逻辑主要判读了 webpack-cli 和 webpack-command，只要存在其一，去执行对应的脚本</li>
+</ul>
+<p><strong>webpack-cli</strong></p>
+<p>作用：</p>
+<p>1、引入 yargs 对命令行定制</p>
+<p>2、分析参数，生成配置项</p>
+<p>3、引入 webpack 根据配置项进行编译和构建</p>
+<p><strong>webpack-cli 代码逻辑</strong></p>
+<ul>
+<li><p>识别 NON_COMPILATION_ARGS 里不要编译的命令</p>
+</li>
+<li><p>利用 yargs 生成 helper 信息也就是常用 <code>xx -help</code> 展示所有命令</p>
+</li>
+<li><p>利用 yargs 分八组参数，也就是命令 <code>node_modules/.bin/webpack -help</code> 展示的</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Config</td>
+<td>配置相关参数，文件名，运行环境等</td>
+</tr>
+<tr>
+<td>Basic</td>
+<td>entry设置，debug，watch，devtool等设置</td>
+</tr>
+<tr>
+<td>Module</td>
+<td>loader 设置拓展</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>输出路径，文件名等</td>
+</tr>
+<tr>
+<td>Advanced</td>
+<td>记录设置，缓存，监听等</td>
+</tr>
+<tr>
+<td>Resolving</td>
+<td>别名，解析文件后缀</td>
+</tr>
+<tr>
+<td>Optimizing</td>
+<td>优化参数</td>
+</tr>
+<tr>
+<td>Stats</td>
+<td>统计，打印参数</td>
+</tr>
+<tr>
+<td>options</td>
+<td>通用参数，版本信息，帮助命令</td>
+</tr>
+</tbody>
+</table>
+<p><strong>webpack-cli 又回到了 webpack ，执行其 Compiler 方法</strong></p>
+<p>1、webpack 的 Compiler 继承 Tapable，另一个核心对象 Compilation 同样继承自 Tapable</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class Compiler extends Tapable &#123;&#125;</span><br><span class="line">class Compilation extends Tapable &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>2、 Tapable 类似于 node 的 eventEmitter 的发布订阅模块，基于事件流的编程规范，控制钩子函数的发布订阅</p>
+<p>构建流程</p>
+<p>1.初始化参数: 从配置文件和 shell 语句中读取与合并参数, 得出最终的参数<br>2.开始编译: 用上一步得到的参数初始化 Compiler 对象, 加载所有配置的插件, 通过执行对象的 run 方法开始编译<br>3.确定入口: 根据配置中的 entry 找出所有入口文件<br>4.编译模块: 从入口文件出发, 调用所有配置的 Loader 对模块进行翻译, 再找出该模块依赖的模块, 再递归本步骤直到所有入口依赖的文件都经过了本步骤的处理<br>5.完成模块编译: 再经过第四步使用 Loader 翻译完所有模块后, 得到了每个模块被翻译后的最终内容以及他们之间的依赖关系<br>6.输出资源: 根据入口和模块之间的依赖关系, 组装成一个个包含多个模块的 chunk, 再将每个 Chunk 转换成一个单独的文件加入到输出列表中, 这是可以修改输出内容的最后机会<br>7.输出完成: 在确定好输出内容后, 根据配置确定输出的路径和文件名, 将文件的内容写入文件的系统中</p>
+<p>分三大阶段</p>
+<ul>
+<li><p>初始化参数</p>
+</li>
+<li><p>编译阶段</p>
+</li>
+<li><p>输出阶段</p>
+</li>
+</ul>
+<ul>
+<li>webpack4里面将webpack 和 webpack-cli分离，使用时需要两个都安装一下。</li>
+</ul>
+<p><strong>最简单的配置</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  mode: &apos;production&apos;,</span><br><span class="line">  entry: &apos;./src/index.js&apos;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, &apos;dist&apos;),</span><br><span class="line">    filename: &apos;bundle.js&apos;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>tips：</strong></p>
+<ol>
+<li>webpack 默认加载webpack.config.js文件，可通过 <code>webpack --config ./zz.js</code>指定你想用的文件名。</li>
+</ol>
+<h3 id="加载器"><a href="#加载器" class="headerlink" title="加载器"></a>加载器</h3><table>
+<thead>
+<tr>
+<th>加载器</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>babel-loader</td>
+<td>转换es6，7的新特性</td>
+</tr>
+<tr>
+<td>css-loader</td>
+<td>支持css文件等加载和解析</td>
+</tr>
+<tr>
+<td>less-loader</td>
+<td>将less转换成css</td>
+</tr>
+<tr>
+<td>ts-loader</td>
+<td>将ts转换成js</td>
+</tr>
+<tr>
+<td>file-loader</td>
+<td>进行图片，字体等打包</td>
+</tr>
+<tr>
+<td>raw-loader</td>
+<td>将文件以字符串形式导入</td>
+</tr>
+<tr>
+<td>thread-loader</td>
+<td>多进程打包js和css</td>
+</tr>
+</tbody>
+</table>
+<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><table>
+<thead>
+<tr>
+<th>插件</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CommonsChunkPlugin</td>
+<td>将chunks相同模块代码提取成公共js</td>
+</tr>
+<tr>
+<td>CleanWebpackPlugin</td>
+<td>清理构建目录</td>
+</tr>
+<tr>
+<td>ExtractTextWebpackPlugin</td>
+<td>将css从bunlde文件里提取成独立css文件</td>
+</tr>
+<tr>
+<td>CopyWebpackPlugin</td>
+<td>将文件或者文件夹拷贝到构建的输出目录</td>
+</tr>
+<tr>
+<td>HtmlWebpackPlugin</td>
+<td>创建html文件去承载输出的bundle</td>
+</tr>
+<tr>
+<td>UglifyjsWebpackPlugin</td>
+<td>压缩js</td>
+</tr>
+<tr>
+<td>ZipWebpackPlugin</td>
+<td>将打包出的资源生成zip包</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuyongshun.github.io/2017/09/10/vue-cli/" data-id="ckgzau8fb0039yccuxakeq0u8" class="article-share-link">Share</a>
+      <a data-url="http://liuyongshun.github.io/2017/09/10/webpack4/" data-id="ckgzax7oh003n2vcuo4vhuk7n" class="article-share-link">Share</a>
       
       
     </footer>
