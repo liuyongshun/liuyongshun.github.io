@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>from start | 七月</title>
+  <meta name="baidu-site-verification" content="vdMfpFtVYF">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Smiple, 简, jian, 简博客">
+  <meta name="description" content="先觉知识fiber 是什么？源码位置 从结构来看就是一个构造函数，实例化后生成一个拥有众多属性的Fiber对象节点，每个 Fiber 对应 React element，通过下面三个属性连接形成树，即虚拟DOM树（Fiber 与 VNode 同理，作为树的每个节点） 123456// 指向父级Fiber节点this.return = null;// 指向子Fiber节点this.child = nu">
+<meta name="keywords" content="REACT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="from start">
+<meta property="og:url" content="http://liuyongshun.github.io/2020/02/15/REACT-fromstart/index.html">
+<meta property="og:site_name" content="七月">
+<meta property="og:description" content="先觉知识fiber 是什么？源码位置 从结构来看就是一个构造函数，实例化后生成一个拥有众多属性的Fiber对象节点，每个 Fiber 对应 React element，通过下面三个属性连接形成树，即虚拟DOM树（Fiber 与 VNode 同理，作为树的每个节点） 123456// 指向父级Fiber节点this.return = null;// 指向子Fiber节点this.child = nu">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-11-05T02:03:27.523Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="from start">
+<meta name="twitter:description" content="先觉知识fiber 是什么？源码位置 从结构来看就是一个构造函数，实例化后生成一个拥有众多属性的Fiber对象节点，每个 Fiber 对应 React element，通过下面三个属性连接形成树，即虚拟DOM树（Fiber 与 VNode 同理，作为树的每个节点） 123456// 指向父级Fiber节点this.return = null;// 指向子Fiber节点this.child = nu">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  <script></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">七月</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">是七月呀</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/link">链接</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://liuyongshun.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-REACT-fromstart" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/15/REACT-fromstart/" class="article-date">
+  <time datetime="2020-02-14T21:00:00.000Z" itemprop="datePublished">2020-02-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/REACT/">REACT</a>►<a class="article-category-link" href="/categories/REACT/react/">react</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      from start
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="先觉知识"><a href="#先觉知识" class="headerlink" title="先觉知识"></a>先觉知识</h3><h4 id="fiber-是什么？"><a href="#fiber-是什么？" class="headerlink" title="fiber 是什么？"></a>fiber 是什么？</h4><p><a href="https://github.com/facebook/react/blob/1fb18e22ae66fdb1dc127347e169e73948778e5a/packages/react-reconciler/src/ReactFiber.new.js#L117" target="_blank" rel="noopener">源码位置</a></p>
+<p>从结构来看就是一个构造函数，实例化后生成一个拥有众多属性的Fiber对象节点，每个 Fiber 对应 React element，通过下面三个属性连接形成树，即虚拟DOM树（Fiber 与 VNode 同理，作为树的每个节点）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 指向父级Fiber节点</span><br><span class="line">this.return = null;</span><br><span class="line">// 指向子Fiber节点</span><br><span class="line">this.child = null;</span><br><span class="line">// 指向右边第一个兄弟Fiber节点</span><br><span class="line">this.sibling = null;</span><br></pre></td></tr></table></figure>
+<p><strong>分层来说：</strong></p>
+<ul>
+<li><p>架构层，React15的Reconciler采用递归的方式执行，数据保存在递归调用栈中，所以被称为stack Reconciler。React16的 Reconciler 基于Fiber节点实现，被称为Fiber Reconciler</p>
+</li>
+<li><p>静态的数据结构层，每个Fiber节点对应一个React element，保存了该组件的类型（函数组件/类组件/原生组件…）和对应的DOM节点等信息</p>
+</li>
+<li><p>动态的工作单元层，每个Fiber节点保存了本次更新中该组件改变的状态、要执行的工作（需要被删除/被插入页面中/被更新…）</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">function FiberNode(</span><br><span class="line">  tag: WorkTag,</span><br><span class="line">  pendingProps: mixed,</span><br><span class="line">  key: null | string,</span><br><span class="line">  mode: TypeOfMode,</span><br><span class="line">) &#123;</span><br><span class="line">  // 作为静态数据结构的属性</span><br><span class="line">  this.tag = tag;           // Fiber对应组件的类型 Function/Class/Host</span><br><span class="line">  this.key = key;           // key属性</span><br><span class="line">  this.elementType = null;  // 大部分情况同type，某些情况不同，比如FunctionComponent使用React.memo包裹</span><br><span class="line">  this.type = null;         // FunctionComponent函数本身，ClassComponent，指class，HostComponent，指DOM节点tagName</span><br><span class="line">  this.stateNode = null;    // Fiber对应的真实DOM节点</span><br><span class="line"></span><br><span class="line">  // 用于连接其他Fiber节点形成Fiber树</span><br><span class="line">  this.return = null;</span><br><span class="line">  this.child = null;</span><br><span class="line">  this.sibling = null;</span><br><span class="line">  this.index = 0;</span><br><span class="line"></span><br><span class="line">  this.ref = null;</span><br><span class="line"></span><br><span class="line">  // 作为动态的工作单元的属性</span><br><span class="line">  this.pendingProps = pendingProps;</span><br><span class="line">  this.memoizedProps = null;</span><br><span class="line">  this.updateQueue = null;</span><br><span class="line">  this.memoizedState = null;</span><br><span class="line">  this.dependencies = null;</span><br><span class="line"></span><br><span class="line">  this.mode = mode;</span><br><span class="line"></span><br><span class="line">  this.effectTag = NoEffect;</span><br><span class="line">  this.nextEffect = null;</span><br><span class="line"></span><br><span class="line">  this.firstEffect = null;</span><br><span class="line">  this.lastEffect = null;</span><br><span class="line"></span><br><span class="line">  // 调度优先级相关</span><br><span class="line">  this.lanes = NoLanes;</span><br><span class="line">  this.childLanes = NoLanes;</span><br><span class="line"></span><br><span class="line">  // 指向该fiber在另一次更新时对应的fiber</span><br><span class="line">  this.alternate = null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong></p>
+<p>React15，Reconciler 采用递归的方式创建虚拟DOM，递归过程是不能中断的。组件树的层级很深，会造成卡顿；React16 将递归的无法中断的更新重构为异步的可中断更新</p>
+<h4 id="双缓存Fiber树"><a href="#双缓存Fiber树" class="headerlink" title="双缓存Fiber树"></a>双缓存Fiber树</h4><p>在内存中绘制当前帧内容，绘制完毕后直接用当前帧替换上一帧画面，这种在内存中构建并直接替换的技术叫做双缓存</p>
+<p>React使用 “双缓存” 来完成Fiber树的构建与替换——对应着DOM树的创建与更新</p>
+<p>双缓存Fiber树：</p>
+<ul>
+<li><p>React中最多同时存在两棵Fiber树。屏幕上的称为current Fiber树，内存中的称为workInProgress Fiber树</p>
+</li>
+<li><p>current Fiber 中的 Fiber 节点被称为current fiber，workInProgress Fiber中的 Fiber 节点被称为workInProgress fiber，他们通过alternate属性连接</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">currentFiber.alternate === workInProgressFiber;</span><br><span class="line">workInProgressFiber.alternate === currentFiber;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>React应用的根节点通过current指针在不同Fiber树的rootFiber间切换来实现Fiber树的切换</p>
+</li>
+<li><p>当workInProgress Fiber树构建完成交给Renderer渲染在页面上后，应用根节点的current指针指向workInProgress Fiber树，此时workInProgress Fiber树就变为current Fiber树</p>
+</li>
+<li><p>每次状态更新都会产生新的workInProgress Fiber树，通过current与workInProgress的替换，完成DOM更新</p>
+</li>
+</ul>
+<h3 id="总体流程"><a href="#总体流程" class="headerlink" title="总体流程"></a>总体流程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">创建fiberRootNode、rootFiber、updateQueue（`legacyCreateRootFromDOMContainer`）</span><br><span class="line">    |</span><br><span class="line">    v</span><br><span class="line">创建Update对象（`updateContainer`）</span><br><span class="line">    |</span><br><span class="line">    v</span><br><span class="line">从fiber到root（`markUpdateLaneFromFiberToRoot`）</span><br><span class="line">    |</span><br><span class="line">    v</span><br><span class="line">调度更新（`ensureRootIsScheduled`）</span><br><span class="line">    |</span><br><span class="line">    v</span><br><span class="line">render阶段（`performSyncWorkOnRoot` 或 `performConcurrentWorkOnRoot`）</span><br><span class="line">    |</span><br><span class="line">    v</span><br><span class="line">commit阶段（`commitRoot`）</span><br></pre></td></tr></table></figure>
+<h3 id="最初的入口-ReactDOM-render"><a href="#最初的入口-ReactDOM-render" class="headerlink" title="最初的入口 ReactDOM.render"></a>最初的入口 ReactDOM.render</h3><p>1、 ReactDOM.render会创建 fiberRootNode 和 rootFiber。其中 fiberRootNode 是整个应用的根节点， rootFiber 是要渲染组件所在组件树的根节点</p>
+<ul>
+<li>我们多次调用ReactDOM.render渲染不同的组件树，则会有不同的rootFiber。但整个应用的根节点只有 fiberRootNode</li>
+</ul>
+<p>2、 调用 ReactDOM.render 后执行 legacyRenderSubtreeIntoContainer 方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// legacyRenderSubtreeIntoContainer 逻辑</span><br><span class="line">root = container._reactRootContainer = legacyCreateRootFromDOMContainer(</span><br><span class="line">  container,</span><br><span class="line">  forceHydrate,</span><br><span class="line">);</span><br><span class="line">fiberRoot = root._internalRoot;</span><br></pre></td></tr></table></figure>
+<p>3、legacyCreateRootFromDOMContainer 方法内部会调用 createFiberRoot 方法完成 fiberRootNode 和 rootFiber 的创建以及关联。并初始化updateQueue</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// react/packages/react-reconciler/src/ReactFiberRoot.new.js</span><br><span class="line"></span><br><span class="line">export function createFiberRoot(</span><br><span class="line">  containerInfo: any,</span><br><span class="line">  tag: RootTag,</span><br><span class="line">  hydrate: boolean,</span><br><span class="line">  hydrationCallbacks: null | SuspenseHydrationCallbacks,</span><br><span class="line">): FiberRoot &#123;</span><br><span class="line">  // 创建fiberRootNode</span><br><span class="line">  const root: FiberRoot = (new FiberRootNode(containerInfo, tag, hydrate): any);</span><br><span class="line">  </span><br><span class="line">  // 创建rootFiber</span><br><span class="line">  const uninitializedFiber = createHostRootFiber(tag);</span><br><span class="line"></span><br><span class="line">  // 连接rootFiber与fiberRootNode</span><br><span class="line">  root.current = uninitializedFiber;</span><br><span class="line">  uninitializedFiber.stateNode = root;</span><br><span class="line"></span><br><span class="line">  // 初始化updateQueue</span><br><span class="line">  initializeUpdateQueue(uninitializedFiber);</span><br><span class="line"></span><br><span class="line">  return root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>此时 fiberRootNode.current 指向 rootFiber;rootFiber.stateNode 指向 fiberRootNode；由于是首屏渲染，页面中还没有挂载任何DOM，所以fiberRootNode.current指向的rootFiber没有任何子Fiber节点（即current Fiber树为空）</li>
+</ul>
+<p>4、初始化节点结束后，执行 unbatchedUpdates，创建更新节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// react/packages/react-dom/src/client/ReactDOMLegacy.js</span><br><span class="line">unbatchedUpdates(() =&gt; &#123;</span><br><span class="line">  updateContainer(children, fiberRoot, parentComponent, callback);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>5、创建Update来开启一次更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">export function updateContainer(</span><br><span class="line">  element: ReactNodeList,</span><br><span class="line">  container: OpaqueRoot,</span><br><span class="line">  parentComponent: ?React$Component&lt;any, any&gt;,</span><br><span class="line">  callback: ?Function,</span><br><span class="line">): Lane &#123;</span><br><span class="line">  // fiberRootNode.current 组件树的根节点</span><br><span class="line">  const current = container.current;</span><br><span class="line"></span><br><span class="line">  // 创建update</span><br><span class="line">  const update = createUpdate(eventTime, lane, suspenseConfig);</span><br><span class="line">  </span><br><span class="line">  // update.payload为需要挂载在根节点的组件，入口App组件</span><br><span class="line">  update.payload = &#123;element&#125;;</span><br><span class="line"></span><br><span class="line">  // 将生成的update加入updateQueue</span><br><span class="line">  enqueueUpdate(current, update);</span><br><span class="line"></span><br><span class="line">  // 调度更新</span><br><span class="line">  scheduleUpdateOnFiber(current, lane, eventTime);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h3><p>Update 分类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render —— HostRoot</span><br><span class="line">this.setState —— ClassComponent</span><br><span class="line">this.forceUpdate —— ClassComponent</span><br><span class="line">useState —— FunctionComponent</span><br><span class="line">useReducer —— FunctionComponent</span><br></pre></td></tr></table></figure>
+<p><strong>共三种组件 HostRoot | ClassComponent | FunctionComponent 可以触发更新，ClassComponent 与 HostRoot 共用一套Update结构，FunctionComponent 单独使用一种Update结构</strong></p>
+<p><strong>Update  结构</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// react/packages/react-reconciler/src/ReactUpdateQueue.new.js</span><br><span class="line">const update: Update&lt;*&gt; = &#123;</span><br><span class="line">  eventTime,           // 任务时间，通过performance.now()获取的毫秒数</span><br><span class="line">  lane,                // 优先级相关字段</span><br><span class="line">  suspenseConfig,</span><br><span class="line">  tag: UpdateState,    // 更新的类型 UpdateState | ReplaceState | ForceUpdate | CaptureUpdate</span><br><span class="line"></span><br><span class="line">  payload: null,       // 更新挂载的数据，ClassComponent，payload为this.setState的第一个传参。</span><br><span class="line">                       // 对于HostRoot，payload为ReactDOM.render的第一个传参</span><br><span class="line"></span><br><span class="line">  callback: null,      // 更新的回调函数</span><br><span class="line">  next: null,          // 与其他Update连接形成链表</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>存在多个Update情况</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">onClick() &#123;</span><br><span class="line">  this.setState(&#123;</span><br><span class="line">    a: 1</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  this.setState(&#123;</span><br><span class="line">    b: 2</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在一个ClassComponent中触发this.onClick方法，方法内部调用了两次this.setState。这会在该fiber中产生两个Update</p>
+<p>Fiber节点最多同时存在两个updateQueue：</p>
+<ul>
+<li><p>current fiber保存的updateQueue即current updateQueue</p>
+</li>
+<li><p>workInProgress fiber保存的updateQueue即workInProgress updateQueue</p>
+</li>
+</ul>
+<p>在commit阶段完成页面渲染后，workInProgress Fiber树变为current Fiber树，workInProgress Fiber树内Fiber节点的 updateQueue 就变成 current updateQueue</p>
+<p>6、 在 updateContainer 内，最后调用 scheduleUpdateOnFiber </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// react/packages/react-reconciler/src/ReactFiberWorkLoop.new.js</span><br><span class="line">export function scheduleUpdateOnFiber(</span><br><span class="line">  fiber: Fiber,</span><br><span class="line">  lane: Lane,</span><br><span class="line">  eventTime: number,</span><br><span class="line">) &#123;</span><br><span class="line"></span><br><span class="line">  // 找到 rootFiber</span><br><span class="line">  const root = markUpdateLaneFromFiberToRoot(fiber, lane);</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>markUpdateLaneFromFiberToRoot</strong> 核心代码是通过 fiber 的 return（从上面的介绍可以知道return指向了父级） 属性，层层上找知道 rootFiber</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 核心代码</span><br><span class="line">let parent = sourceFiber.return;</span><br><span class="line">// while 循环直到找到定成return 不再有值，即 rootFiber</span><br><span class="line">while (parent !== null) &#123;</span><br><span class="line">  // 此处简化了其他逻辑</span><br><span class="line">  node = parent;</span><br><span class="line">  parent = parent.return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>7、 现在我们拥有 rootFiber和对应的Fiber树中某个Fiber节点包含一个Update，根据更新的优先级，决定以同步还是异步的方式调度本次更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 决定同步还是异步</span><br><span class="line">if (lane === SyncLane) &#123;</span><br><span class="line">  // ...</span><br><span class="line">  ensureRootIsScheduled()</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  // ...</span><br><span class="line">  ensureRootIsScheduled()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>ensureRootIsScheduled 核心实现</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">if (newCallbackPriority === SyncLanePriority) &#123;</span><br><span class="line">  // 任务已经过期，需要同步执行render阶段</span><br><span class="line">  newCallbackNode = scheduleSyncCallback(</span><br><span class="line">    // 调度的回调函数</span><br><span class="line">    performSyncWorkOnRoot.bind(null, root)</span><br><span class="line">  );</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  // 根据任务优先级异步执行render阶段</span><br><span class="line">  var schedulerPriorityLevel = lanePriorityToSchedulerPriority(</span><br><span class="line">    newCallbackPriority</span><br><span class="line">  );</span><br><span class="line">  newCallbackNode = scheduleCallback(</span><br><span class="line">    schedulerPriorityLevel,</span><br><span class="line">    // 调度的回调函数</span><br><span class="line">    performConcurrentWorkOnRoot.bind(null, root)</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>scheduleCallback 和 scheduleSyncCallback 会调用Scheduler提供的调度方法根据优先级调度回调函数执行，从执行 performSyncWorkOnRoot 和 performConcurrentWorkOnRoot 开始，便进入 render 阶段</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuyongshun.github.io/2020/02/15/REACT-fromstart/" data-id="ckh47kit0008vescu5xnh0dm5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/REACT/">REACT</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/03/15/tool-git/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          git
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/01/19/FLUTTER-env/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">env config</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DEV/">DEV</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DEV/trouble/">trouble</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/array/">array</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/async/">async</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/class/">class</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/decorate/">decorate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/export-import/">export&import</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/fuction/">fuction</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/generator/">generator</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/object/">object</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/promise/">promise</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/proxy/">proxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/reflect/">reflect</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/set-map/">set&map</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/string/">string</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/variable-deconstruction/">variable&deconstruction</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/">FLUTTER</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/dart/">dart</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/env/">env</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/">H5</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-history/">h5 history</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-video/">h5 video</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-CSS/">HTML & CSS</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-CSS/HTML-CSS/">HTML & CSS</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HYBRID/">HYBRID</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HYBRID/hybrid/">hybrid</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/FP/">FP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm/">algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm2/">algorithm2</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/base/">base</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/data-constructor/">data constructor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/principle/">principle</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/">NODE</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/express/">express</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/module/">module</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongo/">mongo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoCommand/">mongoCommand</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoOprate/">mongoOprate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoodb/">mongoodb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-api/">node api</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-buffer/">node buffer</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-eventloop/">node eventloop</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-stream/">node stream</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/variable/">variable</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/">NPM</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/cli/">cli</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/npm-package/">npm package</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/">PLAY</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/photo/">photo</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/">REACT</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/hook/">hook</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/react/">react</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/redux/">redux</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/chrome/">chrome</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/chrome-perf/">chrome-perf</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/debug/">debug</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/frequently/">frequently</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/mac/">mac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/nginx/">nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/vscode-plugin/">vscode plugin</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TS/">TS</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TS/ts-base/">ts base</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/">VUE</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/principle/">principle</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/vueRouter/">vueRouter</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/web/">web</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/">WEBPACK</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/ast/">ast</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/plugin/">plugin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpack-react/">webpack-react</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackDescription/">webpackDescription</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/">WEEX</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/use/">use</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/weex/">weex</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/cache/">cache</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/cache/cache/">cache</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/performance/">performance</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/performance/performance/">performance</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/performance/time-slice/">time slice</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DEV/">DEV</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/H5/">H5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HYBRID/">HYBRID</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NODE/">NODE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/">NPM</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/REACT/">REACT</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TS/">TS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cli/">cli</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/">flutter</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/performance/">performance</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/play/">play</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/variable/">variable</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weex/">weex</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DEV/" style="font-size: 10px;">DEV</a> <a href="/tags/ES6/" style="font-size: 11.43px;">ES6</a> <a href="/tags/H5/" style="font-size: 11.43px;">H5</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HYBRID/" style="font-size: 10px;">HYBRID</a> <a href="/tags/JS/" style="font-size: 17.14px;">JS</a> <a href="/tags/NODE/" style="font-size: 10px;">NODE</a> <a href="/tags/NPM/" style="font-size: 11.43px;">NPM</a> <a href="/tags/REACT/" style="font-size: 14.29px;">REACT</a> <a href="/tags/TS/" style="font-size: 10px;">TS</a> <a href="/tags/cli/" style="font-size: 10px;">cli</a> <a href="/tags/es6/" style="font-size: 20px;">es6</a> <a href="/tags/flutter/" style="font-size: 11.43px;">flutter</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/node/" style="font-size: 18.57px;">node</a> <a href="/tags/performance/" style="font-size: 12.86px;">performance</a> <a href="/tags/play/" style="font-size: 10px;">play</a> <a href="/tags/tool/" style="font-size: 15.71px;">tool</a> <a href="/tags/variable/" style="font-size: 10px;">variable</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue/" style="font-size: 11.43px;">vue</a> <a href="/tags/webpack/" style="font-size: 14.29px;">webpack</a> <a href="/tags/weex/" style="font-size: 11.43px;">weex</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/07/02/node-cache/">cache</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/11/webpack-react/">webpack react</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/11/ts-base/">ts base</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/20/performance-time-split/">time slice</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/19/AST/">AST</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <ul class="hobby-outer">
+      <li class="hobby-item"><a href="http://blog.csdn.net/liuyongshun2/article">CSDN</a></li>
+      <li class="hobby-item"><a href="https://github.com/liuyongshun">GITHUB</a></li>
+    </ul>
+    <div id="footer-info" class="inner">
+      &copy; 2020 cheat&nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1274642270'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1274642270%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/link" class="mobile-nav-link">链接</a>
+  
+</nav>
+    
+
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<div id="totop">
+  <a title="javascript:;">返回<br>顶部</a>
+</div>
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>

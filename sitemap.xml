@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://liuyongshun.github.io/2020/08/11/ts-base/</loc>
+    
+    <lastmod>2020-11-05T02:25:20.280Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://liuyongshun.github.io/2020/02/15/REACT-fromstart/</loc>
+    
+    <lastmod>2020-11-05T02:03:27.523Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://liuyongshun.github.io/2019/05/03/ES6-async/</loc>
+    
+    <lastmod>2020-11-03T16:10:46.278Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://liuyongshun.github.io/2020/06/15/REACT-sourceone/</loc>
+    
+    <lastmod>2020-11-03T12:27:36.247Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://liuyongshun.github.io/2020/06/19/server-worders/</loc>
     
     <lastmod>2020-11-03T00:41:10.059Z</lastmod>
@@ -26,13 +54,6 @@
     <loc>http://liuyongshun.github.io/2020/06/19/REACT-hook/</loc>
     
     <lastmod>2020-11-01T16:15:59.996Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://liuyongshun.github.io/2020/06/15/REACT-sourceone/</loc>
-    
-    <lastmod>2020-11-01T08:58:34.675Z</lastmod>
     
   </url>
   
@@ -89,13 +110,6 @@
     <loc>http://liuyongshun.github.io/2020/07/20/performance-time-split/</loc>
     
     <lastmod>2020-10-31T06:47:59.240Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://liuyongshun.github.io/2020/08/11/ts-base/</loc>
-    
-    <lastmod>2020-10-31T06:36:40.286Z</lastmod>
     
   </url>
   
@@ -320,13 +334,6 @@
     <loc>http://liuyongshun.github.io/2018/02/19/ES6-reflect/</loc>
     
     <lastmod>2020-06-26T12:17:08.936Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://liuyongshun.github.io/2019/05/03/ES6-async/</loc>
-    
-    <lastmod>2020-06-26T12:07:21.772Z</lastmod>
     
   </url>
   
