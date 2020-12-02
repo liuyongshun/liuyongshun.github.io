@@ -8,17 +8,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="keywords" content="Smiple, 简, jian, 简博客">
-  <meta name="description" content="得与失之间，是我所有的美好和思念">
+  <meta name="description" content="得失之间">
 <meta name="keywords" content="Smiple, 简, jian, 简博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="七月">
 <meta property="og:url" content="http://liuyongshun.github.io/page/20/index.html">
 <meta property="og:site_name" content="七月">
-<meta property="og:description" content="得与失之间，是我所有的美好和思念">
+<meta property="og:description" content="得失之间">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="七月">
-<meta name="twitter:description" content="得与失之间，是我所有的美好和思念">
+<meta name="twitter:description" content="得失之间">
   
   
     <link rel="icon" href="/favicon.png">
@@ -44,7 +44,7 @@
       </h1>
       
         <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">是七月呀</a>
+          <a href="/" id="subtitle">是七月呀！欢迎扫描关注公众号</a>
         </h2>
       
     </div>
@@ -72,14 +72,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-tool-nginx" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-web-business" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/01/08/tool-nginx/" class="article-date">
-  <time datetime="2020-01-07T22:36:17.000Z" itemprop="datePublished">2020-01-07</time>
+    <a href="/2020/02/13/web-business/" class="article-date">
+  <time datetime="2020-02-13T08:29:00.000Z" itemprop="datePublished">2020-02-13</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/TOOL/">TOOL</a>►<a class="article-category-link" href="/categories/TOOL/nginx/">nginx</a>
+    <a class="article-category-link" href="/categories/web/">web</a>►<a class="article-category-link" href="/categories/web/business/">business</a>
   </div>
 
   </div>
@@ -90,7 +90,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/08/tool-nginx/">nginx</a>
+      <a class="article-title" href="/2020/02/13/web-business/">web &amp; business</a>
     </h1>
   
 
@@ -98,126 +98,236 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="nginx-介绍"><a href="#nginx-介绍" class="headerlink" title="nginx 介绍"></a>nginx 介绍</h3><p><strong>定义</strong></p>
-<p>Nginx是一款轻量级的HTTP服务器，采用事件驱动的异步非阻塞处理方式框架，这让其具有极好的IO性能，时常用于服务端的反向代理和负载均衡。</p>
-<p><strong>作用</strong></p>
-<ol>
-<li><p>解决跨域</p>
-</li>
-<li><p>请求过滤</p>
-</li>
-<li><p>配置gzip</p>
-</li>
-<li><p>负载均衡</p>
-</li>
-<li><p>静态资源服务器</p>
-</li>
-</ol>
-<h3 id="正向代理和反向代理"><a href="#正向代理和反向代理" class="headerlink" title="正向代理和反向代理"></a>正向代理和反向代理</h3><p>本质上来说，正向代理和反向代理都是指 在client(客户端) 和 server(服务端) 架设层 proxy(代理)，来实现某些功能或者解决某些问题。</p>
-<h4 id="何谓正向代理"><a href="#何谓正向代理" class="headerlink" title="何谓正向代理"></a>何谓正向代理</h4><p>正向代理就是客户端和代理服务器可以直接互相访问，属于一个局域网；正向代理是为我们（客户端）服务的，客户端可以根据正向代理访问到它本身无法访问到的服务器资源。</p>
-<p>正向代理对我们是透明的，对服务端是非透明的，即服务端并不知道自己收到的是来自代理的访问还是来自真实客户端的访问。</p>
-<h4 id="何谓反向代理"><a href="#何谓反向代理" class="headerlink" title="何谓反向代理"></a>何谓反向代理</h4><p>反向代理，把请求代理到和自己属于同一个局域网下的内部服务器上；反向代理是为服务端服务的，反向代理可以帮助服务器接收来自客户端的请求，帮助服务器做请求转发，负载均衡等。</p>
-<p>反向代理对服务端是透明的，对我们是非透明的，即我们并不知道自己访问的是代理服务器，而服务器知道反向代理在为他服务。</p>
-<h3 id="master-worker"><a href="#master-worker" class="headerlink" title="master-worker"></a>master-worker</h3><p><strong>Master进程</strong></p>
+        <h3 id="中台"><a href="#中台" class="headerlink" title="中台"></a>中台</h3><p>应用：微服务应用，类似于前端所说的模块，此处是按照业务划分模块，每个模块都可以使用独立的技术栈</p>
 <ul>
-<li>读取并验证配置文件nginx.conf；管理worker进程；</li>
-</ul>
-<p><strong>Worker进程</strong></p>
-<ul>
-<li>每一个Worker进程都维护一个线程（避免线程切换），处理连接和请求；注意Worker进程的个数由配置文件决定，一般和CPU个数相关（有利于进程切换），配置几个就有几个Worker进程。</li>
-</ul>
-<p><strong>热部署</strong></p>
-<ul>
-<li>修改配置文件nginx.conf后，重新生成新的worker进程，当然会以新的配置进行处理请求，而且新的请求必须都交给新的worker进程，至于老的worker进程，等把那些以前的请求处理完毕后，kill掉即可</li>
-</ul>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>mac 配置文件在 <code>/usr/local/etc/nginx/nginx.conf</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">nginx.conf</span><br><span class="line"></span><br><span class="line">#pid /nginx/pid/nginx.pid;      #指定nginx进程运行文件存放地址</span><br><span class="line">error_log log/error.log debug;  #制定日志路径，级别。</span><br><span class="line"></span><br><span class="line">events &#123; </span><br><span class="line">    worker_connections  1024;   #最大连接数</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;   #文件扩展名与文件类型映射表</span><br><span class="line">    default_type  application/octet-stream;          #默认文件类型，默认为text/plain</span><br><span class="line">    sendfile on;                #允许sendfile方式传输文件,可在http,server,location块。</span><br><span class="line">    keepalive_timeout 65;       #连接超时时间，默认为75s，可以在http，server，location块。</span><br><span class="line">    error_page 404 https://www.baidu.com;            #错误页</span><br><span class="line">    server &#123; </span><br><span class="line">        keepalive_requests 120;   #单连接请求上限次数。</span><br><span class="line">        listen       4545;        #监听端口</span><br><span class="line">        server_name  127.0.0.1;   #监听地址       </span><br><span class="line">        location ~*^.+$ &#123;         #请求的url过滤，正则匹配，~为区分大小写，~*为不区分大小写。</span><br><span class="line">            #root path;           #根目录</span><br><span class="line">            #index vv.txt;        #设置默认页</span><br><span class="line">            proxy_pass  http://mysvr;  #请求转向mysvr 定义的服务器列表</span><br><span class="line">            deny 127.0.0.1;       #拒绝的ip</span><br><span class="line">            allow 172.18.5.54;    #允许的ip    </span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">        location path &#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">    server &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>注意：每个指令必须有分号结束</strong></p>
-<p>1、几个常见配置项：</p>
-<p>1.$remote_addr 与 $http_x_forwarded_for 用以记录客户端的ip地址；</p>
-<p>2.$remote_user ：用来记录客户端用户名称；</p>
-<p>3.$time_local ： 用来记录访问时间与时区；</p>
-<p>4.$request ： 用来记录请求的url与http协议；</p>
-<p>5.$status ： 用来记录请求状态；成功是200；</p>
-<p>6.$body_bytes_s ent ：记录发送给客户端文件主体内容大小；</p>
-<p>7.$http_referer ：用来记录从那个页面链接访问过来的；</p>
-<p>8.$http_user_agent ：记录客户端浏览器的相关信息；</p>
-<h3 id="配置location"><a href="#配置location" class="headerlink" title="配置location"></a>配置location</h3><p>location 支持的语法 location [=|~|~*|^~|@] pattern { … }</p>
-<h4 id="要求路径完全匹配"><a href="#要求路径完全匹配" class="headerlink" title="= 要求路径完全匹配"></a><code>=</code> 要求路径完全匹配</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location = /abc &#123; &#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p><code>http://domain.com/abc</code> 匹配</p>
+<li><p>用户中心</p>
 </li>
-<li><p><code>http://domain.com/ABCD</code> 可能匹配 ，系统是否大小写敏感</p>
+<li><p>活动中心</p>
 </li>
-<li><p><code>http://domain.com/abc?f=3</code> 匹配，忽略 querystring</p>
+<li><p>渠道中心</p>
 </li>
-<li><p><code>http://domain.com/abc/</code> 不匹配，带有结尾的/</p>
+<li><p>评价评论</p>
 </li>
-<li><p>·<a href="http://domain.com/abcde·" target="_blank" rel="noopener">http://domain.com/abcde·</a> 不匹配</p>
+<li><p>商城管理</p>
+</li>
+<li><p>CMS管理（内容管理中心）</p>
 </li>
 </ul>
-<h4 id="区分大小写的正则匹配"><a href="#区分大小写的正则匹配" class="headerlink" title="~ 区分大小写的正则匹配"></a><code>~</code> 区分大小写的正则匹配</h4><p>~ 后面写正则规则即可</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location ~ ^/abc$ &#123; &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="不区分大小写的正则匹配"><a href="#不区分大小写的正则匹配" class="headerlink" title="~* 不区分大小写的正则匹配"></a><code>~*</code> 不区分大小写的正则匹配</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location ~* ^/abc$ &#123; &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="开头对URL路径进行前缀匹配，并且在正则之前"><a href="#开头对URL路径进行前缀匹配，并且在正则之前" class="headerlink" title="^~ 开头对URL路径进行前缀匹配，并且在正则之前"></a><code>^~</code> 开头对URL路径进行前缀匹配，并且在正则之前</h4><p>前缀匹配时，Nginx 不对 url 做编码，因此请求为 /static/20%/aa，可以被规则 ^~ /static/ /aa 匹配到（注意是空格）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location ^~ /uri &#123;&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="不带任何修饰符，也表示前缀匹配，但是在正则匹配之后"><a href="#不带任何修饰符，也表示前缀匹配，但是在正则匹配之后" class="headerlink" title="不带任何修饰符，也表示前缀匹配，但是在正则匹配之后"></a>不带任何修饰符，也表示前缀匹配，但是在正则匹配之后</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location /uri   &#123;&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="通用匹配"><a href="#通用匹配" class="headerlink" title="通用匹配"></a>通用匹配</h4><p>任何未匹配到其它location的请求都会匹配到，相当于switch中的default</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="查找的顺序及优先级"><a href="#查找的顺序及优先级" class="headerlink" title="查找的顺序及优先级"></a>查找的顺序及优先级</h4><p>当有多条 location 规则时，nginx 有一套比较复杂的规则</p>
+<h4 id="用户中心"><a href="#用户中心" class="headerlink" title="用户中心"></a>用户中心</h4><p><strong>核心内容</strong></p>
 <ul>
-<li><p>精确匹配 =</p>
+<li><p>角色：划分和账号管理，管理每个账号的，角色权限和菜单展示；<strong>角色关联菜单，用户关联角色</strong>实现用户权限控制</p>
 </li>
-<li><p>前缀匹配 ^~（立刻停止后续的正则搜索）</p>
+<li><p>菜单划分，不同的角色拥有不同业务，展示的菜单也不同（例如：主机厂和经销商）</p>
 </li>
-<li><p>按文件中顺序的正则匹配 ~或~*</p>
+<li><p>用户权限，权限细化到菜单，按钮等，每个菜单都有权限，按钮有独立的权限，例如某个角色权限不够无法使用数据导出，而admin拥有所有权限</p>
 </li>
-<li><p>匹配不带任何修饰的前缀匹配</p>
+<li><p>应用管理，管理其他各个应用，（渠道，活动，评价评论等）</p>
+</li>
+<li><p>每个应用都需要在用户中心进行注册，用户中心分配cliend_id/client_secret</p>
 </li>
 </ul>
-<p>先精确匹配，没有则查找带有 ^~的前缀匹配，没有则进行正则匹配，最后才返回前缀匹配的结果（如果有的话）</p>
-<h4 id="nginx-命令"><a href="#nginx-命令" class="headerlink" title="nginx 命令"></a>nginx 命令</h4><ol>
-<li><p><code>nginx -h</code>: 查看帮助</p>
+<p><strong>衔接用户中心单点登录</strong></p>
+<ul>
+<li><p>单点登录SSO（Single Sign On）,其他应用通过单点登录对接统一的用户中心，进行管理；</p>
 </li>
-<li><p><code>nginx -c &lt;/path/to/config&gt;</code>: 为 Nginx 指定一个配置文件，来代替缺省的</p>
+<li><p>各个应用可以采用在导航头部设计应用切换（通过接口拉取应用数据）的方式，实现应用之间的跳转，切换</p>
 </li>
-<li><p><code>nginx -t</code>: 不运行，而仅仅测试配置文件。nginx 将检查配置文件的语法的正确性，并尝试打开配置文件中所引用到的文件</p>
+<li><p>单处国际化辐射全应用，当我们在某个应用下调整了国际化，期望在其他应用也自动变更；方案一通过接口设置和读取，方案二设置顶级域名cookie</p>
 </li>
-<li><p><code>nginx -v</code>: 显示 nginx 的版本</p>
+</ul>
+<p><strong>衔接用户中心微前端架构（阿里的qiankun）</strong></p>
+<p>目前还在探索中</p>
+<h4 id="活动中心"><a href="#活动中心" class="headerlink" title="活动中心"></a>活动中心</h4><ul>
+<li><p>营销活动自动化，创建各种活动，规划预算，以及报表统计</p>
 </li>
-<li><p><code>nginx -V</code>: 显示 nginx 的版本，编译器版本和配置参数</p>
+<li><p>留资，报名，宣传，投票，秒杀，拼团等各种活动，统计参与人数和其他信息，分析预算，开支，分析PV，UV</p>
 </li>
-<li><p><code>nginx</code>: 启动 nginx</p>
+<li><p>配合C端埋点（神策，秒针）精准收集用户信息，分析操作链路的用户行为</p>
 </li>
-<li><p><code>nginx -s stop || nginx -s quit</code>: 强制停止Nginx服务 || 优雅地停止Nginx服务</p>
+</ul>
+<p>PV（Page View）：页面浏览量或点击量，用户每次刷新即被计算一次</p>
+<p>UV(Unique Visitor)：访问您网站的一台电脑客户端为一个访客</p>
+<h4 id="渠道中心"><a href="#渠道中心" class="headerlink" title="渠道中心"></a>渠道中心</h4><ul>
+<li>信息推送和活动投放渠道，配置信息推送模版（验证码，和一些活动提醒短信）</li>
+</ul>
+<h4 id="评价评论"><a href="#评价评论" class="headerlink" title="评价评论"></a>评价评论</h4><ul>
+<li><p>各类活动及C端的评价，评论统一维护在这里</p>
 </li>
-<li><p><code>nginx -s reload</code>: 重新加载Nginx配置文件，然后以优雅的方式重启Nginx</p>
+<li><p>拉黑，过滤（阿里滤网）敏感词</p>
 </li>
-<li><p><code>nginx -c /usr/local/nginx/conf/nginx.conf</code>: 指定配置文件</p>
+<li><p>问卷调查和调研等，也从该模块创建</p>
 </li>
-<li><p><code>ps aux | grep nginx || cat /path/to/nginx.pid</code>: 获得 pid</p>
+</ul>
+<h4 id="商城管理"><a href="#商城管理" class="headerlink" title="商城管理"></a>商城管理</h4><ul>
+<li><p>商城商品配置管理</p>
 </li>
-<li><p><code>nginx -s reopen</code>: 重启Nginx</p>
+<li><p>配置商品sku（库存）</p>
 </li>
-<li><p>从容停止 nginx，等所有请求结束后关闭服务</p>
+<li><p>收，发，退货，退款等</p>
 </li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep nginx</span><br><span class="line">kill -QUIT  pid</span><br></pre></td></tr></table></figure>
-<ol start="13">
-<li>快速停止命令，立刻关闭进程</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep nginx</span><br><span class="line">kill -TERM pid</span><br></pre></td></tr></table></figure>
-<ol start="14">
-<li><code>kill -9 pid</code>: nginx 强制停止命令</li>
-</ol>
+</ul>
+<h4 id="CMS管理（内容管理中心）"><a href="#CMS管理（内容管理中心）" class="headerlink" title="CMS管理（内容管理中心）"></a>CMS管理（内容管理中心）</h4><ul>
+<li><p>自动化定制，配置内容</p>
+</li>
+<li><p>独立生成页面投放，或者生成代码块，对接到活动中心（活动经常配置海报和一些规则，那这些频繁变动的内容，都可以放在活动中心）</p>
+</li>
+<li><p>基于 VUE 的工程，打包成 vue 代码片段，打包成小程序的片段等等，在B端对应活动中心对接唯一标示，在C端通过标示加载代码块</p>
+</li>
+</ul>
+<h3 id="前端方向"><a href="#前端方向" class="headerlink" title="前端方向"></a>前端方向</h3><h4 id="底层化"><a href="#底层化" class="headerlink" title="底层化"></a>底层化</h4><ul>
+<li><p>vue &amp; react</p>
+</li>
+<li><p>vdom  虚拟DOM</p>
+</li>
+<li><p>AST   抽象语法树</p>
+</li>
+<li><p>paser 编写</p>
+</li>
+<li><p>acorn 包</p>
+</li>
+<li><p>编译原理</p>
+</li>
+<li><p>项目架构</p>
+</li>
+<li><p>前端工具链</p>
+</li>
+<li><p>webpack</p>
+</li>
+<li><p>node</p>
+</li>
+<li><p>lint  代码规范</p>
+</li>
+<li><p>test  单元测试</p>
+</li>
+<li><p>babel 语法转化</p>
+</li>
+<li><p>设计模式 &amp; 结合业务需求落地</p>
+</li>
+<li><p>mvvm</p>
+</li>
+</ul>
+<h4 id="全面化"><a href="#全面化" class="headerlink" title="全面化"></a>全面化</h4><p><strong>底层</strong></p>
+<ul>
+<li><p>chrome v8 &amp; gecko &amp; webkit</p>
+</li>
+<li><p>service</p>
+</li>
+<li><p>security</p>
+</li>
+<li><p>linux</p>
+</li>
+<li><p>shell</p>
+</li>
+<li><p>c / c++</p>
+</li>
+<li><p>net</p>
+</li>
+<li><p>cpu</p>
+</li>
+<li><p>io</p>
+</li>
+<li><p>memory</p>
+</li>
+</ul>
+<p><strong>工具</strong></p>
+<ul>
+<li><p>git</p>
+</li>
+<li><p>npm &amp; yarn</p>
+</li>
+<li><p>webpack &amp; rollup</p>
+</li>
+<li><p>nginx</p>
+</li>
+<li><p>electron</p>
+</li>
+</ul>
+<p><strong>计算机网络</strong></p>
+<ul>
+<li>tcp/ip</li>
+</ul>
+<p><strong>数据库</strong></p>
+<ul>
+<li><p>mysql</p>
+</li>
+<li><p>mongodb</p>
+</li>
+<li><p>redis</p>
+<p><strong>基础</strong></p>
+</li>
+<li><p>js html css</p>
+</li>
+<li><p>es</p>
+</li>
+<li><p>ts</p>
+</li>
+<li><p>vue &amp; react &amp; angular</p>
+</li>
+<li><p>lodash</p>
+</li>
+<li><p>sass less </p>
+</li>
+</ul>
+<p><strong>server</strong></p>
+<ul>
+<li><p>node.js</p>
+</li>
+<li><p>koa &amp; express</p>
+</li>
+<li><p>java</p>
+</li>
+<li><p>python</p>
+</li>
+<li><p>deno(rust)</p>
+</li>
+</ul>
+<p><strong>跨平台</strong></p>
+<ul>
+<li>rn &amp; 小程序 &amp; tora &amp; uniapp &amp; flutter &amp; weex</li>
+</ul>
+<p><strong>运维</strong></p>
+<ul>
+<li><p>docker</p>
+</li>
+<li><p>k8s</p>
+</li>
+</ul>
+<p><strong>服务端渲染</strong></p>
+<ul>
+<li>next.js &amp; nuxt.js</li>
+</ul>
+<h4 id="业务化"><a href="#业务化" class="headerlink" title="业务化"></a>业务化</h4><ul>
+<li><p>前端和UI</p>
+</li>
+<li><p>后端和服务</p>
+</li>
+<li><p>产品和交互</p>
+</li>
+<li><p>运维</p>
+</li>
+<li><p>测试</p>
+</li>
+<li><p>营销自动化</p>
+</li>
+<li><p>商城</p>
+</li>
+<li><p>中台</p>
+</li>
+<li><p>数据可视化</p>
+</li>
+<li><p>游戏</p>
+</li>
+<li><p>ioT，智能家居，穿戴设备</p>
+</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuyongshun.github.io/2020/01/08/tool-nginx/" data-id="ckh47kiqd0031escuse4lsqsr" class="article-share-link">Share</a>
+      <a data-url="http://liuyongshun.github.io/2020/02/13/web-business/" data-id="cki79gw7s0003mecuywil49j9" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
 
     </footer>
   </div>
@@ -230,7 +340,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/19/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/73/">73</a><a class="extend next" rel="next" href="/page/21/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/19/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/76/">76</a><a class="extend next" rel="next" href="/page/21/">下一页</a>
   </nav>
 
 </section>
@@ -241,7 +351,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DEV/">DEV</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DEV/trouble/">trouble</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/array/">array</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/async/">async</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/class/">class</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/decorate/">decorate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/export-import/">export&import</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/fuction/">fuction</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/generator/">generator</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/object/">object</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/promise/">promise</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/proxy/">proxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/reflect/">reflect</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/set-map/">set&map</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/string/">string</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/variable-deconstruction/">variable&deconstruction</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/">FLUTTER</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/dart/">dart</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/env/">env</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/">H5</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-history/">h5 history</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-video/">h5 video</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-CSS/">HTML & CSS</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-CSS/HTML-CSS/">HTML & CSS</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HYBRID/">HYBRID</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HYBRID/hybrid/">hybrid</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/FP/">FP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm/">algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm2/">algorithm2</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/base/">base</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/data-constructor/">data constructor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/principle/">principle</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/">NODE</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/express/">express</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/module/">module</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongo/">mongo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoCommand/">mongoCommand</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoOprate/">mongoOprate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoodb/">mongoodb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-api/">node api</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-buffer/">node buffer</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-eventloop/">node eventloop</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-stream/">node stream</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/variable/">variable</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/">NPM</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/cli/">cli</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/npm-package/">npm package</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/">PLAY</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/photo/">photo</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/">REACT</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/hook/">hook</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/react/">react</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/redux/">redux</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/chrome/">chrome</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/chrome-perf/">chrome-perf</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/debug/">debug</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/frequently/">frequently</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/mac/">mac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/nginx/">nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/vscode-plugin/">vscode plugin</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TS/">TS</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TS/ts-base/">ts base</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/">VUE</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/principle/">principle</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/vueRouter/">vueRouter</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/web/">web</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/">WEBPACK</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/ast/">ast</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/plugin/">plugin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpack-react/">webpack-react</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackDescription/">webpackDescription</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/">WEEX</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/use/">use</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/weex/">weex</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/cache/">cache</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/cache/cache/">cache</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/performance/">performance</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/performance/performance/">performance</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/performance/time-slice/">time slice</a><span class="category-list-count">1</span></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DEV/">DEV</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DEV/trouble/">trouble</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/array/">array</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/async/">async</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/class/">class</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/decorate/">decorate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/export-import/">export&import</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/fuction/">fuction</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/generator/">generator</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/object/">object</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/promise/">promise</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/proxy/">proxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/reflect/">reflect</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/set-map/">set&map</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/string/">string</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/variable-deconstruction/">variable&deconstruction</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/">FLUTTER</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/dart/">dart</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/env/">env</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/">H5</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-history/">h5 history</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-video/">h5 video</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-CSS/">HTML & CSS</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-CSS/HTML-CSS/">HTML & CSS</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HYBRID/">HYBRID</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HYBRID/hybrid/">hybrid</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/FP/">FP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm/">algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm2/">algorithm2</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/base/">base</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/data-constructor/">data constructor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/principle/">principle</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/">NODE</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/express/">express</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/module/">module</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongo/">mongo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoCommand/">mongoCommand</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoOprate/">mongoOprate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoodb/">mongoodb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-api/">node api</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-buffer/">node buffer</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-eventloop/">node eventloop</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-stream/">node stream</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/variable/">variable</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/">NPM</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/cli/">cli</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/npm-package/">npm package</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/">PLAY</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/photo/">photo</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/">REACT</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/hook/">hook</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/perf/">perf</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/react/">react</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/redux/">redux</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/chrome/">chrome</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/chrome-perf/">chrome-perf</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/debug/">debug</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/frequently/">frequently</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/mac/">mac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/nginx/">nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/vscode-plugin/">vscode plugin</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TS/">TS</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TS/ts-base/">ts base</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/">VUE</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/principle/">principle</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/vueRouter/">vueRouter</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/web/">web</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/">WEBPACK</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/ast/">ast</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/plugin/">plugin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpack-react/">webpack-react</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackDescription/">webpackDescription</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/">WEEX</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/use/">use</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/weex/">weex</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/cache/">cache</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/cache/cache/">cache</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/performance/">performance</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/performance/performance/">performance</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/performance/time-slice/">time slice</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/web/business/">business</a><span class="category-list-count">1</span></li></ul></li></ul>
     </div>
   </div>
 
@@ -251,7 +361,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DEV/">DEV</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/H5/">H5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HYBRID/">HYBRID</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NODE/">NODE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/">NPM</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/REACT/">REACT</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TS/">TS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cli/">cli</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/">flutter</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/performance/">performance</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/play/">play</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/variable/">variable</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weex/">weex</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DEV/">DEV</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/H5/">H5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HYBRID/">HYBRID</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NODE/">NODE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/">NPM</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/REACT/">REACT</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TS/">TS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cli/">cli</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/">flutter</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/performance/">performance</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/play/">play</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/variable/">variable</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weex/">weex</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -261,7 +371,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/DEV/" style="font-size: 10px;">DEV</a> <a href="/tags/ES6/" style="font-size: 11.43px;">ES6</a> <a href="/tags/H5/" style="font-size: 11.43px;">H5</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HYBRID/" style="font-size: 10px;">HYBRID</a> <a href="/tags/JS/" style="font-size: 17.14px;">JS</a> <a href="/tags/NODE/" style="font-size: 10px;">NODE</a> <a href="/tags/NPM/" style="font-size: 11.43px;">NPM</a> <a href="/tags/REACT/" style="font-size: 14.29px;">REACT</a> <a href="/tags/TS/" style="font-size: 10px;">TS</a> <a href="/tags/cli/" style="font-size: 10px;">cli</a> <a href="/tags/es6/" style="font-size: 20px;">es6</a> <a href="/tags/flutter/" style="font-size: 11.43px;">flutter</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/node/" style="font-size: 18.57px;">node</a> <a href="/tags/performance/" style="font-size: 12.86px;">performance</a> <a href="/tags/play/" style="font-size: 10px;">play</a> <a href="/tags/tool/" style="font-size: 15.71px;">tool</a> <a href="/tags/variable/" style="font-size: 10px;">variable</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue/" style="font-size: 11.43px;">vue</a> <a href="/tags/webpack/" style="font-size: 14.29px;">webpack</a> <a href="/tags/weex/" style="font-size: 11.43px;">weex</a>
+      <a href="/tags/DEV/" style="font-size: 10px;">DEV</a> <a href="/tags/ES6/" style="font-size: 11.25px;">ES6</a> <a href="/tags/H5/" style="font-size: 11.25px;">H5</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HYBRID/" style="font-size: 10px;">HYBRID</a> <a href="/tags/JS/" style="font-size: 17.5px;">JS</a> <a href="/tags/NODE/" style="font-size: 10px;">NODE</a> <a href="/tags/NPM/" style="font-size: 11.25px;">NPM</a> <a href="/tags/REACT/" style="font-size: 15px;">REACT</a> <a href="/tags/TS/" style="font-size: 10px;">TS</a> <a href="/tags/cli/" style="font-size: 10px;">cli</a> <a href="/tags/es6/" style="font-size: 20px;">es6</a> <a href="/tags/flutter/" style="font-size: 11.25px;">flutter</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/node/" style="font-size: 18.75px;">node</a> <a href="/tags/performance/" style="font-size: 12.5px;">performance</a> <a href="/tags/play/" style="font-size: 10px;">play</a> <a href="/tags/tool/" style="font-size: 16.25px;">tool</a> <a href="/tags/variable/" style="font-size: 10px;">variable</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue/" style="font-size: 11.25px;">vue</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/webpack/" style="font-size: 13.75px;">webpack</a> <a href="/tags/weex/" style="font-size: 11.25px;">weex</a>
     </div>
   </div>
 
@@ -270,7 +380,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -287,6 +397,10 @@
           </li>
         
           <li>
+            <a href="/2020/10/15/REACT-router/">react-router</a>
+          </li>
+        
+          <li>
             <a href="/2020/10/11/webpack-react/">webpack react</a>
           </li>
         
@@ -296,10 +410,6 @@
         
           <li>
             <a href="/2020/07/20/performance-time-split/">time slice</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/19/AST/">AST</a>
           </li>
         
       </ul>
@@ -354,6 +464,7 @@
 </div>
 <script src="/js/totop.js"></script>
 
+    <img class="qr-img" src="https://s3.ax1x.com/2020/12/02/DINICd.jpg" alt="">
   </div>
 </body>
 </html>

@@ -8,17 +8,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="keywords" content="Smiple, 简, jian, 简博客">
-  <meta name="description" content="得与失之间，是我所有的美好和思念">
+  <meta name="description" content="得失之间">
 <meta name="keywords" content="Smiple, 简, jian, 简博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="七月">
 <meta property="og:url" content="http://liuyongshun.github.io/page/37/index.html">
 <meta property="og:site_name" content="七月">
-<meta property="og:description" content="得与失之间，是我所有的美好和思念">
+<meta property="og:description" content="得失之间">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="七月">
-<meta name="twitter:description" content="得与失之间，是我所有的美好和思念">
+<meta name="twitter:description" content="得失之间">
   
   
     <link rel="icon" href="/favicon.png">
@@ -44,7 +44,7 @@
       </h1>
       
         <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">是七月呀</a>
+          <a href="/" id="subtitle">是七月呀！欢迎扫描关注公众号</a>
         </h2>
       
     </div>
@@ -72,14 +72,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-tool-debug" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-HTML-CSS-principle" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/06/15/tool-debug/" class="article-date">
-  <time datetime="2019-06-14T21:01:17.000Z" itemprop="datePublished">2019-06-14</time>
+    <a href="/2019/08/20/HTML-CSS-principle/" class="article-date">
+  <time datetime="2019-08-19T17:29:17.000Z" itemprop="datePublished">2019-08-19</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/TOOL/">TOOL</a>►<a class="article-category-link" href="/categories/TOOL/debug/">debug</a>
+    <a class="article-category-link" href="/categories/HTML-CSS/">HTML & CSS</a>►<a class="article-category-link" href="/categories/HTML-CSS/HTML-CSS/">HTML & CSS</a>
   </div>
 
   </div>
@@ -90,7 +90,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/15/tool-debug/">git</a>
+      <a class="article-title" href="/2019/08/20/HTML-CSS-principle/">html and css</a>
     </h1>
   
 
@@ -98,153 +98,200 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="工具是为了快速解决问题，适当使用，不要纠结什么工具，否则适得其反，千万调试总有一款适合你"><a href="#工具是为了快速解决问题，适当使用，不要纠结什么工具，否则适得其反，千万调试总有一款适合你" class="headerlink" title="工具是为了快速解决问题，适当使用，不要纠结什么工具，否则适得其反，千万调试总有一款适合你"></a>工具是为了快速解决问题，适当使用，不要纠结什么工具，否则适得其反，千万调试总有一款适合你</h3><h4 id="chrome-inspect"><a href="#chrome-inspect" class="headerlink" title="chrome://inspect"></a>chrome://inspect</h4><p><strong>使用场景</strong></p>
-<p>安卓手机，的微信环境，app环境，以及浏览器环境</p>
-<p><strong>使用方法</strong></p>
+        <h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><h4 id="1、doctype的作用是什么"><a href="#1、doctype的作用是什么" class="headerlink" title="1、doctype的作用是什么"></a>1、doctype的作用是什么</h4><p>声明文档类型，告知浏览器用什么文档标准解析这个文档</p>
+<p>怪异模式：浏览器使用自己的模式解析文档，不加doctype时默认为怪异模式<br>标准模式：浏览器以W3C的标准解析文档</p>
+<p>HTML 5</p>
+<p><code>&lt;!DOCTYPE html&gt;</code></p>
+<p>HTML 4.01 Strict</p>
+<p>包含所有 HTML 元素和属性，但不包括表象或过时的元素（如 font ）。框架集是不允许的。</p>
+<p><code>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;</code></p>
+<p>HTML 4.01 Transitional</p>
+<p>这个 DTD 包含所有 HTML 元素和属性，包括表象或过时的元素（如 font ）。框架集是不允许的。</p>
+<p><code>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;</code></p>
+<p>HTML 4.01 Frameset</p>
+<p>这个 DTD 与 HTML 4.01 Transitional 相同，但是允许使用框架集内容。</p>
+<p><code>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Frameset//EN&quot; &quot;http://www.w3.org/TR/html4/frameset.dtd&quot;&gt;</code></p>
+<h4 id="2、存储"><a href="#2、存储" class="headerlink" title="2、存储"></a>2、存储</h4><p>HTTP 协议是一种无状态协议，即每次服务端接收到客户端的请求，都是一个全新的请求，服务器并不知道客户端的历史请求记录；Session 和 Cookie 的主要目的就是为了弥补 HTTP 的无状态特性</p>
+<p><strong>Session（非前端）</strong></p>
+<p>如何判断是否是同一会话（单点登录设计多了token用户认证）：</p>
+<p>接收到客户请求 -&gt; 创建Session对象 -&gt; 生成 sessionId -&gt; 设置响应头的 <code>Set-Cookie：JSESSIONID=XXXXXXX</code>命令， -&gt; 向客户端发送要求设置 Cookie 的响应</p>
+<p>客户端收到响应 -&gt; 本机客户端设置 <code>JSESSIONID=XXXXXXX</code>的 Cookie 信息 -&gt; Cookie 的过期时间为浏览器会话结束</p>
+<p>客户端每次发送请求 -&gt; 请求头带上该 Cookie信息 -&gt; 服务器读取请求头中的 Cookie 信息 -&gt; 获取 JSESSIONID 值</p>
+<p>缺点:</p>
+<p> A 服务器存储了 Session，负载均衡后， A 的访问量激增，会转发到 B ，但 B 并没有存储 A 的 Session，导致 Session 失效</p>
+<p><strong>Cookies</strong></p>
 <ul>
-<li><p>安卓手机打开 USB 可调试功能，连接 PC</p>
+<li><p>兼容性好，大小4k</p>
 </li>
-<li><p>在 PC 的 chrome 浏览器中打开 chrome://inspect （需要科学上网）</p>
+<li><p>服务端可设置 cookie 选项：name、value、expires、max-age、domain、path、secure、HttpOnly</p>
 </li>
-</ul>
-<p><strong>PS微信</strong></p>
-<p>微信中直接打开 <code>debugx5.qq.com</code>，然后勾选 打开TBS内核 inspector 调试功能；</p>
-<p><strong>如不能打开</strong></p>
-<p>先打开 <code>debugmm.qq.com/?forcex5=true</code> 进行授权，在打开 <code>debugx5.qq.com</code>；</p>
-<p><strong>查看当前x5内核版本及更新 debugtbs.qq.com</strong></p>
-<p><img src="https://s1.ax1x.com/2020/09/09/wlOHEV.png" alt></p>
-<h3 id="苹果手机-safari"><a href="#苹果手机-safari" class="headerlink" title="苹果手机 safari"></a>苹果手机 safari</h3><ul>
-<li><p>打开手机Safari浏览器 设置（setting）－ safari-高级(advance)-打开web检查器</p>
+<li><p>客户端可设置：name、value、expires、max-age、domain、path、secure</p>
 </li>
-<li><p>mac电脑 Safari → 偏好设置 → 高级 → 在菜单栏中显示“开发”菜单</p>
+<li><p>当name、domain、path 这3个字段都相同cookie才被覆盖，不同则会产生键值副本（开发中这里特别容易出问题）</p>
 </li>
-<li><p>然后打开mac → safari → 开发 点击对应的ios设备就可以调试了</p>
+<li><p>用encodeURIComponent()来保证它不包含任何逗号、分号或空格(cookie值中禁止使用这些值)</p>
 </li>
 </ul>
-<h3 id="vconsole"><a href="#vconsole" class="headerlink" title="vconsole"></a>vconsole</h3><ul>
-<li>直接引用</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;path/to/vconsole.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  var vConsole = new VConsole();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>name &amp; value</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.cookie=&apos;name=value;&apos;</span><br></pre></td></tr></table></figure>
+<p><strong>domain</strong></p>
+<p>设置<code>Domain=exmple.com</code>，则子域名（developer.exmple.com）也会存在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.cookie=&apos;name=value;domain=exmple.com;&apos;</span><br></pre></td></tr></table></figure>
+<p><strong>path</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.cookie=&apos;name=value;path=/;&apos;</span><br></pre></td></tr></table></figure>
+<p>path这个属性默认是’/‘，这个值匹配的是web的路由，设置 path=/docs，则匹配：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/docs</span><br><span class="line">/docs/Web/</span><br><span class="line">/docs/Web/HTTP</span><br></pre></td></tr></table></figure>
+<p><strong>name &amp; value &amp; domain &amp; path</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.cookie=&apos;name=value;path=/;domain=exmple.com;&apos;</span><br></pre></td></tr></table></figure>
+<p><strong>expires &amp; max-age</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// expires</span><br><span class="line">document.cookie=&apos;myname=laihuamin;path=/;domain=juejin.im;expires=Thu, 05 Nov 2020 16:51:41 GMT;&apos;</span><br><span class="line"></span><br><span class="line">// max-age</span><br><span class="line">&quot;myname=laihuamin;path=/;domain=juejin.im;max-age=160886;&quot;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>AMD/CMD 导入</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var VConsole = require(&apos;path/to/vconsole.min.js&apos;);</span><br><span class="line">var vConsole = new VConsole();</span><br></pre></td></tr></table></figure>
-<h3 id="eruda-与-vconsole-异曲同工"><a href="#eruda-与-vconsole-异曲同工" class="headerlink" title="eruda 与 vconsole 异曲同工"></a>eruda 与 vconsole 异曲同工</h3><ul>
-<li>直接引用</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;node_modules/eruda/eruda.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;eruda.init();&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p><a href="https://juejin.im/post/6844903741422829576" target="_blank" rel="noopener">使用文档</a></p>
-<p><a href="https://github.com/liriliri/eruda/blob/master/doc/README_CN.md" target="_blank" rel="noopener">官方</a></p>
-<h3 id="charles-抓包移动端安卓"><a href="#charles-抓包移动端安卓" class="headerlink" title="charles 抓包移动端安卓"></a>charles 抓包移动端安卓</h3><h4 id="MAC-版本-charles"><a href="#MAC-版本-charles" class="headerlink" title="MAC 版本 charles"></a>MAC 版本 charles</h4><ul>
-<li><p>在菜单栏选择 Help -&gt; SSL Proxying -&gt; Install Charles Root Certificate</p>
+<li><p>一般浏览器的cookie都是默认储存的，当关闭浏览器结束这个会话的时候，这个cookie也就会被删除</p>
 </li>
-<li><p>将证书添加到钥匙串之后，可以看到证书是不受信任的, 这时候需要右键，设置证书 (SSL)始终受信任</p>
-</li>
-<li><p>先从charles中下载证书, help -&gt; SSL Proxying -&gt; Save Charles Root Certificate</p>
-</li>
-<li><p>将证书（.pem 结尾）发送到安卓手机安装，如果无法安装，则修改拓展名为 .crt 即可</p>
-</li>
-<li><p>需要手机和运行 Charles 的电脑在同一个局域网内</p>
-</li>
-<li><p>启动 Charles，点击 Proxy-Proxy Settings，查看并设置端口</p>
-</li>
-<li><p>查看电脑ip地址和上一步设置的端口号，配置到手机的wifi，手动代理</p>
+<li><p>如果你想要cookie存在一段时间，Expires 设置时间，逐渐被Max-Age取代(单位秒）；</p>
 </li>
 </ul>
-<p><img src="https://s1.ax1x.com/2020/09/09/wlOoBq.jpg" alt></p>
-<h4 id="window-版本-charles"><a href="#window-版本-charles" class="headerlink" title="window 版本 charles"></a>window 版本 charles</h4><ul>
-<li><p>通过 Help-&gt;SSL Proxying-&gt;Install Charles Root Certificate 打开证书安装</p>
-</li>
-<li><p>需要手机和运行 Charles 的电脑在同一个局域网内</p>
-</li>
-<li><p>启动 Charles，点击 Proxy-Proxy Settings，查看并设置端口</p>
-</li>
-<li><p>查看电脑ip地址和上一步设置的端口号，配置到手机的wifi，手动代理</p>
-</li>
-<li><p>（注意打开地址一定是开着charles才会提示下载）手动安装证书，点击 <a href="http://chls.pro/ssl" target="_blank" rel="noopener">http://chls.pro/ssl</a> 下载证书，并安装, 如果手机不能正常安装，可以电脑打开该地址，下载 charles-proxy-ssl-proxying-certificate.pem</p>
-</li>
-<li><p>将文件复制到手机，更改拓展名为.crt，点击安装</p>
-</li>
-</ul>
-<h3 id="window-下-ios配置"><a href="#window-下-ios配置" class="headerlink" title="window 下 ios配置"></a>window 下 ios配置</h3><ul>
-<li><p>通过 Help-&gt;SSL Proxying-&gt;Install Charles Root Certificate 打开证书安装</p>
-</li>
-<li><p>需要手机和运行 Charles 的电脑在同一个局域网内</p>
-</li>
-<li><p>启动 Charles，点击 Proxy-Proxy Settings，查看并设置端口</p>
-</li>
-<li><p>查看电脑ip地址和上一步设置的端口号，配置到手机的wifi，手动代理</p>
-</li>
-<li><p>（注意打开地址一定是开着charles才会提示下载）手动安装证书，点击 <a href="http://chls.pro/ssl" target="_blank" rel="noopener">http://chls.pro/ssl</a> 下载证书。下载好以后，需要先去ios的设置里，安装该证书。</p>
-</li>
-<li><p>证书安装成功后，去iso的 设置 -&gt; 通用 -&gt; 关于本机 -&gt; 证书信任设置 -&gt; 信任证书。</p>
-</li>
-</ul>
-<h3 id="问题排查"><a href="#问题排查" class="headerlink" title="问题排查"></a>问题排查</h3><p><strong>配置 Charles 代理之后手机无法上网的问题</strong></p>
+<p>&#x3000;&#x3000;正数时，cookie会在Max-Age秒之后被删除；</p>
+<p>&#x3000;&#x3000;负数时，表示的是临时储存，不会生出cookie文件，只会存在浏览器内存中；</p>
+<p>&#x3000;&#x3000;为0时，删除cookie；</p>
+<p><strong>HttpOnly</strong></p>
 <ul>
-<li><p>关闭防火墙</p>
+<li><p>是否能通过 js(<code>document.cookie</code>) 去访问。默认不设置，js 可以操作</p>
 </li>
-<li><p>检查tool 选项下的 block list 和 allow list（黑白名单）</p>
+<li><p>客户端是不能通过js代码去设置一个httpOnly类型的cookie的，这种类型的cookie只能通过服务端来设置</p>
 </li>
-<li><p>Proxy -&gt; Access Control Settings 设置 0.0.0.0/0 允许所有的ip 地址访问。也可以指定本机ip</p>
-</li>
-</ul>
-<p><strong>抓包 https 过滤域名</strong></p>
-<ul>
-<li>配置 Proxy -&gt; SSL Proxy Settings 在 includes 里设置要抓包的域名，Add -&gt; 不输入 -&gt; 点击ok -&gt; 抓包所有</li>
-</ul>
-<p><strong>手机安装 SSL 证书操作提示</strong></p>
-<ul>
-<li>通过 Help-&gt;SSL Proxying-&gt;Install Charles Root Certificate On a mobile device ，可以看到以下提示：</li>
-</ul>
-<p><img src="https://s1.ax1x.com/2020/09/09/wlOX34.png" alt></p>
-<ul>
-<li>打开网址 <a href="http://chls.pro/ssl" target="_blank" rel="noopener">http://chls.pro/ssl</a> 下载证书，将文件复制到手机，更改拓展名为.crt，点击安装</li>
-</ul>
-<h3 id="charles-使用"><a href="#charles-使用" class="headerlink" title="charles 使用"></a>charles 使用</h3><p><strong>断点</strong></p>
-<ul>
-<li><p>右键某个接口，选择breakpoint。</p>
-</li>
-<li><p>刷新页面从新调用接口，断点接口会一直处于pending状态。</p>
-</li>
-<li><p>charles进入断点模式，右侧显示 overview 和 Edit Request。右侧底部显示Cancel 、 Abort、 Execute</p>
-</li>
-<li><p>点击Execute断点进入下一步，再次点击显示Edit Response</p>
-</li>
-<li><p>在 Edit Request 可以编辑请求信息， 在 Edit Response 可以编辑修改返回信息，方便调试接口参数</p>
+<li><p>缺少 HttpOnly 属性会导致攻击者可以通过程序(JS脚本、Applet等)获取到用户的 Cookie  信息，跨站脚本攻击威胁</p>
 </li>
 </ul>
-<p><strong>限速</strong></p>
-<p>在调试安卓或者ios手机时，有时候我们需要模拟弱网络环境，这个时候可以用charles的限速功能</p>
+<p><strong>secure</strong></p>
+<p>这个属性译为安全，http不仅是无状态的，还是不安全的协议，容易被劫持，当这个属性设置为true时，此cookie只会在https和ssl等安全协议下传输</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.cookie=&apos;myname=laihuamin;path=/;domain=juejin.im;expires=Thu, 05 Nov 2020 16:51:41 GMT;secure&apos;</span><br></pre></td></tr></table></figure>
+<p>localStorage： 持久性存储，页面关闭不会被清除，以键值对的方式存储，chrome限制大小5M</p>
+<p>sessionStorage： sessionStorage在选项卡被关闭时即清除，且不同选项卡之间的sessionStorage不互通，chrome限制大小5M</p>
+<h4 id="3、href-和-src"><a href="#3、href-和-src" class="headerlink" title="3、href 和 src"></a>3、href 和 src</h4><p>href 是 Hypertext Reference 的缩写，表示超文本引用。用来建立当前元素和文档之间的链接</p>
+<p><code>&lt;link href=&quot;reset.css&quot; rel=”stylesheet“/&gt;</code></p>
+<p>浏览器会识别该文档为 css 文档，并行下载，不会停止对当前文档的处理，非阻塞，加载css建议使用 link，而不采用 @import </p>
+<p>src 是 source 的缩写，src 的内容是页面必不可少的一部分，是引入</p>
+<h4 id="4、meta"><a href="#4、meta" class="headerlink" title="4、meta"></a>4、meta</h4><p>元数据（metadata）： 是关于数据的信息</p>
 <ul>
-<li><p>Proxy -&gt; Throttle setting -&gt; 勾选 Enable Throttle -&gt; 勾选only for selected hosts -&gt; 添加要限定的指定域名下的请求。</p>
+<li><p>标签提供关于 HTML 文档的元数据</p>
 </li>
-<li><p>也可以自己预设一个网速，通过Add Preset 添加后，可以在Throttle Preset 里找到自己的预设并使用。</p>
+<li><p>元数据不会显示在页面上，但是对于机器是可读的</p>
 </li>
-<li><p>设置完后点击小乌龟图标 Start Throttle 开始限速，或者 Proxy -&gt; Start Throttle 开始限速</p>
+<li><p>标签始终位于 head 元素中</p>
+</li>
+<li><p>如果设置了 name 属性，meta 元素提供的是文档级别的元数据，应用于整个页面</p>
+</li>
+<li><p>如果设置了 http-equiv 属性，meta 元素则是编译指令，提供的信息与类似命名的HTTP头部相同</p>
 </li>
 </ul>
-<p><strong>代理本地请求到dev或者test环境，甚至线上</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">// charset是声明文档使用的字符编码，解决乱码问题，charset一定要写第一行</span><br><span class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line"></span><br><span class="line">// 设置后请求头会带上对应参数</span><br><span class="line">&lt;meta http-equiv=&quot;expires&quot; content=&quot;31 Dec 2008&quot;&gt;</span><br><span class="line"></span><br><span class="line">// 5秒钟后就重定向到http://www.baidu.com</span><br><span class="line">&lt;meta http-equiv=&quot;Refresh&quot; content=&quot;5;url=http://www.baidu.com&quot; /&gt;</span><br><span class="line"></span><br><span class="line">// 这个meta标签的意思就是告诉浏览器，用webkit内核进行解析，前提是浏览器有webkit内核</span><br><span class="line">&lt;meta name=&quot;renderer&quot; content=&quot;webkit&quot;&gt;</span><br><span class="line"></span><br><span class="line">// viewport主要是影响移动端页面布局的</span><br><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line"></span><br><span class="line">// 百度会自动对网页进行转码，这个标签是禁止百度的自动转码</span><br><span class="line">&lt;meta http-equiv=&quot;Cache-Control&quot; content=&quot;no-siteapp&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- ios 禁止自动探测并格式化手机号码 --&gt;</span><br><span class="line">&lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot;&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 移动端大全</span><br><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, user-scalable=no&quot; /&gt;</span><br><span class="line">&lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot; /&gt;</span><br><span class="line">&lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black&quot; /&gt;</span><br><span class="line">&lt;meta name=&quot;format-detection&quot;content=&quot;telephone=no, email=no&quot; /&gt;</span><br><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, user-scalable=no&quot; /&gt;</span><br><span class="line">&lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot; /&gt;&lt;!-- 删除苹果默认的工具栏和菜单栏 --&gt;</span><br><span class="line">&lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black&quot; /&gt;&lt;!-- 设置苹果工具栏颜色 --&gt;</span><br><span class="line">&lt;meta name=&quot;format-detection&quot; content=&quot;telphone=no, email=no&quot; /&gt;&lt;!-- 忽略页面中的数字识别为电话，忽略email识别 --&gt;</span><br><span class="line">&lt;!-- 启用360浏览器的极速模式(webkit) --&gt;</span><br><span class="line">&lt;meta name=&quot;renderer&quot; content=&quot;webkit&quot;&gt;</span><br><span class="line">&lt;!-- 避免IE使用兼容模式 --&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">&lt;!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 --&gt;</span><br><span class="line">&lt;meta name=&quot;HandheldFriendly&quot; content=&quot;true&quot;&gt;</span><br><span class="line">&lt;!-- 微软的老式浏览器 --&gt;</span><br><span class="line">&lt;meta name=&quot;MobileOptimized&quot; content=&quot;320&quot;&gt;</span><br><span class="line">&lt;!-- uc强制竖屏 --&gt;</span><br><span class="line">&lt;meta name=&quot;screen-orientation&quot; content=&quot;portrait&quot;&gt;</span><br><span class="line">&lt;!-- QQ强制竖屏 --&gt;</span><br><span class="line">&lt;meta name=&quot;x5-orientation&quot; content=&quot;portrait&quot;&gt;</span><br><span class="line">&lt;!-- UC强制全屏 --&gt;</span><br><span class="line">&lt;meta name=&quot;full-screen&quot; content=&quot;yes&quot;&gt;</span><br><span class="line">&lt;!-- QQ强制全屏 --&gt;</span><br><span class="line">&lt;meta name=&quot;x5-fullscreen&quot; content=&quot;true&quot;&gt;</span><br><span class="line">&lt;!-- UC应用模式 --&gt;</span><br><span class="line">&lt;meta name=&quot;browsermode&quot; content=&quot;application&quot;&gt;</span><br><span class="line">&lt;!-- QQ应用模式 --&gt;</span><br><span class="line">&lt;meta name=&quot;x5-page-mode&quot; content=&quot;app&quot;&gt;</span><br><span class="line">&lt;!-- windows phone 点击无高光 --&gt;</span><br><span class="line">&lt;meta name=&quot;msapplication-tap-highlight&quot; content=&quot;no&quot;&gt;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>charles 正常情况下时不会抓取 localhost 请求的，我们可以通过配置来实现</p>
+<li><p>如果设置了 charset 属性，meta 元素是一个字符集声明，告诉文档使用哪种字符编码</p>
 </li>
-<li><p>window 下 <code>C:\Windows\System32\drivers\etc</code> 修改 hosts (可以拷贝一份到外面，改后后在替换，这样就可以提供管理员权限替换) <code>127.0.0.1 localhost.charlesproxy.com</code> 增加 本地到 <code>localhost.charlesproxy.com</code> 映射关系。</p>
+<li><p>如果设置了 itemprop 属性，meta 元素提供用户定义的元数据。</p>
 </li>
-<li><p>配置 tool -&gt; Map Remote Settings , https的端口是443，通配符 * 可以匹配任意内容。</p>
+<li><p>元数据可用于浏览器（如何显示内容或重新加载页面），搜索引擎（关键词），或其他 web 服务</p>
+</li>
+<li><p>常见应用，规定页面的描述、关键词、文档的作者、最后修改时间以及其他元数据</p>
 </li>
 </ul>
-<p><img src="https://s1.ax1x.com/2020/09/13/wB9FqH.png" alt></p>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><h4 id="1、什么是BFC"><a href="#1、什么是BFC" class="headerlink" title="1、什么是BFC"></a>1、什么是BFC</h4><ul>
+<li>页面上的一个隔离的独立容器，不受外界干扰或干扰外界</li>
+</ul>
+<h4 id="2、标准和IE"><a href="#2、标准和IE" class="headerlink" title="2、标准和IE"></a>2、标准和IE</h4><p>同：</p>
 <ul>
-<li>这样我们就可以通过请求 <code>http://localhost.charlesproxy.com:7001/cop-marketing-activity/api/v1/activity/page/campaign/info</code> 代理到 <code>https://dev-marketing-wap.svwsx.cn/cop-marketing-activity/api/v1/activity/page/campaign/info</code></li>
+<li>二者盒模型包括 margin,border,padding,content 四块内容</li>
+</ul>
+<p>异：</p>
+<ul>
+<li><p>ie 盒模型 content 包含 border 和 padding</p>
+</li>
+<li><p>标准盒模型 content 只有 content</p>
+</li>
+</ul>
+<h4 id="3、css-设置"><a href="#3、css-设置" class="headerlink" title="3、css 设置"></a>3、css 设置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">box-sizing: content-box;</span><br><span class="line">box-sizing: border-box;</span><br></pre></td></tr></table></figure>
+<h4 id="4、BFC与边距重叠和高度塌陷"><a href="#4、BFC与边距重叠和高度塌陷" class="headerlink" title="4、BFC与边距重叠和高度塌陷"></a>4、BFC与边距重叠和高度塌陷</h4><p>BFC（块级格式化上下文），页面上的一个隔离的独立容器，该区域有一套渲染规格来约束块级盒子，不受外界干扰或干扰外界</p>
+<p><strong>创建BFC</strong></p>
+<ul>
+<li><p>float不为 none</p>
+</li>
+<li><p>overflow的值不为 visible</p>
+</li>
+<li><p>position 为 absolute 或 fixed</p>
+</li>
+<li><p>display的值为 inline-block 或 table-cell 或 table-caption 或 grid</p>
+</li>
+</ul>
+<p><strong>BFC的渲染规则</strong></p>
+<ul>
+<li><p>计算BFC的高度时，浮动子元素也参与计算（即内部有浮动元素时也不会发生高度塌陷）</p>
+</li>
+<li><p>BFC的区域不会与float的元素区域重叠</p>
+</li>
+<li><p>BFC内部的元素会在垂直方向上放置</p>
+</li>
+<li><p>BFC内部两个相邻元素的margin会发生重叠</p>
+</li>
+<li><p>不同BFC之间不会发生重叠</p>
+</li>
+</ul>
+<p><strong>BFC的应用场景</strong></p>
+<ul>
+<li><p>清除浮动： 清除浮动，防止高度塌陷</p>
+</li>
+<li><p>避免某元素被浮动元素覆盖：BFC的区域不会与浮动元素的区域重叠</p>
+</li>
+<li><p>阻止外边距重叠：属于同一个BFC的两个相邻Box的margin会发生折叠，不同BFC不会发生折叠</p>
+</li>
+</ul>
+<h4 id="层叠上下文"><a href="#层叠上下文" class="headerlink" title="层叠上下文"></a>层叠上下文</h4><p>以用户正面向浏览器视窗或网页为准，而 HTML 元素沿着其相对于用户的一条虚构的 z 轴排开，HTML 元素基于其元素属性按照优先级顺序占据这个空间，面向z轴层层排列</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context" target="_blank" rel="noopener">规则</a></p>
+<p>在层叠上下文中，其子级层叠上下文的 z-index 值只在父级中才有意义。子级层叠上下文被自动视为父级层叠上下文的一个独立单元</p>
+<ul>
+<li><p>层叠上下文可以包含在其他层叠上下文中，并且一起创建一个层叠上下文的层级</p>
+</li>
+<li><p>每个层叠上下文都完全独立于它的兄弟元素：当处理层叠时只考虑子元素</p>
+</li>
+<li><p>当一个元素的内容发生层叠后，该元素将被作为整体在父级层叠上下文中按顺序进行层叠</p>
+</li>
+</ul>
+<p>在ios中，如果父级A 的z-index 高于 父级B 则无论 B 的子级如何设置z-index都无法覆盖 A 的内容，此时可以用 <code>transform: translateZ(42px);</code>来调整层级关系</p>
+<h4 id="5、多行隐藏"><a href="#5、多行隐藏" class="headerlink" title="5、多行隐藏"></a>5、多行隐藏</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.more-line &#123;</span><br><span class="line">  display: -webkit-box !important;</span><br><span class="line">  overflow: hidden;</span><br><span class="line">  text-overflow: ellipsis;</span><br><span class="line">  word-break: break-all;</span><br><span class="line">  -webkit-box-orient: vertical;</span><br><span class="line">  -webkit-line-clamp: 2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>js方式</strong></p>
+<p>getClientRects 和 getBoundingClientRect</p>
+<ul>
+<li><p>getClientRects 返回一个TextRectangle集合，就是TextRectangleList对象</p>
+</li>
+<li><p>getBoundingClientRect返回 一个TextRectangle对象，即使DOM里没有文本也能返回TextRectangle对象</p>
+</li>
+</ul>
+<p><strong>使用场景差异</strong></p>
+<p>出于浏览器兼容的考虑，现在用得最多的是getBoundingClientRect，经常用来获取一个element元素的viewport坐标</p>
+<h4 id="6、async和defer"><a href="#6、async和defer" class="headerlink" title="6、async和defer"></a>6、async和defer</h4><p><strong>async</strong></p>
+<ul>
+<li><p>普通脚本，会被并行请求，并尽快解析和执行</p>
+</li>
+<li><p>模块脚本，脚本及其所有依赖都会在延缓队列中执行，因此它们会被并行请求，并尽快解析和执行</p>
+</li>
+<li><p>避免 Javascript 阻塞页面</p>
+</li>
+</ul>
+<p><strong>defer</strong></p>
+<ul>
+<li><p>这个布尔属性被设定用来通知浏览器该脚本将在文档完成解析后，触发 DOMContentLoaded 事件前执行</p>
+</li>
+<li><p>有 defer 属性的脚本会阻止 DOMContentLoaded 事件，直到脚本被加载并且解析完成</p>
+</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuyongshun.github.io/2019/06/15/tool-debug/" data-id="ckh47kiq6002mescu3os9aym1" class="article-share-link">Share</a>
+      <a data-url="http://liuyongshun.github.io/2019/08/20/HTML-CSS-principle/" data-id="ckh47m38w000uhocud0ihwh7e" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tool/">tool</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li></ul>
 
     </footer>
   </div>
@@ -257,7 +304,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/36/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><a class="page-number" href="/page/36/">36</a><span class="page-number current">37</span><a class="page-number" href="/page/38/">38</a><a class="page-number" href="/page/39/">39</a><span class="space">&hellip;</span><a class="page-number" href="/page/73/">73</a><a class="extend next" rel="next" href="/page/38/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/36/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><a class="page-number" href="/page/36/">36</a><span class="page-number current">37</span><a class="page-number" href="/page/38/">38</a><a class="page-number" href="/page/39/">39</a><span class="space">&hellip;</span><a class="page-number" href="/page/76/">76</a><a class="extend next" rel="next" href="/page/38/">下一页</a>
   </nav>
 
 </section>
@@ -268,7 +315,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DEV/">DEV</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DEV/trouble/">trouble</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/array/">array</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/async/">async</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/class/">class</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/decorate/">decorate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/export-import/">export&import</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/fuction/">fuction</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/generator/">generator</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/object/">object</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/promise/">promise</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/proxy/">proxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/reflect/">reflect</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/set-map/">set&map</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/string/">string</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/variable-deconstruction/">variable&deconstruction</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/">FLUTTER</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/dart/">dart</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/env/">env</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/">H5</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-history/">h5 history</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-video/">h5 video</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-CSS/">HTML & CSS</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-CSS/HTML-CSS/">HTML & CSS</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HYBRID/">HYBRID</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HYBRID/hybrid/">hybrid</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/FP/">FP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm/">algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm2/">algorithm2</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/base/">base</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/data-constructor/">data constructor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/principle/">principle</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/">NODE</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/express/">express</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/module/">module</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongo/">mongo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoCommand/">mongoCommand</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoOprate/">mongoOprate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoodb/">mongoodb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-api/">node api</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-buffer/">node buffer</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-eventloop/">node eventloop</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-stream/">node stream</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/variable/">variable</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/">NPM</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/cli/">cli</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/npm-package/">npm package</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/">PLAY</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/photo/">photo</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/">REACT</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/hook/">hook</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/react/">react</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/redux/">redux</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/chrome/">chrome</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/chrome-perf/">chrome-perf</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/debug/">debug</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/frequently/">frequently</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/mac/">mac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/nginx/">nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/vscode-plugin/">vscode plugin</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TS/">TS</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TS/ts-base/">ts base</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/">VUE</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/principle/">principle</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/vueRouter/">vueRouter</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/web/">web</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/">WEBPACK</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/ast/">ast</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/plugin/">plugin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpack-react/">webpack-react</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackDescription/">webpackDescription</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/">WEEX</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/use/">use</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/weex/">weex</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/cache/">cache</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/cache/cache/">cache</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/performance/">performance</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/performance/performance/">performance</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/performance/time-slice/">time slice</a><span class="category-list-count">1</span></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/DEV/">DEV</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/DEV/trouble/">trouble</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/array/">array</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/async/">async</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/class/">class</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/decorate/">decorate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/export-import/">export&import</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/fuction/">fuction</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/generator/">generator</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/object/">object</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/promise/">promise</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/proxy/">proxy</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/reflect/">reflect</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/set-map/">set&map</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/string/">string</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/variable-deconstruction/">variable&deconstruction</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/">FLUTTER</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/dart/">dart</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/FLUTTER/env/">env</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/">H5</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-history/">h5 history</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5/h5-video/">h5 video</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-CSS/">HTML & CSS</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-CSS/HTML-CSS/">HTML & CSS</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HYBRID/">HYBRID</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HYBRID/hybrid/">hybrid</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/FP/">FP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm/">algorithm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/algorithm2/">algorithm2</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/base/">base</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/data-constructor/">data constructor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/principle/">principle</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/">NODE</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/express/">express</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/module/">module</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongo/">mongo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoCommand/">mongoCommand</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoOprate/">mongoOprate</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/mongoodb/">mongoodb</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-api/">node api</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-buffer/">node buffer</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-eventloop/">node eventloop</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/node-stream/">node stream</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NODE/variable/">variable</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/">NPM</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/cli/">cli</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NPM/npm-package/">npm package</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/">PLAY</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PLAY/photo/">photo</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/">REACT</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/hook/">hook</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/perf/">perf</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/react/">react</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/REACT/redux/">redux</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/">TOOL</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/chrome/">chrome</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/chrome-perf/">chrome-perf</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/debug/">debug</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/frequently/">frequently</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/mac/">mac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/nginx/">nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TOOL/vscode-plugin/">vscode plugin</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TS/">TS</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TS/ts-base/">ts base</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/">VUE</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/principle/">principle</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/VUE/vueRouter/">vueRouter</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/web/">web</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/">WEBPACK</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/ast/">ast</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/plugin/">plugin</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpack-react/">webpack-react</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEBPACK/webpackDescription/">webpackDescription</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/">WEEX</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/use/">use</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEEX/weex/">weex</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/cache/">cache</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/cache/cache/">cache</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/performance/">performance</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/performance/performance/">performance</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/performance/time-slice/">time slice</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/web/business/">business</a><span class="category-list-count">1</span></li></ul></li></ul>
     </div>
   </div>
 
@@ -278,7 +325,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DEV/">DEV</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/H5/">H5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HYBRID/">HYBRID</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NODE/">NODE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/">NPM</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/REACT/">REACT</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TS/">TS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cli/">cli</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/">flutter</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/performance/">performance</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/play/">play</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/variable/">variable</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weex/">weex</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DEV/">DEV</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/H5/">H5</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HYBRID/">HYBRID</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NODE/">NODE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/">NPM</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/REACT/">REACT</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TS/">TS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cli/">cli</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flutter/">flutter</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/performance/">performance</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/play/">play</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tool/">tool</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/variable/">variable</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weex/">weex</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -288,7 +335,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/DEV/" style="font-size: 10px;">DEV</a> <a href="/tags/ES6/" style="font-size: 11.43px;">ES6</a> <a href="/tags/H5/" style="font-size: 11.43px;">H5</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HYBRID/" style="font-size: 10px;">HYBRID</a> <a href="/tags/JS/" style="font-size: 17.14px;">JS</a> <a href="/tags/NODE/" style="font-size: 10px;">NODE</a> <a href="/tags/NPM/" style="font-size: 11.43px;">NPM</a> <a href="/tags/REACT/" style="font-size: 14.29px;">REACT</a> <a href="/tags/TS/" style="font-size: 10px;">TS</a> <a href="/tags/cli/" style="font-size: 10px;">cli</a> <a href="/tags/es6/" style="font-size: 20px;">es6</a> <a href="/tags/flutter/" style="font-size: 11.43px;">flutter</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/node/" style="font-size: 18.57px;">node</a> <a href="/tags/performance/" style="font-size: 12.86px;">performance</a> <a href="/tags/play/" style="font-size: 10px;">play</a> <a href="/tags/tool/" style="font-size: 15.71px;">tool</a> <a href="/tags/variable/" style="font-size: 10px;">variable</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue/" style="font-size: 11.43px;">vue</a> <a href="/tags/webpack/" style="font-size: 14.29px;">webpack</a> <a href="/tags/weex/" style="font-size: 11.43px;">weex</a>
+      <a href="/tags/DEV/" style="font-size: 10px;">DEV</a> <a href="/tags/ES6/" style="font-size: 11.25px;">ES6</a> <a href="/tags/H5/" style="font-size: 11.25px;">H5</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/HYBRID/" style="font-size: 10px;">HYBRID</a> <a href="/tags/JS/" style="font-size: 17.5px;">JS</a> <a href="/tags/NODE/" style="font-size: 10px;">NODE</a> <a href="/tags/NPM/" style="font-size: 11.25px;">NPM</a> <a href="/tags/REACT/" style="font-size: 15px;">REACT</a> <a href="/tags/TS/" style="font-size: 10px;">TS</a> <a href="/tags/cli/" style="font-size: 10px;">cli</a> <a href="/tags/es6/" style="font-size: 20px;">es6</a> <a href="/tags/flutter/" style="font-size: 11.25px;">flutter</a> <a href="/tags/mac/" style="font-size: 10px;">mac</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/node/" style="font-size: 18.75px;">node</a> <a href="/tags/performance/" style="font-size: 12.5px;">performance</a> <a href="/tags/play/" style="font-size: 10px;">play</a> <a href="/tags/tool/" style="font-size: 16.25px;">tool</a> <a href="/tags/variable/" style="font-size: 10px;">variable</a> <a href="/tags/vscode/" style="font-size: 10px;">vscode</a> <a href="/tags/vue/" style="font-size: 11.25px;">vue</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/webpack/" style="font-size: 13.75px;">webpack</a> <a href="/tags/weex/" style="font-size: 11.25px;">weex</a>
     </div>
   </div>
 
@@ -297,7 +344,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -314,6 +361,10 @@
           </li>
         
           <li>
+            <a href="/2020/10/15/REACT-router/">react-router</a>
+          </li>
+        
+          <li>
             <a href="/2020/10/11/webpack-react/">webpack react</a>
           </li>
         
@@ -323,10 +374,6 @@
         
           <li>
             <a href="/2020/07/20/performance-time-split/">time slice</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/19/AST/">AST</a>
           </li>
         
       </ul>
@@ -381,6 +428,7 @@
 </div>
 <script src="/js/totop.js"></script>
 
+    <img class="qr-img" src="https://s3.ax1x.com/2020/12/02/DINICd.jpg" alt="">
   </div>
 </body>
 </html>
